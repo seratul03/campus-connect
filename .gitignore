@@ -1,0 +1,16 @@
+# AI models
+models/
+checkpoints/
+weights/
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# OS / misc
+.DS_Store
