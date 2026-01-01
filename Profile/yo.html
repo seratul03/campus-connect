@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile | Campus Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="pages.css" />
+
+  <style>
+    /* ===============================
+       Navbar Profile Bubble
+    =============================== */
+    .profile-bubble {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #007aff, #5ac8fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .profile-bubble.active {
+      box-shadow: 0 0 0 2px #007aff;
+    }
+
+    /* ===============================
+       Layout
+    =============================== */
+    .profile-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 0 60px;
+      position: relative;
+    }
+
+    /* ===============================
+       Mail Toggle
+    =============================== */
+    .profile-top-actions {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+
+    .mail-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(14px);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: 0.25s ease;
+      position: relative;
+    }
+
+    .mail-toggle.on {
+      background: rgba(0,122,255,0.18);
+      box-shadow: 0 0 0 2px rgba(0,122,255,0.35),
+                  0 12px 28px rgba(0,122,255,0.35);
+    }
+
+    .mail-toggle.off {
+      opacity: 0.55;
+    }
+
+    .mail-toggle.on::after {
+      content: "";
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 8px;
+      height: 8px;
+      background: #ff3b30;
+      border-radius: 50%;
+    }
+
+    /* ===============================
+       Toast
+    =============================== */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.35s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast.on { border-left: 4px solid #34c759; }
+    .toast.off { border-left: 4px solid #ff3b30; }
+
+    /* ===============================
+       Profile Header
+    =============================== */
+    .profile-header {
+      display: flex;
+      gap: 24px;
+      padding: 28px;
+      border-radius: 22px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+      position: relative;
+    }
+
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #007aff, #5ac8fa);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+
+    .profile-info h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .profile-info p {
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+
+    /* ===============================
+       Profile Grid
+    =============================== */
+    .profile-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .profile-card {
+      padding: 24px;
+      border-radius: 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-card h3 {
+      margin-bottom: 16px;
+    }
+
+    .profile-field {
+      margin-bottom: 14px;
+    }
+
+    .profile-field label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .skills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skill-tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(0,122,255,0.12);
+      color: var(--ios-blue);
+      border: 1px solid rgba(0,122,255,0.25);
+    }
+
+    .profile-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.995);
+      opacity: 0.95;
+    }
+
+    .profile-preview {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      object-fit: cover;
+      margin-left: 8px;
+      vertical-align: middle;
+      border: 1px solid rgba(0,0,0,0.08);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--ios-blue);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(0,0,0,0.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav">
+    <div class="logo">Campus Connect</div>
+    <div class="nav-links">
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="internships.html">Internships</a>
+      <a href="practice.html">Practice</a>
+      <a href="research.html">Research</a>
+      <a href="ats.html">ATS Checker</a>
+      <a href="updates.html">Hiring Updates</a>
+    </div>
+    <a id="navProfileBubble" href="profile.html" class="profile-bubble active">RK</a>
+    <!-- <img id="navPreview" class="profile-preview" alt="Profile preview" src="" style="display:none"> -->
+  </nav>
+
+  <!-- PROFILE -->
+  <main class="profile-wrapper">
+
+    <section class="profile-header">
+      <div id="profileAvatar" class="profile-avatar">RK</div>
+      <div class="profile-info">
+        <h2 id="displayName">Rohan Karuri</h2>
+        <p id="displayTagline">B.Tech CSE (AI & ML) • 3rd Year</p>
+        <p id="displayUniversity">Brainware University</p>
+      </div>
+
+      <div class="profile-top-actions">
+        <div id="mailToggle" class="mail-toggle">📩</div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="profile-grid">
+
+      <div class="profile-card">
+        <h3>Personal Information</h3>
+        <div class="profile-field"><label>Email</label><span id="p_email">bwubta23157@brainwareuniversity.ac.in</span></div>
+        <div class="profile-field"><label>University Roll No</label><span id="p_roll">23010332148</span></div>
+        <div class="profile-field"><label>Registration No</label><span id="p_reg">23013001761</span></div>
+        <div class="profile-field"><label>Location</label><span id="p_location">Barasat, North 24 Parganas</span></div>
+      </div>
+
+      <div class="profile-card">
+        <h3>Academic Details</h3>
+        <div class="profile-field"><label>Program</label><span id="p_program">B.Tech CSE (AIML)</span></div>
+        <div class="profile-field"><label>Semester</label><span id="p_semester">5th</span></div>
+        <div class="profile-field"><label>Expected Graduation</label><span id="p_grad">2027</span></div>
+      </div>
+
+      <div class="profile-card">
+        <h3>Skills</h3>
+        <div class="skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">AI / ML</span>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="profile-actions">
+      <a href="rr.html" class="btn btn-secondary" id="editProfileBtn">Edit Profile</a>
+      <button class="btn btn-primary">Update Resume</button>
+    </div>
+
+  </main>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <!-- JS -->
+  <script>
+    const toggle = document.getElementById("mailToggle");
+    const toast = document.getElementById("toast");
+    const KEY = "mail_notifications_enabled";
+
+    function showToast(msg, state) {
+      toast.textContent = msg;
+      toast.className = `toast show ${state}`;
+      setTimeout(() => toast.classList.remove("show"), 2500);
+    }
+
+    function setState(enabled, notify=false) {
+      toggle.classList.toggle("on", enabled);
+      toggle.classList.toggle("off", !enabled);
+      localStorage.setItem(KEY, enabled);
+
+      if (notify) {
+        showToast(
+          enabled ? "Mail notifications enabled" : "Mail notifications disabled",
+          enabled ? "on" : "off"
+        );
+      }
+    }
+
+    setState(localStorage.getItem(KEY) !== "false");
+
+    toggle.addEventListener("click", () => {
+      setState(!toggle.classList.contains("on"), true);
+    });
+
+    // Load saved profile data (if any) and apply to page
+    (function loadProfile() {
+      try {
+        const raw = localStorage.getItem('profileData');
+        if (!raw) return;
+        const data = JSON.parse(raw);
+
+        if (data.fullName) document.getElementById('displayName').textContent = data.fullName;
+        if (data.program || data.semester) {
+          const tagline = [data.program || '', data.semester ? `• ${data.semester}` : ''].filter(Boolean).join(' ');
+          if (tagline) document.getElementById('displayTagline').textContent = tagline;
+        }
+        if (data.universityName) document.getElementById('displayUniversity').textContent = data.universityName;
+
+        if (data.email) document.getElementById('p_email').textContent = data.email;
+        if (data.rollNumber) document.getElementById('p_roll').textContent = data.rollNumber;
+        if (data.registrationNumber) document.getElementById('p_reg').textContent = data.registrationNumber;
+        if (data.city || data.district || data.state) {
+          const parts = [data.city, data.district, data.state].filter(Boolean);
+          document.getElementById('p_location').textContent = parts.join(', ');
+        }
+
+        if (data.program) document.getElementById('p_program').textContent = data.program + (data.specialization ? (' ' + data.specialization) : '');
+        if (data.semester) document.getElementById('p_semester').textContent = data.semester;
+        if (data.graduationYear) document.getElementById('p_grad').textContent = data.graduationYear;
+
+        // Skills
+        if (Array.isArray(data.skills)) {
+          const skillsContainer = document.querySelector('.skills');
+          skillsContainer.innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+        }
+
+        // Photo
+        if (data.photo) {
+          const avatar = document.getElementById('profileAvatar');
+          avatar.style.backgroundImage = `url('${data.photo}')`;
+          avatar.textContent = '';
+          avatar.style.backgroundSize = 'cover';
+          avatar.style.backgroundPosition = 'center';
+
+          const navPrev = document.getElementById('navPreview');
+          navPrev.src = data.photo;
+          navPrev.style.display = 'inline-block';
+        }
+      } catch (e) {
+        console.warn('Could not load profile data', e);
+      }
+    })();
+  </script>
+
+</body>
+</html>

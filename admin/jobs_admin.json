@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "company": "Infosys",
+    "role": "Software Engineer",
+    "ctc": "8 LPA",
+    "location": "Bangalore",
+    "experience": "0–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Python", "SQL", "OOP", "Git"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Develop enterprise applications and client solutions."
+  },
+  {
+    "id": 2,
+    "company": "TCS",
+    "role": "System Engineer",
+    "ctc": "6.5 LPA",
+    "location": "Pune",
+    "experience": "0–1 Year",
+    "employment_type": "Full-time",
+    "required_skills": ["Java", "DSA", "Problem Solving"],
+    "eligibility": "B.Tech / BCA",
+    "description": "Support enterprise systems and software solutions."
+  },
+  {
+    "id": 3,
+    "company": "Wipro",
+    "role": "Data Analyst",
+    "ctc": "7.2 LPA",
+    "location": "Hyderabad",
+    "experience": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["SQL", "Python", "Power BI"],
+    "eligibility": "B.Tech / B.Sc",
+    "description": "Analyze business data and create dashboards."
+  },
+  {
+    "id": 4,
+    "company": "Accenture",
+    "role": "Cloud Associate",
+    "ctc": "9 LPA",
+    "location": "Mumbai",
+    "experience": "0–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["AWS", "Linux", "Networking"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Deploy and manage cloud infrastructure."
+  },
+  {
+    "id": 5,
+    "company": "Capgemini",
+    "role": "Full Stack Developer",
+    "ctc": "10 LPA",
+    "location": "Bangalore",
+    "experience": "2–4 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["React", "Node.js", "MongoDB"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Develop scalable web applications."
+  },
+  {
+    "id": 6,
+    "company": "HCL",
+    "role": "DevOps Engineer",
+    "ctc": "11 LPA",
+    "location": "Noida",
+    "experience": "2–5 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Docker", "Kubernetes", "CI/CD"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Automate deployment pipelines and infrastructure."
+  },
+  {
+    "id": 7,
+    "company": "IBM",
+    "role": "AI Engineer",
+    "ctc": "14 LPA",
+    "location": "Bangalore",
+    "experience": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Machine Learning", "Python", "TensorFlow"],
+    "eligibility": "B.Tech AIML / Data Science",
+    "description": "Build and deploy AI-driven solutions."
+  },
+  {
+    "id": 8,
+    "company": "StartupX Labs",
+    "role": "Junior Web Developer",
+    "ctc": "5 LPA",
+    "location": "Remote",
+    "experience": "0–1 Year",
+    "employment_type": "Full-time",
+    "required_skills": ["HTML", "CSS", "JavaScript"],
+    "eligibility": "Any Graduate",
+    "description": "Maintain and enhance startup web products."
+  },
+  {
+    "id": 9,
+    "company": "TechNova Solutions",
+    "role": "Junior Software Engineer (Backend)",
+    "ctc": "6–8 LPA",
+    "location": "Bangalore (Hybrid)",
+    "experience": "0–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Python", "DSA", "OOP", "SQL", "Git", "REST APIs", "Linux"],
+    "eligibility": "B.Tech / B.E. in CS / IT / AI / ML",
+    "description": "Work with the backend team to build and maintain APIs and services."
+  },
+  {
+    "id": 10,
+    "company": "BAAR Technologies",
+    "role": "Jr. Python Developer",
+    "experience": "0–1 Years",
+    "job_type": "Full Time",
+    "location": ["Kolkata", "Mumbai", "Pune"],
+    "responsibilities": [
+      "Writing reusable, testable, and efficient code in Python",
+      "Understanding of business requirement",
+      "Design and implementation of BAAR Workflow to achieve business requirement"
+    ],
+    "skills_and_qualifications": [
+      "Well versed with Python",
+      "Logical thinking is required to design and implement BAAR Workflow",
+      "Good understanding of scripting language",
+      "Understanding of fundamental design principles behind a scalable application",
+      "Familiarity with event-driven programming in Python",
+      "Able to create database schemas that represent and support business processes",
+      "Strong unit test and debugging skills",
+      "Experience in working with libraries like Pandas, Numpy etc",
+      "Some knowledge in SQL is preferred"
+    ]
+  },
+  {
+    "id": 11,
+    "company": "Nature Technologies Pvt Ltd",
+    "role": "Python Developer",
+    "experience": "0–2 Years",
+    "job_type": "Full Time",
+    "location": "Greater Kolkata Area",
+    "role_description": [
+      "Designing, developing, and deploying high-performance applications using Python",
+      "Writing efficient and scalable code",
+      "Collaborating with cross-functional teams",
+      "Testing and debugging applications",
+      "Implementing data security and protection solutions",
+      "Maintaining existing software",
+      "Optimizing code",
+      "Contributing to architectural decisions"
+    ],
+    "qualifications": [
+      "Strong proficiency in Python programming, including knowledge of frameworks like Django or Flask",
+      "Experience in designing and working with RESTful APIs and integrating with web services",
+      "Understanding of front-end technologies like JavaScript, HTML, CSS, and how they integrate with back-end development",
+      "Experience with relational databases such as MySQL, PostgreSQL, or similar",
+      "Knowledge of version control tools like Git or similar",
+      "Familiarity with cloud services, such as AWS or Azure, and containerization tools like Docker",
+      "Understanding of testing frameworks and debugging tools for application optimization",
+      "Strong problem-solving skills and the ability to work in a team environment",
+      "Bachelor's degree in Computer Science, Software Engineering, or a related field",
+      "Experience in artificial intelligence and machine learning applications is a plus",
+      "Understanding of IoT concepts and industrial automation is an advantage",
+      "Knowledge of Agile methodologies or relevant certifications is preferred"
+    ]
+  },
+  {
+    "id": 12,
+    "company": "PwC India",
+    "role": "Associate – Python Data Engineer",
+    "experience": "0–2 Years",
+    "job_type": "Full Time",
+    "responsibilities": [
+      "Help organisations uncover enterprise insights and drive business results using smarter data analytics",
+      "Implement enterprise content and data management applications",
+      "Extract insights from industry or sector trends",
+      "Review work for quality, accuracy and relevance",
+      "Use structured communication when influencing and connecting with others",
+      "Uphold the firm's code of ethics and business conduct"
+    ]
+  },
+  {
+    "id": 13,
+    "company": "Soul AI",
+    "role": "Java Developer",
+    "experience": "0–2 Years",
+    "job_type": "Full Time",
+    "responsibilities": [
+      "Evaluate and validate patches across multi-module Java repositories",
+      "Execute JUnit test suites, review failures, and diagnose regressions",
+      "Debug complex backend logic and enterprise patterns",
+      "Review PRs for maintainability, code quality, and correctness",
+      "Work with Maven/Gradle build systems",
+      "Collaborate with developers to ensure scalable Java backend code"
+    ],
+    "skills": [
+      "JUnit",
+      "Maven/Gradle",
+      "OOP fundamentals",
+      "Debugging large Java projects",
+      "Understanding of Spring ecosystem"
+    ]
+  },
+  {
+    "id": 14,
+    "company": "Cognizant",
+    "role": "AIML Data Scientist",
+    "experience": "1–2 Years",
+    "job_type": "Full Time",
+    "location": "Kolkata",
+    "responsibilities": [
+      "Apply Machine Learning and Deep Learning algorithms to solve business challenges",
+      "Improve model accuracy to deliver greater business impact",
+      "Work with domain teams to understand business context",
+      "Design, develop and deploy deep learning models",
+      "Build CI/CD pipelines for ML model deployment",
+      "Integrate AI and ML models using REST APIs"
+    ],
+    "technical_expertise": [
+      "Machine learning and statistical sciences",
+      "Python / R / SQL",
+      "Tensorflow / Pytorch",
+      "NLP, Computer Vision, Deep Learning",
+      "Git / Github",
+      "Cloud platforms and GPU based compute"
+    ]
+  }
+]

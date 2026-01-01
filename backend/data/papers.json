@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Deep Learning for Remote Sensing: A Survey",
+    "authors": ["A. Kumar", "S. Roy"],
+    "abstract": "A comprehensive survey of deep learning techniques applied to remote sensing imagery, covering architectures, datasets, and applications.",
+    "journal": "International Journal of Remote Sensing",
+    "year": 2023,
+    "link": "https://example.org/papers/deep-learning-remote-sensing.pdf",
+    "keywords": ["deep learning", "remote sensing", "survey"]
+  },
+  {
+    "id": 2,
+    "title": "Explainable AI for Healthcare Diagnostics",
+    "authors": ["R. Sen", "M. Ghosh"],
+    "abstract": "Methods for making AI models in diagnostic imaging interpretable and clinically actionable.",
+    "journal": "Journal of Medical AI",
+    "year": 2024,
+    "link": "https://example.org/papers/xai-healthcare.pdf",
+    "keywords": ["xai", "healthcare", "diagnostics"]
+  },
+  {
+    "id": 3,
+    "title": "Energy-Efficient Protocols for IoT Networks",
+    "authors": ["P. Banerjee", "L. Chatterjee"],
+    "abstract": "Novel medium-access protocols that reduce energy consumption in large-scale IoT deployments.",
+    "journal": "IEEE Transactions on IoT",
+    "year": 2022,
+    "link": "https://example.org/papers/energy-iot.pdf",
+    "keywords": ["IoT", "energy", "protocols"]
+  }
+]

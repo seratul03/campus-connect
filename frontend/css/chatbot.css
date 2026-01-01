@@ -1,0 +1,218 @@
+/* ================================
+   Global Reset
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Inter, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f4f8ff, #eef3ff, #ffffff);
+  color: #0a2540;
+}
+
+/* ================================
+   Center Page Layout
+================================ */
+.chatbot-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* ================================
+   Chatbot Window
+================================ */
+#chatbot-window {
+  width: 380px;
+  height: 520px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px);
+  border-radius: 24px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ================================
+   Header
+================================ */
+.chat-header {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chat-header .status {
+  font-size: 0.7rem;
+  color: #34c759;
+}
+
+/* ================================
+   Messages Area
+================================ */
+#chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Message Bubbles */
+.message {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  animation: fadeIn 0.25s ease;
+}
+
+/* User */
+.message.user {
+  background: #007aff;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+}
+
+/* Bot */
+.message.bot {
+  background: #eef2f9;
+  color: #0a2540;
+  border-bottom-left-radius: 6px;
+}
+
+/* ================================
+   Input Area
+================================ */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+  font-size: 0.85rem;
+}
+
+.chat-input input:focus {
+  border-color: #007aff;
+}
+
+.chat-input button {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #007aff;
+  color: white;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.chat-input button:hover {
+  background: #0060df;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   Animations
+================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   Mobile Friendly
+================================ */
+@media (max-width: 420px) {
+  #chatbot-window {
+    width: 100%;
+    height: 90vh;
+    border-radius: 18px;
+  }
+}
+
+/* ===============================
+   Chatbot Bubble – Top Right
+================================ */
+
+.chatbot-launch {
+  position: fixed;
+  /* top: 88px; */
+  bottom: 31px;           /* below navbar, breathable */
+  right: 70px;         /* space from right edge */
+  z-index: 999;
+  text-decoration: none;
+}
+
+.chatbot-bubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 122, 255, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+.chatbot-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 18px 40px rgba(0, 122, 255, 0.45);
+}
+
+/* Mobile breathing space */
+@media (max-width: 768px) {
+  .chatbot-launch {
+    top: 76px;
+    right: 18px;
+  }
+
+  .chatbot-bubble {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+}
+.chatbot-text {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 0.95rem;
+  color: #0a2540;
+  vertical-align: middle;
+}

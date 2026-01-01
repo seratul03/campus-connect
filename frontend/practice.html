@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Practice | Campus Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Practice-specific styles -->
+  <link rel="stylesheet" href="css/practice.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR (UNCHANGED, SAME AS OTHER PAGES) ===== -->
+  <nav class="main-nav">
+    <!-- <a href="index.html">Home</a> -->
+    <a href="student-dashboard.html">Dashboard</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="internships.html">Internships</a>
+    <a href="practice.html" class="active">Practice</a>
+    <a href="research.html">Research</a>
+    <a href="ats.html">ATS Checker</a>
+    <a href="updates.html">Hiring Updates</a>
+    <a href="profile.html" class="profile-bubble active">
+  <span>RK</span>
+</a>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <h1>Practice & Skill Building</h1>
+    <p>Improve your skills based on ATS & job eligibility</p>
+  </section>
+
+  <!-- ===== CONTROLS ===== -->
+  <section class="practice-controls">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="🔍 Search skills, topics, questions..."
+      oninput="searchModules(this.value)"
+    />
+
+    <select id="categoryFilter" onchange="applyFilters()">
+      <option value="All">All Categories</option>
+    </select>
+
+    <select id="levelFilter" onchange="applyFilters()">
+      <option value="All">All Levels</option>
+    </select>
+
+    <select onchange="sortModules(this.value)">
+      <option value="">Sort By</option>
+      <option value="level">Difficulty</option>
+      <option value="time">Estimated Time</option>
+    </select>
+  </section>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <section class="practice-layout">
+
+    <!-- MAIN PRACTICE GRID -->
+    <div id="practiceContainer" class="practice-grid"></div>
+
+    <!-- RIGHT-SIDE RECOMMENDATIONS -->
+    <aside class="recommendation-panel">
+      <h2>Recommended for You</h2>
+      <div id="recommendationList"></div>
+    </aside>
+
+  </section>
+
+  <!-- JS -->
+  <script src="js/practice.js"></script>
+  <link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js" defer></script>
+
+
+
+
+</body>
+</html>

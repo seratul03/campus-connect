@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Connect | Login</title>
+
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <style>
+    /* ===============================
+   Campus Connect Brand Styling
+=============================== */
+
+.main-nav .brand {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  /* Premium blue gradient text */
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  cursor: default;
+  user-select: none;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.main-nav{
+  background: #f4f1ff;
+}
+/* Optional subtle hover (non-link feel) */
+.main-nav .brand:hover {
+  filter: brightness(1.05);
+}
+
+.main-nav .brand .dot {
+  color: #007aff;
+  margin: 0 2px;
+  font-weight: 900;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="main-nav">
+    <span class="brand">Campus Connect</span>
+  </nav>
+
+  <!-- ================= LOGIN SECTION ================= -->
+  <div class="center">
+    <div class="glass card">
+      <h1>Welcome Back</h1>
+      <p>Login with your college credentials</p>
+
+      <input id="email" type="email" placeholder="Email" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <br /><br />
+      <button onclick="login()">Login</button>
+
+      <p id="error" style="color:red;"></p>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/auth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "id": 10,
+  "company": "BAAR Technologies",
+  "role": "Jr. Python Developer",
+  "experience": "0–1 Years",
+  "job_type": "Full Time",
+  "location": [
+    "Kolkata",
+    "Mumbai",
+    "Pune"
+  ],
+  "responsibilities": [
+    "Writing reusable, testable, and efficient code in Python",
+    "Understanding of business requirement",
+    "Design and implementation of BAAR Workflow to achieve business requirement"
+  ],
+  "skills_and_qualifications": [
+    "Well versed with Python",
+    "Logical thinking is required to design and implement BAAR Workflow",
+    "Good understanding of scripting language",
+    "Understanding of fundamental design principles behind a scalable application",
+    "Familiarity with event-driven programming in Python",
+    "Able to create database schemas that represent and support business processes",
+    "Strong unit test and debugging skills",
+    "Experience in working with libraries like Pandas, Numpy etc",
+    "Some knowledge in SQL is preferred"
+  ],
+  "required_skills": [
+    "Well versed with Python",
+    "Logical thinking is required to design and implement BAAR Workflow",
+    "Good understanding of scripting language",
+    "Understanding of fundamental design principles behind a scalable application",
+    "Familiarity with event-driven programming in Python",
+    "Able to create database schemas that represent and support business processes",
+    "Strong unit test and debugging skills",
+    "Experience in working with libraries like Pandas, Numpy etc"
+  ],
+  "short_required_skills": [
+    "Python",
+    "SQL",
+    "Pandas",
+    "NumPy",
+    "Problem Solving"
+  ]
+}

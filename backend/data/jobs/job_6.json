@@ -1,0 +1,21 @@
+{
+  "id": 6,
+  "company": "HCL",
+  "role": "DevOps Engineer",
+  "ctc": "11 LPA",
+  "location": "Noida",
+  "experience": "2–5 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Docker",
+    "Kubernetes",
+    "CI/CD"
+  ],
+  "eligibility": "B.Tech / MCA",
+  "description": "Automate deployment pipelines and infrastructure.",
+  "short_required_skills": [
+    "Docker",
+    "Kubernetes",
+    "CI/CD"
+  ]
+}

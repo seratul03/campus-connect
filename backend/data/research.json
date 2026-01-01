@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "AI-Based Crop Disease Detection",
+    "mentor": "Dr. Anirban Sen",
+    "domain": "Artificial Intelligence",
+    "duration": "6 Months",
+    "description": "CNN-based crop disease identification system using leaf images to assist farmers.",
+    "skills": ["Python", "Deep Learning", "CNN", "TensorFlow"]
+  },
+  {
+    "id": 2,
+    "title": "Blockchain Certificate Verification",
+    "mentor": "Prof. S. Mukherjee",
+    "domain": "Blockchain",
+    "duration": "4 Months",
+    "description": "Decentralized academic certificate verification system using Ethereum blockchain.",
+    "skills": ["Blockchain", "Solidity", "Smart Contracts"]
+  },
+  {
+    "id": 3,
+    "title": "Mental Health Prediction Using ML",
+    "mentor": "Dr. Ritu Chatterjee",
+    "domain": "Machine Learning",
+    "duration": "5 Months",
+    "description": "Predict student mental health risks using supervised ML models.",
+    "skills": ["Python", "ML", "Scikit-learn"]
+  },
+  {
+    "id": 4,
+    "title": "Smart Attendance Using IoT",
+    "mentor": "Prof. Arindam Ghosh",
+    "domain": "IoT",
+    "duration": "3 Months",
+    "description": "RFID and IoT based automated attendance system.",
+    "skills": ["IoT", "Arduino", "RFID"]
+  },
+  {
+    "id": 5,
+    "title": "Resume Screening with NLP",
+    "mentor": "Dr. P. Banerjee",
+    "domain": "NLP",
+    "duration": "4 Months",
+    "description": "ATS-style resume screening and skill matching using NLP.",
+    "skills": ["Python", "NLP", "Text Processing"]
+  },
+  {
+    "id": 6,
+    "title": "Cybersecurity Threat Detection",
+    "mentor": "Prof. N. Das",
+    "domain": "Cybersecurity",
+    "duration": "6 Months",
+    "description": "Intrusion detection using ML over network traffic.",
+    "skills": ["Cybersecurity", "Networking", "ML"]
+  },
+  {
+    "id": 7,
+    "title": "Fake News Detection System",
+    "mentor": "Dr. S. Roy",
+    "domain": "NLP",
+    "duration": "4 Months",
+    "description": "Detect misinformation using NLP and ML models.",
+    "skills": ["NLP", "Python", "ML"]
+  },
+  {
+    "id": 8,
+    "title": "Face Recognition Attendance",
+    "mentor": "Prof. K. Banerjee",
+    "domain": "Computer Vision",
+    "duration": "5 Months",
+    "description": "Face recognition based attendance using OpenCV.",
+    "skills": ["OpenCV", "Python", "Deep Learning"]
+  },
+  {
+    "id": 9,
+    "title": "AI Chatbot for Student Support",
+    "mentor": "Dr. A. Mitra",
+    "domain": "AI",
+    "duration": "3 Months",
+    "description": "Conversational AI chatbot for student queries.",
+    "skills": ["Python", "NLP", "Chatbot"]
+  },
+  {
+    "id": 10,
+    "title": "Stock Price Prediction",
+    "mentor": "Prof. D. Sengupta",
+    "domain": "Data Science",
+    "duration": "6 Months",
+    "description": "Predict stock prices using time series analysis.",
+    "skills": ["Python", "Data Science", "LSTM"]
+  },
+  {
+    "id": 11,
+    "title": "Autonomous Line Follower Robot",
+    "mentor": "Prof. R. Ghosh",
+    "domain": "Robotics",
+    "duration": "3 Months",
+    "description": "Build an autonomous robot using sensors.",
+    "skills": ["Robotics", "Arduino", "Embedded Systems"]
+  },
+  {
+    "id": 12,
+    "title": "Speech Emotion Recognition",
+    "mentor": "Dr. M. Paul",
+    "domain": "AI",
+    "duration": "5 Months",
+    "description": "Detect emotions from speech using deep learning.",
+    "skills": ["Deep Learning", "Audio Processing", "Python"]
+  },
+  {
+    "id": 13,
+    "title": "Smart Traffic Management",
+    "mentor": "Prof. S. Das",
+    "domain": "IoT",
+    "duration": "6 Months",
+    "description": "IoT-based traffic optimization system.",
+    "skills": ["IoT", "Sensors", "Cloud"]
+  },
+  {
+    "id": 14,
+    "title": "Handwritten Digit Recognition",
+    "mentor": "Dr. N. Mukherjee",
+    "domain": "Machine Learning",
+    "duration": "3 Months",
+    "description": "MNIST-based digit recognition system.",
+    "skills": ["Python", "ML", "Neural Networks"]
+  },
+  {
+    "id": 15,
+    "title": "E-Learning Recommendation Engine",
+    "mentor": "Prof. A. Chandra",
+    "domain": "Recommender Systems",
+    "duration": "5 Months",
+    "description": "Personalized learning content recommendation.",
+    "skills": ["ML", "Python", "Data Analysis"]
+  },
+  {
+    "id": 16,
+    "title": "Smart Home Automation",
+    "mentor": "Dr. R. Saha",
+    "domain": "IoT",
+    "duration": "4 Months",
+    "description": "Automated home control using IoT.",
+    "skills": ["IoT", "Home Automation", "Sensors"]
+  },
+  {
+    "id": 17,
+    "title": "Malware Detection Using ML",
+    "mentor": "Prof. T. Dey",
+    "domain": "Cybersecurity",
+    "duration": "6 Months",
+    "description": "Detect malware using ML classification techniques.",
+    "skills": ["Cybersecurity", "ML", "Python"]
+  },
+  {
+    "id": 18,
+    "title": "Recommendation System for Jobs",
+    "mentor": "Dr. S. Pal",
+    "domain": "AI",
+    "duration": "4 Months",
+    "description": "AI-driven job recommendation engine.",
+    "skills": ["AI", "ML", "Python"]
+  },
+  {
+    "id": 19,
+    "title": "Healthcare Disease Prediction",
+    "mentor": "Prof. A. Roy",
+    "domain": "Healthcare AI",
+    "duration": "6 Months",
+    "description": "Predict diseases using patient data.",
+    "skills": ["ML", "Healthcare", "Python"]
+  },
+  {
+    "id": 20,
+    "title": "Image-Based Fire Detection",
+    "mentor": "Dr. K. Ghosh",
+    "domain": "Computer Vision",
+    "duration": "5 Months",
+    "description": "Early fire detection using image processing.",
+    "skills": ["Computer Vision", "Deep Learning", "Python"]
+  }
+]

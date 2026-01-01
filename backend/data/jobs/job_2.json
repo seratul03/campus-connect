@@ -1,0 +1,28 @@
+{
+  "id": 2,
+  "company": "TCS",
+  "role": "System Engineer",
+  "ctc": "6.5 LPA",
+  "location": "Pune",
+  "experience": "0–1 Year",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Java",
+    "DSA",
+    "Problem Solving"
+  ],
+  "eligibility": "B.Tech / BCA / MCA with no active backlogs. Minimum 60% in 10th, 12th, and graduation.",
+  "description": "TCS is looking for enthusiastic System Engineers to support enterprise systems and software solutions. This is an excellent opportunity for fresh graduates to start their career in a leading IT services company. You will work on diverse projects across various domains and technologies, gaining exposure to real-world business challenges.",
+  "responsibilities": "• Support and maintain enterprise applications and systems\n• Troubleshoot technical issues and provide timely resolutions\n• Develop and test software modules as per requirements\n• Collaborate with senior engineers and learn industry best practices\n• Participate in requirement gathering and analysis sessions\n• Create technical documentation and user guides\n• Implement coding standards and quality guidelines\n• Contribute to continuous improvement initiatives\n• Provide production support and handle escalations",
+  "preferred_qualifications": "Knowledge of Spring Boot or J2EE, understanding of database concepts (MySQL/Oracle), exposure to version control systems (Git/SVN), basic understanding of web services and APIs, good problem-solving and analytical skills.",
+  "benefits": "• Comprehensive training program for freshers\n• Attractive salary package of 6.5 LPA\n• Medical insurance for employee and dependents\n• Learning and certification support\n• Opportunity to work on global projects\n• Regular performance appraisals\n• Employee assistance programs\n• Recreational facilities and team activities\n• Relocation assistance if required",
+  "about_company": "Tata Consultancy Services is an IT services, consulting and business solutions organization that has been partnering with many of the world's largest businesses in their transformation journeys for over 50 years. TCS offers a consulting-led, cognitive-powered, integrated portfolio of business, technology and engineering services and solutions.",
+  "posted_date": "December 22, 2025",
+  "deadline": "January 20, 2026",
+  "openings": "100+",
+  "short_required_skills": [
+    "Java",
+    "DSA",
+    "Problem Solving"
+  ]
+}
