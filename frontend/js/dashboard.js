@@ -1,4 +1,14 @@
 async function loadDashboard() {
+  // Check authentication first
+  const user = checkAuth("student");
+  if (!user) return;
+
+  // Update welcome message with actual user name
+  const welcomeEl = document.querySelector(".header h2");
+  if (welcomeEl) {
+    welcomeEl.innerText = `Welcome, ${user.name} 👋`;
+  }
+
   /* -----------------------------
      MOCK DATA (Fallback Safe)
   ------------------------------ */

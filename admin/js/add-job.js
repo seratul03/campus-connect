@@ -12,6 +12,25 @@ function goBack() {
   window.location.href = "admin-dashboard.html";
 }
 
+// Check authentication on page load
+function checkAuth(requiredRole) {
+  const userStr = localStorage.getItem("campusConnectUser");
+  if (!userStr) {
+    window.location.href = "../frontend/login.html";
+    return null;
+  }
+  const user = JSON.parse(userStr);
+  if (requiredRole && user.role !== requiredRole) {
+    alert("Access denied. You don't have permission to view this page.");
+    window.location.href = "../frontend/login.html";
+    return null;
+  }
+  return user;
+}
+
+// Check auth when page loads
+checkAuth("admin");
+
 document.getElementById("submitBtn").addEventListener("click", () => {
   const payload = {
     id: document.getElementById("job_id").value || undefined,

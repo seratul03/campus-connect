@@ -1,5 +1,9 @@
 // Real jobs functionality - fetches from backend API
 async function loadJobs() {
+  // Check authentication first
+  const user = checkAuth("student");
+  if (!user) return;
+
   const container = document.getElementById("jobs");
 
   try {

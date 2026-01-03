@@ -1,4 +1,8 @@
 async function loadAnalytics() {
+  // Check authentication first - admin only
+  const user = checkAuth("admin");
+  if (!user) return;
+
   const res = await fetch(
     "http://127.0.0.1:5000/api/admin/analytics"
   );
@@ -101,10 +105,27 @@ async function deleteJob(id) {
 }
 
 
+// Helper functions for authentication check and logout
+function checkAuth(requiredRole) {
+  const userStr = localStorage.getItem("campusConnectUser");
+  if (!userStr) {
+    window.location.href = "../frontend/login.html";
+    return null;
+  }
+  const user = JSON.parse(userStr);
+  if (requiredRole && user.role !== requiredRole) {
+    alert("Access denied. You don't have permission to view this page.");
+    window.location.href = "../frontend/login.html";
+    return null;
+  }
+  return user;
+}
+
 function logout() {
-  // Redirect to the frontend login page (admin is one level deep)
+  localStorage.removeItem("campusConnectUser");
   window.location.href = "../frontend/login.html";
 }
+
 function showToast(message) {
   const toast = document.getElementById("toast");
   const msg = document.getElementById("toastMsg");

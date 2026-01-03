@@ -5,6 +5,7 @@ import os
 import api
 from admin.analytics import admin_analytics
 from admin.jobs import add_job as admin_add_job, get_jobs as admin_get_jobs, delete_job as admin_delete_job
+from auth import authenticate
 from werkzeug.utils import secure_filename
 # ---------- CHATBOT ----------
 QA_PAIRS = {
@@ -38,6 +39,16 @@ def allowed_file(filename):
 @app.route("/api/jobs")
 def jobs():
     return jsonify(api.get_jobs())
+
+
+# ---------- AUTH ----------
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.json or {}
+    user = authenticate(data.get("email"), data.get("password"))
+    if user:
+        return jsonify(user)
+    return jsonify({"error": "Invalid credentials"}), 401
 
 @app.route("/api/internships")
 def internships():
@@ -189,4 +200,4 @@ if __name__ == "__main__":
     def home():
         return send_from_directory(FRONTEND_DIR, "index.html")
 
-    app.run(debug=True, use_reloader=False, port=5001)
+    app.run(debug=True, use_reloader=False, port=5000)

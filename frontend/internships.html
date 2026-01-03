@@ -197,7 +197,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: none;
@@ -393,13 +393,22 @@
   function openApply(idx){ 
     currentInternship = internships[idx];
     modalCompanyInfo.textContent = `${currentInternship.role} at ${currentInternship.company}`;
+    modal.classList.remove("hide");
     modal.style.display="flex"; 
     setTimeout(() => modal.classList.add("show"), 10);
   }
 
-  document.getElementById("confirmApply").onclick=()=>{
+  function closeModal() {
     modal.classList.remove("show");
-    setTimeout(() => modal.style.display="none", 300);
+    modal.classList.add("hide");
+    setTimeout(() => {
+      modal.style.display="none";
+      modal.classList.remove("hide");
+    }, 400);
+  }
+
+  document.getElementById("confirmApply").onclick=()=>{
+    closeModal();
     
     toast.textContent = `Applied for ${currentInternship.role} at ${currentInternship.company}!`;
     toast.classList.remove("hide");
@@ -413,13 +422,9 @@
 
   modal.onclick=e=>{ 
     if(e.target===modal) {
-      modal.classList.remove("show");
-      setTimeout(() => modal.style.display="none", 300);
+      closeModal();
     }
- 
   };
-
-  modal.onclick=e=>{ if(e.target===modal) modal.style.display="none"; };
 </script>
 
 </body>
