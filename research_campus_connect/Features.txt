@@ -1,0 +1,72 @@
+Campus Research Connect - Website Features
+
+==============================
+
+1. Pages & Navigation
+---------------------
+• Home: Hero section, featured papers, projects, internships
+• Research Papers: Search, filter, view details
+• Paper Details: Full info, related papers
+• Participate: Browse/apply for research projects
+• Faculty List: Grid view, filters
+• Faculty Profile: Bio, research areas, publications
+• Internships: Browse/apply for internships
+• Login/Register: Authentication forms
+• Dashboard: Track applications, saved papers, stats
+
+2. Core Functionality
+---------------------
+• Search & filter research papers
+• View detailed paper info
+• Apply for research projects
+• Apply for internships
+• View faculty profiles & publications
+• User authentication (login/register)
+• User dashboard (applications, saved papers)
+• Save papers (localStorage)
+• Application tracking
+
+3. Technical Features
+---------------------
+• Flask backend with REST APIs (12 endpoints)
+• SQLite database (6 tables: papers, faculty, projects, internships, applications, users)
+• Plain HTML, CSS, JavaScript (no frameworks)
+• Responsive design (desktop, tablet, mobile)
+• Dynamic data loading via Fetch API
+• Client-side filtering & search
+• Modal forms for applications
+• Card-based layouts, grid/flexbox UI
+• LocalStorage for state management
+• Authentication state management
+• Form validation & error/success messages
+
+4. UI/UX Highlights
+-------------------
+• Modern gradient backgrounds
+• Card layouts, hover effects, status badges
+• Loading states, success/error feedback
+• Clean navigation bar, hero sections
+
+5. User Roles
+-------------
+• Student: Browse, search, apply, track, save papers
+• Faculty: Profile pages, research/project management
+• Admin: Data management via seed script
+
+6. Security & Best Practices
+---------------------------
+• Demo authentication (localStorage)
+• CORS enabled
+• Input validation
+• Error handling
+
+7. Mock Data & Testing
+----------------------
+• Seeded database: papers, faculty, projects, internships, users, applications
+• Demo accounts for testing
+
+8. Documentation
+----------------
+• README, Quickstart, Project Summary
+
+==============================

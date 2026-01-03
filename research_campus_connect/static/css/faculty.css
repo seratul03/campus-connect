@@ -1,0 +1,358 @@
+:root {
+  --primary: #4da3ff;
+  --bg: linear-gradient(135deg, #edf6ff, #f9fbff);
+  --card: rgba(255, 255, 255, 0.8);
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #0f172a;
+  --muted: #64748b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.login-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), #7cbcff);
+  color: white !important;
+}
+
+/* Header */
+.page-header {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(77, 163, 255, 0.25),
+    rgba(77, 163, 255, 0.1)
+  );
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+}
+
+.page-header p {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+/* Filters Section */
+.filters-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.search-bar {
+  max-width: 550px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(77, 163, 255, 0.15);
+  font-size: 0.95rem;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 25px 45px rgba(77, 163, 255, 0.25);
+}
+
+.filters input,
+.filters select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: white;
+  flex: 1;
+  /* min-width: 200px; */
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Faculty List */
+.faculty-list {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.loading,
+.no-results {
+  text-align: center;
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* Faculty Grid */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.faculty-card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.faculty-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(77, 163, 255, 0.25);
+}
+
+.faculty-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--primary);
+}
+
+.faculty-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faculty-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.designation {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.department {
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.research-areas {
+  background: rgba(77, 163, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.email {
+  color: var(--muted);
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.btn {
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(77, 163, 255, 0.35);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  margin-top: 60px;
+}
+
+.search-container {
+  position: relative;
+  --size-button: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  /* justify-content: center; */
+  padding-left: calc(var(--size-button) + 12px) !important;
+  height: var(--size-button);
+  font-size: 14px;
+  border: none;
+  outline: none;
+  width: 100px;
+  transition: all ease 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(77, 163, 255, 0.18);
+  border: 1px solid rgb(255, 0, 0);
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus,
+.search-input:not(:invalid) {
+  width: 280px;
+  cursor: text;
+  box-shadow: 0 20px 45px rgba(77, 163, 255, 0.25);
+}
+
+.search-container .search-icon {
+  position: absolute;
+  width: var(--size-button);
+  height: var(--size-button);
+  top: 0;
+  left: 0;
+  padding: 10px;
+  color: var(--primary);
+  z-index: 2;
+}
+
+.search-container .search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.search-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 18px 35px rgba(77, 163, 255, 0.18);
+}
+
+.search-icon-bubble {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(77, 163, 255, 0.12);
+  font-size: 14px;
+}
+
+.search-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--text);
+}
+
+.search-field::placeholder {
+  color: #9aa4b2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faculty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+}

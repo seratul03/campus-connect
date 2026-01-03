@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard • Campus Research Connect</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">Campus Research Connect</h1>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+          <li><a href="/research" class="nav-link">Research</a></li>
+          <li><a href="/participate" class="nav-link">Participate</a></li>
+          <li><a href="/faculty" class="nav-link">Faculty</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="dashboard-header">
+      <div class="container">
+        <h1>Welcome, <span id="user-name"></span></h1>
+        <p>Overview of your applications and saved research</p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="dashboard-content">
+      <div class="container">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="icon">📝</span>
+            <div>
+              <h3 id="total-applications">0</h3>
+              <p>Total Applications</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <span class="icon">⏳</span>
+            <div>
+              <h3 id="pending-applications">0</h3>
+              <p>Pending</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <span class="icon">✅</span>
+            <div>
+              <h3 id="accepted-applications">0</h3>
+              <p>Accepted</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <span class="icon">📚</span>
+            <div>
+              <h3 id="saved-papers">0</h3>
+              <p>Saved Papers</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Applications -->
+        <div class="section">
+          <h2 class="section-title">My Applications</h2>
+
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="all">All</button>
+            <button class="tab-btn" data-tab="research">Research</button>
+            <button class="tab-btn" data-tab="internship">Internships</button>
+          </div>
+
+          <div id="loading" class="loading">Loading applications...</div>
+          <div id="applications-container" class="list"></div>
+          <p id="no-applications" class="empty">No applications found.</p>
+        </div>
+
+        <!-- Saved Papers -->
+        <div class="section">
+          <h2 class="section-title">Saved Papers</h2>
+          <div id="saved-papers-container" class="grid"></div>
+          <p id="no-saved-papers" class="empty">No saved papers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Campus Research Connect</p>
+    </footer>
+
+    <script src="/static/js/dashboard.js"></script>
+  </body>
+</html>

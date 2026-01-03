@@ -8,12 +8,12 @@ async function loadDashboard() {
       "Add more role-specific keywords",
       "Improve project descriptions",
       "Include measurable achievements",
-      "Optimize resume for ATS-friendly formatting"
-    ]
+      "Optimize resume for ATS-friendly formatting",
+    ],
   };
 
   const mockMatch = {
-    match_percentage: 84
+    match_percentage: 84,
   };
 
   let atsData = mockATS;
@@ -24,7 +24,7 @@ async function loadDashboard() {
   ------------------------------ */
   try {
     const atsRes = await fetch("http://127.0.0.1:5000/api/ats-check", {
-      method: "POST"
+      method: "POST",
     });
 
     if (atsRes.ok) {
@@ -42,8 +42,8 @@ async function loadDashboard() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        skills: ["Python", "DSA", "HTML"]
-      })
+        skills: ["Python", "DSA", "HTML"],
+      }),
     });
 
     if (matchRes.ok) {
@@ -59,16 +59,14 @@ async function loadDashboard() {
   /* -----------------------------
      RENDER UI (SAFE)
   ------------------------------ */
-  document.getElementById("ats").innerText =
-    atsData.ats_score + "%";
+  document.getElementById("ats").innerText = atsData.ats_score + "%";
 
-  document.getElementById("match").innerText =
-    matchData.match_percentage + "%";
+  document.getElementById("match").innerText = matchData.match_percentage + "%";
 
   const list = document.getElementById("suggestions");
   list.innerHTML = "";
 
-  atsData.feedback.forEach(item => {
+  atsData.feedback.forEach((item) => {
     const li = document.createElement("li");
     li.innerText = item;
     list.appendChild(li);
@@ -77,10 +75,6 @@ async function loadDashboard() {
 
 function go(page) {
   window.location.href = page;
-}
-
-function logout() {
-  window.location.href = "login.html";
 }
 
 loadDashboard();

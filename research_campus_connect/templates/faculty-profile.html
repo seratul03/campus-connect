@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Profile - Campus Research Connect</title>
+    <link rel="stylesheet" href="/static/css/faculty-profile.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">Campus Research Connect</h1>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+          <li><a href="/research" class="nav-link">Research</a></li>
+          <li><a href="/participate" class="nav-link">Participate</a></li>
+          <li><a href="/faculty" class="nav-link active">Faculty</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Faculty Profile Section -->
+    <section class="faculty-profile">
+      <div class="container">
+        <div class="back-button">
+          <a href="/faculty" class="btn btn-outline">← Back to Faculty</a>
+        </div>
+
+        <div id="loading" class="loading">Loading faculty profile...</div>
+
+        <div id="profile-content" style="display: none">
+          <!-- Profile Header -->
+          <div class="profile-header">
+            <div class="profile-image">
+              <img id="faculty-image" src="" alt="Faculty Image" />
+            </div>
+            <div class="profile-info">
+              <h1 id="faculty-name"></h1>
+              <p id="faculty-designation" class="designation"></p>
+              <p id="faculty-department" class="department"></p>
+              <div class="contact-info">
+                <p><strong>Email:</strong> <span id="faculty-email"></span></p>
+                <p><strong>Phone:</strong> <span id="faculty-phone"></span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Biography -->
+          <div class="profile-section">
+            <h2 class="section-title">Biography</h2>
+            <p id="faculty-bio" class="bio-text"></p>
+          </div>
+
+          <!-- Research Areas -->
+          <div class="profile-section">
+            <h2 class="section-title">Research Areas</h2>
+            <div id="research-areas" class="research-areas"></div>
+          </div>
+
+          <!-- Publications -->
+          <div class="profile-section">
+            <h2 class="section-title">Recent Publications</h2>
+            <div id="publications" class="publications-list">
+              <!-- Publications will be loaded dynamically -->
+            </div>
+            <div id="no-publications" style="display: none">
+              No publications found.
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="profile-section">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>
+              Interested in collaborating or learning more about my research?
+            </p>
+            <a id="email-button" href="" class="btn btn-primary">Send Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Campus Research Connect. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="/static/js/faculty-profile.js"></script>
+  </body>
+</html>

@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import os
 import api
-from auth import authenticate
 from admin.analytics import admin_analytics
 from admin.jobs import add_job as admin_add_job, get_jobs as admin_get_jobs, delete_job as admin_delete_job
 from werkzeug.utils import secure_filename
@@ -34,16 +33,6 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-# ---------- AUTH ----------
-@app.route("/login", methods=["POST"])
-def login():
-    data = request.json
-    # This calls the authenticate function in auth.py
-    user = authenticate(data.get("email"), data.get("password"))
-    if user:
-        return jsonify(user)
-    return jsonify({"error": "Invalid credentials"}), 401
 
 # ---------- STUDENT ----------
 @app.route("/api/jobs")
@@ -200,4 +189,4 @@ if __name__ == "__main__":
     def home():
         return send_from_directory(FRONTEND_DIR, "index.html")
 
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False, port=5001)
