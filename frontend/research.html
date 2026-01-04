@@ -214,6 +214,10 @@ footer {
   font-size: 0.8rem;
   color: var(--text-muted);
 }
+
+/* Disable underline/reveal effects on links for this page */
+a, a:link, a:visited { text-decoration: none !important; color: inherit; }
+a:hover, a:focus { text-decoration: none !important; box-shadow: none !important; outline: none !important; }
 </style>
 
   <link rel="stylesheet" href="css/pages.css">
@@ -254,73 +258,15 @@ footer {
   <p>Collaborate with faculty and work on real-world research problems.</p>
 </header>
 
-<!-- Preview: show 5 featured research cards as a quick preview -->
-<div style="max-width:1200px;margin:18px auto 8px;padding:0 20px;text-align:center;">
-  <h2 style="margin-bottom:10px;">Featured Research (Preview)</h2>
-  <p style="color:var(--text-muted);margin:0 0 18px;">A quick look at a few highlighted projects.</p>
-</div>
-
 <div class="container" id="previewResearchContainer">
-  <div class="card">
-    <h3>AI-driven Campus Event Recommender</h3>
-    <div class="mentor">Prof. A. Kumar</div>
-    <div class="meta">Domain: Machine Learning • Duration: 3 months</div>
-    <p class="meta">Build a personalized event recommender using collaborative filtering and transformers for campus activities.</p>
-    <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">NLP</span></div>
-    <button class="apply-btn" onclick="applyMock('AI-driven Campus Event Recommender')">Apply for Research</button>
-  </div>
-
-  <div class="card">
-    <h3>Smart Study Planner</h3>
-    <div class="mentor">Dr. S. Mehta</div>
-    <div class="meta">Domain: Human-Computer Interaction • Duration: 4 months</div>
-    <p class="meta">Design and evaluate an adaptive study planning tool that optimizes sessions for learning outcomes.</p>
-    <div class="tags"><span class="tag">UX</span><span class="tag">Python</span><span class="tag">Research</span></div>
-    <button class="apply-btn" onclick="applyMock('Smart Study Planner')">Apply for Research</button>
-  </div>
-
-  <div class="card">
-    <h3>Energy-Efficient IoT for Labs</h3>
-    <div class="mentor">Prof. L. Chen</div>
-    <div class="meta">Domain: Embedded Systems • Duration: 5 months</div>
-    <p class="meta">Prototype low-power sensor networks for laboratory monitoring and data collection.</p>
-    <div class="tags"><span class="tag">Embedded</span><span class="tag">IoT</span><span class="tag">C++</span></div>
-    <button class="apply-btn" onclick="applyMock('Energy-Efficient IoT for Labs')">Apply for Research</button>
-  </div>
-
-  <div class="card">
-    <h3>Data Privacy in Student Systems</h3>
-    <div class="mentor">Dr. M. Rao</div>
-    <div class="meta">Domain: Security & Privacy • Duration: 3 months</div>
-    <p class="meta">Study privacy-preserving methods for student data sharing and consent management.</p>
-    <div class="tags"><span class="tag">Privacy</span><span class="tag">Security</span><span class="tag">Research</span></div>
-    <button class="apply-btn" onclick="applyMock('Data Privacy in Student Systems')">Apply for Research</button>
-  </div>
-
-  <div class="card">
-    <h3>Automated Paper Summarization</h3>
-    <div class="mentor">Prof. R. Kapoor</div>
-    <div class="meta">Domain: Natural Language Processing • Duration: 4 months</div>
-    <p class="meta">Develop models to generate concise, structured summaries of research papers for quick consumption.</p>
-    <div class="tags"><span class="tag">NLP</span><span class="tag">Transformers</span><span class="tag">Python</span></div>
-    <button class="apply-btn" onclick="applyMock('Automated Paper Summarization')">Apply for Research</button>
-  </div>
+  <!-- papers from backend/data/papers.json will be rendered here -->
 </div>
 
 <div style="text-align:center;margin:16px 0 36px;">
   <a class="apply-btn" href="http://127.0.0.1:5500" target="_blank" rel="noopener">Explore More Research</a>
 </div>
 
-<div class="container" id="researchContainer"></div>
-
-<hr style="max-width:1200px;margin:48px auto;border:none;height:1px;background:rgba(10,37,64,0.06);">
-
-<header style="text-align:center;margin-top:16px;">
-  <h2 style="margin-bottom:8px;">Science Papers</h2>
-  <p style="color:var(--text-muted);max-width:720px;margin:0 auto 18px;">Curated academic papers and publications relevant to student research.</p>
-</header>
-
-<div class="container" id="papersContainer"></div>
+<!-- Lower 'Science Papers' section removed per request -->
 
 <script>
 let allPapers = [];
@@ -328,36 +274,42 @@ let allPapers = [];
 fetch("../backend/data/papers.json")
   .then(res => res.json())
   .then(data => {
-    allPapers = data;
-    renderPapers(data);
+    const papersArray = data.papers || data;
+    allPapers = papersArray;
+    renderPapers(papersArray);
   }).catch(err => console.error('Failed to load papers:', err));
 
 function renderPapers(papers) {
-  const container = document.getElementById("papersContainer");
-  container.innerHTML = "";
+  const preview = document.getElementById("previewResearchContainer");
+  preview.innerHTML = "";
 
   papers.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
+    const authors = Array.isArray(p.authors) ? p.authors.join(', ') : (p.authors || '');
+    const venue = p.venue || p.journal || '';
+    const yearText = p.year ? ` • ${p.year}` : '';
+    const summary = p.summary || p.abstract || '';
+    const tags = (p.tags || p.keywords || []).map(k => `<span class="tag">${k}</span>`).join("");
+    const link = p.pdf_url || p.pdf || p.link || '#';
 
-    card.innerHTML = `
+    const html = `
       <h3>${p.title}</h3>
-      <div class="mentor">${p.authors.join(', ')}</div>
+      <div class="mentor">${authors}</div>
 
       <div class="meta">
-        ${p.journal} • ${p.year}
+        ${venue}${yearText}
       </div>
 
-      <p class="meta">${p.abstract}</p>
+      <p class="meta">${summary}</p>
 
-      <div class="tags">
-        ${(p.keywords || []).map(k => `<span class="tag">${k}</span>`).join("")}
-      </div>
+      <div class="tags">${tags}</div>
 
-      <a class="apply-btn" href="${p.link}" target="_blank" rel="noopener">Read Paper</a>
+      <a class="apply-btn" href="${link}" target="_blank" rel="noopener">Read Paper</a>
     `;
 
-    container.appendChild(card);
+    const cardPreview = document.createElement("div");
+    cardPreview.className = "card";
+    cardPreview.innerHTML = html;
+    preview.appendChild(cardPreview);
   });
 }
 </script>
@@ -365,82 +317,7 @@ function renderPapers(papers) {
 <footer>© 2025 Campus Connect · Research Portal</footer>
 
 <script>
-let allProjects = [];
-
-fetch("../backend/data/research.json")
-  .then(res => res.json())
-  .then(data => {
-    allProjects = data;
-    render(data);
-  });
-
-const searchInput = document.getElementById("searchInput");
-const sortSelect = document.getElementById("sortSelect");
-
-searchInput.addEventListener("input", applyFilters);
-sortSelect.addEventListener("change", applyFilters);
-
-function applyFilters() {
-  let filtered = [...allProjects];
-
-  const query = searchInput.value.toLowerCase();
-  if (query) {
-    filtered = filtered.filter(p =>
-      p.title.toLowerCase().includes(query) ||
-      p.domain.toLowerCase().includes(query) ||
-      p.mentor.toLowerCase().includes(query) ||
-      p.skills.join(" ").toLowerCase().includes(query)
-    );
-  }
-
-  const sortBy = sortSelect.value;
-  if (sortBy) {
-    filtered.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
-  }
-
-  render(filtered);
-}
-
-function render(projects) {
-  const container = document.getElementById("researchContainer");
-  const resultCount = document.getElementById("resultCount");
-  container.innerHTML = "";
-
-  resultCount.textContent = `Showing ${projects.length} of ${allProjects.length} projects`;
-
-  projects.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <h3>${p.title}</h3>
-      <div class="mentor">${p.mentor}</div>
-
-      <div class="meta">
-        Domain: ${p.domain}<br>
-        Duration: ${p.duration}
-      </div>
-
-      <p class="meta">${p.description}</p>
-
-      <div class="tags">
-        ${p.skills.map(s => `<span class="tag">${s}</span>`).join("")}
-      </div>
-
-      <button class="apply-btn" onclick="applyMock('${p.title}')">
-        Apply for Research
-      </button>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-function applyMock(title) {
-  alert(`✅ Application submitted!\n\nProject: ${title}\n\n(This is a mock demo action)`);
-}
-
-/* Micro-interaction for glass controls */
+/* Micro-interaction for glass controls (kept) */
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".controls input, .controls select")
     .forEach(el => {

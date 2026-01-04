@@ -1,8 +1,4 @@
 # summarizer.py
-"""
-Summarizes the 'about company' section using google/pegasus-cnn_dailymail model.
-Reads from admin/about_company.json and outputs summaries for each entry.
-"""
 import json
 from transformers import PegasusTokenizer, PegasusForConditionalGeneration
 import torch
@@ -32,28 +28,197 @@ def summarize_text(text: str) -> str:
         )
     return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
+def clean_spacing(text: str) -> str:
+    text = text.replace(" .", ". ")
+    text = text.replace(" ,", ", ")
+    text = " ".join(text.split())
+    return text.strip()
+
+JUNK_PHRASES = [
+    "for more information",
+    "visit our website",
+    "click here",
+    "learn more",
+    "is looking for",
+    "results-oriented"
+]
+
+def remove_junk(text: str) -> str:
+    lowered = text.lower()
+    for phrase in JUNK_PHRASES:
+        if phrase in lowered:
+            text = text[:lowered.index(phrase)]
+            break
+    return text.strip()
+
+def remove_newline_tokens(text: str) -> str:
+    text = text.replace("<n>", " ")
+    text = text.replace("\n", " ")
+    text = " ".join(text.split())
+    return text.strip()
+
+def post_process_summary(summary: str, company: str) -> str:
+    summary = remove_newline_tokens(summary)
+    summary = clean_spacing(summary)
+    summary = remove_junk(summary)
+    summary = normalize_voice(summary)
+    summary = enforce_company_start(summary, company)
+    summary = deduplicate_sentences(summary)
+    return summary.strip()
+
+def normalize_voice(text: str) -> str:
+    text = text.replace("We ", "The company ")
+    text = text.replace("we ", "the company ")
+    return text
+
+def enforce_company_start(text: str, company: str) -> str:
+    if not text.lower().startswith(company.lower()):
+        return f"{company} {text}"
+    return text
+
+def deduplicate_sentences(text: str) -> str:
+    sentences = []
+    seen = set()
+    for s in text.split(". "):
+        key = s.lower()
+        if key not in seen:
+            seen.add(key)
+            sentences.append(s)
+    return ". ".join(sentences)
+
+def fix_company_prefix(text: str, company: str) -> str:
+    if text.startswith(f"{company} The"):
+        return text.replace(f"{company} The", f"{company}. The", 1)
+    return text
+
+def fix_grammar(text: str) -> str:
+    fixes = {
+        "company place ": "company places ",
+        "company foster ": "company fosters ",
+        "company continue ": "company continues ",
+        "company contribute ": "company contributes ",
+        "company emphasize ": "company emphasizes "
+    }
+    for wrong, right in fixes.items():
+        text = text.replace(wrong, right)
+    return text
+
+def remove_trailing_fragments(text: str) -> str:
+    bad_endings = ["The company", "The organization", "The firm"]
+    for end in bad_endings:
+        if text.endswith(end):
+            text = text[: -len(end)].strip()
+    return text
+
+def post_process_summary(summary: str, company: str) -> str:
+    summary = remove_newline_tokens(summary)
+    summary = clean_spacing(summary)
+    summary = remove_junk(summary)
+    summary = normalize_voice(summary)
+    summary = enforce_company_start(summary, company)
+    summary = fix_company_prefix(summary, company)
+    summary = fix_grammar(summary)
+    summary = deduplicate_sentences(summary)
+    summary = remove_trailing_fragments(summary)
+    return summary.strip()
+
+def fix_company_prefix(text: str, company: str) -> str:
+    text = text.replace(f"{company}. The", f"{company} is a company. The", 1)
+    text = text.replace(f"{company}. the", f"{company} is a company. The", 1)
+    return text
+
+def fix_missing_subjects(text: str, company: str) -> str:
+    sentences = text.split(". ")
+    fixed = []
+
+    for s in sentences:
+        if s.startswith("Offers ") or s.startswith("Provides "):
+            s = f"{company} {s}"
+        fixed.append(s)
+
+    return ". ".join(fixed)
+
+def fix_grammar(text: str) -> str:
+    fixes = {
+        "company actively contribute": "company actively contributes",
+        "company contribute": "company contributes",
+        "future digital finance": "future of digital finance"
+    }
+    for wrong, right in fixes.items():
+        text = text.replace(wrong, right)
+    return text
+
+def deduplicate_sentences(text: str) -> str:
+    sentences = [s.strip() for s in text.split(".") if s.strip()]
+    seen = set()
+    unique = []
+
+    for s in sentences:
+        key = s.lower()
+        if key not in seen:
+            seen.add(key)
+            unique.append(s)
+
+    return ". ".join(unique) + "."
+
+def post_process_summary(summary: str, company: str) -> str:
+    summary = remove_newline_tokens(summary)
+    summary = clean_spacing(summary)
+    summary = remove_junk(summary)
+    summary = normalize_voice(summary)
+    summary = enforce_company_start(summary, company)
+    summary = fix_company_prefix(summary, company)
+    summary = fix_missing_subjects(summary, company)
+    summary = fix_grammar(summary)
+    summary = deduplicate_sentences(summary)
+    return summary.strip()
+
+
 def main():
-    # Read about_company.json
     with open(ABOUT_COMPANY_PATH, 'r', encoding='utf-8') as f:
         companies = json.load(f)
 
-    # Summarize each entry
     summaries = []
+
     for entry in companies:
-        # Use correct keys for company name and about_company
-        company_name = entry.get('company_name') or entry.get('company') or entry.get('name', 'Unknown')
-        text = entry.get('about_company') or entry.get('description') or entry.get('about') or str(entry)
-        summary = summarize_text(text)
+        # Resolve company name safely
+        company_name = (
+            entry.get('company_name')
+            or entry.get('company')
+            or entry.get('name')
+            or "Unknown"
+        )
+
+        # Resolve about-company text safely
+        text = (
+            entry.get('about_company')
+            or entry.get('description')
+            or entry.get('about')
+            or ""
+        )
+
+        # Skip empty entries (safety)
+        if not text.strip():
+            continue
+
+        # Generate raw summary
+        raw_summary = summarize_text(text)
+
+        # Post-process for 5★ quality
+        summary = post_process_summary(raw_summary, company_name)
+
         summaries.append({
-            'company': company_name,
-            'summary': summary
+            "company": company_name,
+            "summary": summary
         })
 
-    # Output summaries
-    for s in summaries:
-        print(f"Company: {s['company']}\nSummary: {s['summary']}\n{'-'*40}")
+    # Print output (debug / visibility)
+    for item in summaries:
+        print(f"Company: {item['company']}")
+        print(f"Summary: {item['summary']}")
+        print("-" * 40)
 
-    # Write to a file
+    # Write final summaries to file
     with open(AI_EXPLAIN_PATH, 'w', encoding='utf-8') as f:
         json.dump(summaries, f, ensure_ascii=False, indent=2)
 

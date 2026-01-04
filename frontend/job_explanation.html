@@ -225,13 +225,6 @@ body{
 
       <br><br>
 
-      <div class="section-title">Preferred Qualifications</div>
-      <div class="description" id="preferred-qualifications">
-        —
-      </div>
-
-      <br><br>
-
       <div class="section-title">Benefits & Perks</div>
       <div class="description" id="benefits">
         —
@@ -335,7 +328,7 @@ import { fetchAIExplanation } from './js/ai_explanation.js';
     document.getElementById('job-description').textContent = job.description || job.detailed_description || job.full_job_description || 'No description available.';
     document.getElementById('responsibilities').textContent = job.responsibilities || job.key_responsibilities || 'Will be discussed during the interview process.';
     document.getElementById('eligibility').textContent = job.eligibility || job.qualifications || job.eligibility_criteria || '—';
-    document.getElementById('preferred-qualifications').textContent = job.preferred_qualifications || job.additional_qualifications || 'Not specified';
+    // document.getElementById('preferred-qualifications').textContent = job.preferred_qualifications || job.additional_qualifications || 'Not specified';
     document.getElementById('benefits').textContent = job.benefits || job.perks || 'Competitive salary, health insurance, and professional development opportunities.';
     document.getElementById('about-company').textContent = job.about_company || job.company_description || `${job.company || job.company_name} is a leading organization in the industry.`;
     const notesEl = document.getElementById('application-notes');
