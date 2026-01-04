@@ -9,6 +9,10 @@ import tempfile
 import pdfplumber
 import docx
 
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
 # --- HELPERS ---
 def load_data(file):
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -150,6 +154,25 @@ def analyze_resume_text(text, jd_text):
     }
 
 # --- EXPORTED FUNCTIONS ---
+
+# --- AI Explanation API ---
+@app.route('/api/ai-explanation')
+def api_ai_explanation():
+    company = request.args.get('company', '').strip()
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    explain_path = os.path.join(base_dir, 'ai_explain.json')
+    if not os.path.exists(explain_path):
+        return jsonify({'error': 'AI explanation file not found.'}), 404
+    try:
+        with open(explain_path, 'r', encoding='utf-8') as f:
+            explanations = json.load(f)
+        # Find by company name (case-insensitive)
+        for entry in explanations:
+            if entry.get('company', '').lower() == company.lower():
+                return jsonify({'summary': entry.get('summary', '')})
+        return jsonify({'summary': 'No AI explanation available for this company.'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 def get_jobs():
     return load_data("jobs.json")

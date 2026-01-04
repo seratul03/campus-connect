@@ -1,5 +1,6 @@
 # backend/app.py
 from flask import Flask, request, jsonify, send_from_directory, send_file
+import subprocess
 from flask_cors import CORS
 import os
 import json
@@ -8,6 +9,7 @@ from admin.analytics import admin_analytics
 from admin.jobs import add_job as admin_add_job, get_jobs as admin_get_jobs, delete_job as admin_delete_job
 from auth import authenticate
 from werkzeug.utils import secure_filename
+from ai_explanation_api import ai_explanation_api
 # ---------- CHATBOT ----------
 QA_PAIRS = {
     "hi": "Hello 👋 How can I help you today?",
@@ -280,6 +282,23 @@ if __name__ == "__main__":
     # Serve static frontend files (register after API routes so they are not shadowed)
     FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
     ADMIN_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "admin")
+
+    # Register AI explanation API blueprint
+    app.register_blueprint(ai_explanation_api)
+
+    # Run summarizer.py at startup (ensure summaries are up to date)
+    # COMMENTED OUT: This loads large AI models and blocks server startup
+    # The ai_explain.json file already contains the summaries
+    # summarizer_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'summarizer.py')
+    # try:
+    #     subprocess.run(['python', summarizer_path], check=True)
+    # except Exception as e:
+    #     print(f"[Warning] Could not run summarizer.py: {e}")
+
+    @app.route("/backend/<path:filename>")
+    def serve_backend(filename):
+        BACKEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+        return send_from_directory(BACKEND_DIR, filename)
 
     @app.route("/admin/<path:filename>")
     def serve_admin(filename):

@@ -32,6 +32,7 @@ body{
   background:var(--glass);
   backdrop-filter:blur(18px);
   border:1px solid var(--border);
+  width: 910px;
   border-radius:18px;
   padding:28px 32px;
   margin-bottom:28px;
@@ -107,8 +108,8 @@ body{
 }
 
 .side-card{
-  position:sticky;
-  top:32px;
+  position:relative;
+  top:-180px;
   display:flex;
   flex-direction:column;
   gap:16px;
@@ -141,9 +142,31 @@ body{
   border:1px solid var(--border);
 }
 
+.actions{
+  display:flex;
+  gap:12px;
+}
+.actions .btn{
+  flex:1;
+}
+
+.info-box{
+  border:1px dashed var(--border);
+  background:rgba(255,255,255,.9);
+}
+.info-box .description{
+  margin:0;
+  color:var(--text-light);
+  font-size:.95rem;
+}
+
 @media(max-width: 900px){
   .page{
     padding:24px 18px;
+  }
+  .job-header{
+    width:100%;
+    padding:20px 24px;
   }
   .main-grid{
     grid-template-columns:1fr;
@@ -252,22 +275,55 @@ body{
       </div>
 
       <div class="card">
-        <button class="btn btn-primary" id="apply-now">Apply Now</button>
-        <br><br>
-        <button class="btn btn-outline" id="save-job">Save Job</button>
+        <div class="actions">
+          <button class="btn btn-primary" id="apply-now">Apply Now</button>
+          <button class="btn btn-outline" id="save-job">Save Job</button>
+        </div>
+      </div>
+
+      <div class="card info-box">
+        <div class="section-title">AI explanation</div>
+        <div class="description" id="ai_explanation">
+          ------------------
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<script>
+<script type="module">
+import { fetchAIExplanation } from './js/ai_explanation.js';
   const applyBtn = document.getElementById('apply-now');
   if (applyBtn) {
     applyBtn.addEventListener('click', () => {
       window.location.href = 'jobs.html';
     });
   }
+
+  let aboutCompanyData = null;
+  const loadAboutCompanyData = async () => {
+    if (aboutCompanyData) return aboutCompanyData;
+    try {
+      const res = await fetch('admin/about_company.json');
+      if (res.ok) {
+        aboutCompanyData = await res.json();
+      }
+    } catch (err) {
+      console.error('Failed to load about_company.json', err);
+    }
+    return aboutCompanyData || [];
+  };
+
+  const fillAboutCompany = async (companyName) => {
+    if (!companyName) return;
+    const data = await loadAboutCompanyData();
+    const match = data.find(entry => (entry.company_name || '').toLowerCase() === companyName.toLowerCase());
+    if (match && match.about_company) {
+      const aboutEl = document.getElementById('about-company');
+      if (aboutEl) aboutEl.textContent = match.about_company;
+    }
+  };
 
   const renderJob = (job) => {
     document.getElementById('job-role').textContent = job.role || job.job_role || '—';
@@ -282,6 +338,10 @@ body{
     document.getElementById('preferred-qualifications').textContent = job.preferred_qualifications || job.additional_qualifications || 'Not specified';
     document.getElementById('benefits').textContent = job.benefits || job.perks || 'Competitive salary, health insurance, and professional development opportunities.';
     document.getElementById('about-company').textContent = job.about_company || job.company_description || `${job.company || job.company_name} is a leading organization in the industry.`;
+    const notesEl = document.getElementById('application-notes');
+    if (notesEl) {
+      notesEl.textContent = job.application_notes || job.notes || job.next_steps || 'Save this job to keep it on your radar and check back for updates.';
+    }
 
     // Side panel info
     document.getElementById('ctc').textContent = job.ctc || job.salary || '—';
@@ -303,6 +363,10 @@ body{
         skillsEl.appendChild(d);
       });
     }
+
+    fillAboutCompany(job.company || job.company_name);
+    // Fetch and update AI explanation
+    fetchAIExplanation(job.company || job.company_name);
   };
 
   // Populate fields from query params or by fetching job data from backend

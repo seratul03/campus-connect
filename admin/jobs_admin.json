@@ -9,7 +9,25 @@
     "employment_type": "Full-time",
     "required_skills": ["Python", "SQL", "OOP", "Git"],
     "eligibility_criteria": "B.Tech / MCA in Computer Science or related field",
-    "full_job_description": "Develop, test, and maintain enterprise software applications while collaborating with cross-functional teams."
+    "full_job_description": "Develop, test, and maintain enterprise software applications.",
+    "responsibilities": [
+      "Write clean and maintainable code",
+      "Participate in code reviews",
+      "Fix bugs and improve performance"
+    ],
+    "preferred_qualifications": [
+      "Internship experience",
+      "Basic cloud knowledge"
+    ],
+    "benefits": [
+      "Health insurance",
+      "Paid leave",
+      "Learning support"
+    ],
+    "application_notes": "Shortlisted candidates will be contacted via email.",
+    "posted_date": "2026-01-01",
+    "application_deadline": "2026-02-15",
+    "openings": 10
   },
   {
     "id": 2,
@@ -19,9 +37,25 @@
     "ctc": "6.5 LPA",
     "experience_required": "0–1 Year",
     "employment_type": "Full-time",
-    "required_skills": ["Java", "DSA", "Linux", "Problem Solving"],
+    "required_skills": ["Java", "DSA", "Linux"],
     "eligibility_criteria": "B.Tech / BCA in CS or IT",
-    "full_job_description": "Support enterprise systems, troubleshoot issues, and assist in software development and maintenance."
+    "full_job_description": "Support enterprise systems and software solutions.",
+    "responsibilities": [
+      "Monitor systems",
+      "Troubleshoot issues",
+      "Maintain documentation"
+    ],
+    "preferred_qualifications": [
+      "Linux certification"
+    ],
+    "benefits": [
+      "Medical insurance",
+      "Flexible hours"
+    ],
+    "application_notes": "Online test followed by interview.",
+    "posted_date": "2026-01-02",
+    "application_deadline": "2026-02-10",
+    "openings": 15
   },
   {
     "id": 3,
@@ -31,9 +65,25 @@
     "ctc": "7.2 LPA",
     "experience_required": "1–3 Years",
     "employment_type": "Full-time",
-    "required_skills": ["SQL", "Python", "Power BI", "Excel"],
-    "eligibility_criteria": "B.Tech / B.Sc in CS, Statistics, or related field",
-    "full_job_description": "Analyze data, create dashboards, and generate insights to support business decisions."
+    "required_skills": ["SQL", "Python", "Power BI"],
+    "eligibility_criteria": "B.Tech / B.Sc in CS or Statistics",
+    "full_job_description": "Analyze business data and create dashboards.",
+    "responsibilities": [
+      "Clean and analyze data",
+      "Create reports",
+      "Present insights"
+    ],
+    "preferred_qualifications": [
+      "Power BI certification"
+    ],
+    "benefits": [
+      "Bonus",
+      "Health insurance"
+    ],
+    "application_notes": "Portfolio preferred.",
+    "posted_date": "2026-01-03",
+    "application_deadline": "2026-02-20",
+    "openings": 6
   },
   {
     "id": 4,
@@ -44,8 +94,22 @@
     "experience_required": "0–2 Years",
     "employment_type": "Full-time",
     "required_skills": ["AWS", "Linux", "Networking"],
-    "eligibility_criteria": "B.Tech / MCA with cloud fundamentals",
-    "full_job_description": "Deploy and manage cloud infrastructure while ensuring system availability and security."
+    "eligibility_criteria": "B.Tech / MCA",
+    "full_job_description": "Deploy and manage cloud infrastructure.",
+    "responsibilities": [
+      "Monitor cloud resources",
+      "Assist DevOps team"
+    ],
+    "preferred_qualifications": [
+      "AWS certification"
+    ],
+    "benefits": [
+      "Certification reimbursement"
+    ],
+    "application_notes": "Cloud fundamentals test included.",
+    "posted_date": "2026-01-04",
+    "application_deadline": "2026-02-25",
+    "openings": 8
   },
   {
     "id": 5,
@@ -55,9 +119,24 @@
     "ctc": "10 LPA",
     "experience_required": "2–4 Years",
     "employment_type": "Full-time",
-    "required_skills": ["React", "Node.js", "MongoDB", "REST APIs"],
-    "eligibility_criteria": "B.Tech / MCA with web development experience",
-    "full_job_description": "Build scalable web applications and APIs with modern frontend and backend technologies."
+    "required_skills": ["React", "Node.js", "MongoDB"],
+    "eligibility_criteria": "B.Tech / MCA",
+    "full_job_description": "Develop scalable web applications.",
+    "responsibilities": [
+      "Frontend & backend development",
+      "API integration"
+    ],
+    "preferred_qualifications": [
+      "Cloud deployment experience"
+    ],
+    "benefits": [
+      "Remote work",
+      "Annual bonus"
+    ],
+    "application_notes": "Live coding round expected.",
+    "posted_date": "2026-01-05",
+    "application_deadline": "2026-03-01",
+    "openings": 5
   },
   {
     "id": 6,
@@ -67,9 +146,23 @@
     "ctc": "11 LPA",
     "experience_required": "2–5 Years",
     "employment_type": "Full-time",
-    "required_skills": ["Docker", "Kubernetes", "CI/CD", "Linux"],
-    "eligibility_criteria": "B.Tech / MCA with DevOps experience",
-    "full_job_description": "Automate deployment pipelines and manage infrastructure for high availability."
+    "required_skills": ["Docker", "Kubernetes", "CI/CD"],
+    "eligibility_criteria": "B.Tech / MCA",
+    "full_job_description": "Automate deployment pipelines.",
+    "responsibilities": [
+      "Manage CI/CD pipelines",
+      "Monitor infrastructure"
+    ],
+    "preferred_qualifications": [
+      "Cloud experience"
+    ],
+    "benefits": [
+      "Health insurance"
+    ],
+    "application_notes": "Technical interview only.",
+    "posted_date": "2026-01-06",
+    "application_deadline": "2026-03-05",
+    "openings": 4
   },
   {
     "id": 7,
@@ -80,8 +173,22 @@
     "experience_required": "1–3 Years",
     "employment_type": "Full-time",
     "required_skills": ["Machine Learning", "Python", "TensorFlow"],
-    "eligibility_criteria": "B.Tech in AIML / Data Science",
-    "full_job_description": "Design, train, and deploy AI models to solve real-world business problems."
+    "eligibility_criteria": "B.Tech AIML / Data Science",
+    "full_job_description": "Build and deploy AI-driven solutions.",
+    "responsibilities": [
+      "Train ML models",
+      "Deploy models"
+    ],
+    "preferred_qualifications": [
+      "Research experience"
+    ],
+    "benefits": [
+      "Research grants"
+    ],
+    "application_notes": "ML assignment required.",
+    "posted_date": "2026-01-07",
+    "application_deadline": "2026-03-10",
+    "openings": 3
   },
   {
     "id": 8,
@@ -91,21 +198,49 @@
     "ctc": "5 LPA",
     "experience_required": "0–1 Year",
     "employment_type": "Full-time",
-    "required_skills": ["HTML", "CSS", "JavaScript", "Git"],
-    "eligibility_criteria": "Any Graduate with web basics",
-    "full_job_description": "Maintain and enhance web applications with guidance from senior developers."
+    "required_skills": ["HTML", "CSS", "JavaScript"],
+    "eligibility_criteria": "Any Graduate",
+    "full_job_description": "Maintain startup web products.",
+    "responsibilities": [
+      "UI fixes",
+      "Feature updates"
+    ],
+    "preferred_qualifications": [
+      "Portfolio"
+    ],
+    "benefits": [
+      "Remote work"
+    ],
+    "application_notes": "GitHub link mandatory.",
+    "posted_date": "2026-01-08",
+    "application_deadline": "2026-02-28",
+    "openings": 2
   },
   {
     "id": 9,
     "company_name": "TechNova Solutions",
-    "location": "Bangalore (Hybrid)",
-    "job_role": "Backend Developer",
+    "location": "Bangalore",
+    "job_role": "Backend Engineer",
     "ctc": "7 LPA",
     "experience_required": "1–3 Years",
     "employment_type": "Full-time",
-    "required_skills": ["Python", "SQL", "REST APIs", "Linux"],
-    "eligibility_criteria": "B.Tech / B.E. in CS or IT",
-    "full_job_description": "Develop backend services, APIs, and database-driven applications."
+    "required_skills": ["Python", "SQL", "REST APIs"],
+    "eligibility_criteria": "B.Tech / B.E.",
+    "full_job_description": "Develop backend services.",
+    "responsibilities": [
+      "API development",
+      "Database management"
+    ],
+    "preferred_qualifications": [
+      "Linux knowledge"
+    ],
+    "benefits": [
+      "Hybrid work"
+    ],
+    "application_notes": "Backend coding test.",
+    "posted_date": "2026-01-09",
+    "application_deadline": "2026-03-12",
+    "openings": 6
   },
   {
     "id": 10,
@@ -115,128 +250,212 @@
     "ctc": "5.5 LPA",
     "experience_required": "0–1 Year",
     "employment_type": "Full-time",
-    "required_skills": ["Python", "Pandas", "SQL"],
-    "eligibility_criteria": "B.Tech / BCA / B.Sc",
-    "full_job_description": "Write efficient Python code and assist in workflow automation."
+    "required_skills": ["Python", "SQL"],
+    "eligibility_criteria": "B.Tech / BCA",
+    "full_job_description": "Develop Python workflows.",
+    "responsibilities": [
+      "Write Python scripts"
+    ],
+    "preferred_qualifications": [
+      "Pandas knowledge"
+    ],
+    "benefits": [
+      "Skill training"
+    ],
+    "application_notes": "Basic Python test.",
+    "posted_date": "2026-01-10",
+    "application_deadline": "2026-03-15",
+    "openings": 4
   },
+
   {
     "id": 11,
-    "company_name": "Nature Technologies",
-    "location": "Greater Kolkata",
-    "job_role": "Python Developer",
-    "ctc": "8 LPA",
-    "experience_required": "1–3 Years",
-    "employment_type": "Full-time",
-    "required_skills": ["Python", "Flask", "REST APIs", "MySQL"],
-    "eligibility_criteria": "B.Tech in CS or related field",
-    "full_job_description": "Develop backend systems, APIs, and scalable applications."
-  },
-  {
-    "id": 12,
-    "company_name": "PwC India",
-    "location": "Kolkata",
-    "job_role": "Python Data Engineer",
-    "ctc": "9.5 LPA",
-    "experience_required": "0–2 Years",
-    "employment_type": "Full-time",
-    "required_skills": ["Python", "SQL", "ETL", "Data Warehousing"],
-    "eligibility_criteria": "B.Tech / MCA in CS or Data-related fields",
-    "full_job_description": "Build data pipelines and transform large datasets for analytics."
-  },
-  {
-    "id": 13,
-    "company_name": "Soul AI",
-    "location": "Remote",
-    "job_role": "Java Developer",
-    "ctc": "8.5 LPA",
-    "experience_required": "0–2 Years",
-    "employment_type": "Full-time",
-    "required_skills": ["Java", "Spring", "JUnit", "Maven"],
-    "eligibility_criteria": "B.Tech / MCA",
-    "full_job_description": "Develop and test enterprise-grade Java backend systems."
-  },
-  {
-    "id": 14,
-    "company_name": "Cognizant",
-    "location": "Kolkata",
-    "job_role": "AIML Data Scientist",
-    "ctc": "12 LPA",
-    "experience_required": "1–2 Years",
-    "employment_type": "Full-time",
-    "required_skills": ["Machine Learning", "Python", "TensorFlow", "SQL"],
-    "eligibility_criteria": "B.Tech AIML / Data Science",
-    "full_job_description": "Build ML models and deploy AI-driven solutions."
-  },
-  {
-    "id": 15,
     "company_name": "Amazon",
     "location": "Hyderabad",
     "job_role": "SDE I",
     "ctc": "18 LPA",
     "experience_required": "0–2 Years",
     "employment_type": "Full-time",
-    "required_skills": ["DSA", "Java", "System Design"],
-    "eligibility_criteria": "B.Tech in CS or related field",
-    "full_job_description": "Design and develop scalable distributed systems."
+    "required_skills": ["DSA", "Java"],
+    "eligibility_criteria": "B.Tech",
+    "full_job_description": "Build scalable systems.",
+    "responsibilities": ["System design"],
+    "preferred_qualifications": ["Competitive programming"],
+    "benefits": ["Stock options"],
+    "application_notes": "Multiple interview rounds.",
+    "posted_date": "2026-01-11",
+    "application_deadline": "2026-03-20",
+    "openings": 5
   },
   {
-    "id": 16,
+    "id": 12,
     "company_name": "Google",
     "location": "Bangalore",
     "job_role": "Associate Software Engineer",
     "ctc": "20 LPA",
     "experience_required": "0–1 Year",
     "employment_type": "Full-time",
-    "required_skills": ["C++", "Python", "Algorithms"],
-    "eligibility_criteria": "B.Tech / M.Tech in CS",
-    "full_job_description": "Work on high-impact software products used by millions."
+    "required_skills": ["C++", "Python"],
+    "eligibility_criteria": "B.Tech / M.Tech",
+    "full_job_description": "Work on large-scale systems.",
+    "responsibilities": ["Code optimization"],
+    "preferred_qualifications": ["Algorithms expertise"],
+    "benefits": ["World-class facilities"],
+    "application_notes": "Strong DSA required.",
+    "posted_date": "2026-01-12",
+    "application_deadline": "2026-03-25",
+    "openings": 4
   },
   {
-    "id": 17,
+    "id": 13,
     "company_name": "Flipkart",
     "location": "Bangalore",
     "job_role": "Frontend Developer",
     "ctc": "9 LPA",
     "experience_required": "1–3 Years",
     "employment_type": "Full-time",
-    "required_skills": ["React", "JavaScript", "CSS"],
+    "required_skills": ["React", "JavaScript"],
     "eligibility_criteria": "B.Tech / MCA",
-    "full_job_description": "Develop responsive and user-friendly frontend interfaces."
+    "full_job_description": "Build frontend interfaces.",
+    "responsibilities": ["UI development"],
+    "preferred_qualifications": ["UX understanding"],
+    "benefits": ["WFH options"],
+    "application_notes": "Frontend task required.",
+    "posted_date": "2026-01-13",
+    "application_deadline": "2026-03-28",
+    "openings": 3
   },
   {
-    "id": 18,
+    "id": 14,
     "company_name": "Zoho",
     "location": "Chennai",
     "job_role": "Software Developer",
     "ctc": "7.5 LPA",
     "experience_required": "0–2 Years",
     "employment_type": "Full-time",
-    "required_skills": ["Java", "SQL", "Problem Solving"],
+    "required_skills": ["Java", "SQL"],
     "eligibility_criteria": "Any Engineering Graduate",
-    "full_job_description": "Develop business software products and internal tools."
+    "full_job_description": "Develop business software.",
+    "responsibilities": ["Product development"],
+    "preferred_qualifications": ["Problem solving"],
+    "benefits": ["On-campus stay"],
+    "application_notes": "Written test first.",
+    "posted_date": "2026-01-14",
+    "application_deadline": "2026-04-01",
+    "openings": 6
   },
   {
-    "id": 19,
+    "id": 15,
     "company_name": "Paytm",
     "location": "Noida",
     "job_role": "Data Engineer",
     "ctc": "11 LPA",
     "experience_required": "1–3 Years",
     "employment_type": "Full-time",
-    "required_skills": ["Python", "Spark", "SQL"],
-    "eligibility_criteria": "B.Tech in CS / IT",
-    "full_job_description": "Build scalable data processing pipelines and analytics platforms."
+    "required_skills": ["Python", "Spark"],
+    "eligibility_criteria": "B.Tech",
+    "full_job_description": "Build data pipelines.",
+    "responsibilities": ["ETL pipelines"],
+    "preferred_qualifications": ["Big data"],
+    "benefits": ["Insurance"],
+    "application_notes": "SQL test included.",
+    "posted_date": "2026-01-15",
+    "application_deadline": "2026-04-05",
+    "openings": 4
   },
   {
-    "id": 20,
+    "id": 16,
     "company_name": "Swiggy",
     "location": "Bangalore",
     "job_role": "Backend Engineer",
     "ctc": "13 LPA",
     "experience_required": "2–4 Years",
     "employment_type": "Full-time",
-    "required_skills": ["Python", "Django", "Microservices"],
+    "required_skills": ["Python", "Django"],
     "eligibility_criteria": "B.Tech / MCA",
-    "full_job_description": "Develop high-performance backend services for large-scale systems."
+    "full_job_description": "Build scalable backend services.",
+    "responsibilities": ["Microservices"],
+    "preferred_qualifications": ["System design"],
+    "benefits": ["Meal credits"],
+    "application_notes": "Design round included.",
+    "posted_date": "2026-01-16",
+    "application_deadline": "2026-04-10",
+    "openings": 3
+  },
+  {
+    "id": 17,
+    "company_name": "Cognizant",
+    "location": "Kolkata",
+    "job_role": "AIML Data Scientist",
+    "ctc": "12 LPA",
+    "experience_required": "1–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["ML", "Python"],
+    "eligibility_criteria": "B.Tech AIML",
+    "full_job_description": "Develop ML solutions.",
+    "responsibilities": ["Model training"],
+    "preferred_qualifications": ["Research papers"],
+    "benefits": ["Hybrid work"],
+    "application_notes": "ML task required.",
+    "posted_date": "2026-01-17",
+    "application_deadline": "2026-04-15",
+    "openings": 2
+  },
+  {
+    "id": 18,
+    "company_name": "Microsoft",
+    "location": "Hyderabad",
+    "job_role": "Software Engineer",
+    "ctc": "16 LPA",
+    "experience_required": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["C#", ".NET"],
+    "eligibility_criteria": "B.Tech",
+    "full_job_description": "Develop cloud services.",
+    "responsibilities": ["Service development"],
+    "preferred_qualifications": ["Azure"],
+    "benefits": ["Stock grants"],
+    "application_notes": "Design + coding rounds.",
+    "posted_date": "2026-01-18",
+    "application_deadline": "2026-04-20",
+    "openings": 4
+  },
+  {
+    "id": 19,
+    "company_name": "Oracle",
+    "location": "Bangalore",
+    "job_role": "Database Engineer",
+    "ctc": "15 LPA",
+    "experience_required": "2–4 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["SQL", "PL/SQL"],
+    "eligibility_criteria": "B.Tech",
+    "full_job_description": "Manage enterprise databases.",
+    "responsibilities": ["Database tuning"],
+    "preferred_qualifications": ["Oracle cert"],
+    "benefits": ["Insurance"],
+    "application_notes": "DB test required.",
+    "posted_date": "2026-01-19",
+    "application_deadline": "2026-04-25",
+    "openings": 3
+  },
+  {
+    "id": 20,
+    "company_name": "Intel",
+    "location": "Bangalore",
+    "job_role": "Embedded Engineer",
+    "ctc": "14.5 LPA",
+    "experience_required": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["C", "Embedded Systems"],
+    "eligibility_criteria": "B.Tech ECE / CSE",
+    "full_job_description": "Develop embedded firmware.",
+    "responsibilities": ["Firmware development"],
+    "preferred_qualifications": ["RTOS"],
+    "benefits": ["Relocation support"],
+    "application_notes": "Embedded test required.",
+    "posted_date": "2026-01-20",
+    "application_deadline": "2026-04-30",
+    "openings": 2
   }
 ]
