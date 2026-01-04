@@ -82,6 +82,7 @@ function applyFilters() {
     (cat === "All" || m.category_id === cat) &&
     (lvl === "All" || m.level === lvl)
   );
+
   renderModules(ACTIVE_MODULES);
 }
 
@@ -370,7 +371,6 @@ function openScoreModal() {
 function closeScoreModal() {
   document.getElementById("scoreModal").style.display = "none";
 }
-
 //Save the best scores to localStorage as a JSON file
 function saveBestScoresToLocal() {
   let history = JSON.parse(localStorage.getItem("quizHistory") || "[]");

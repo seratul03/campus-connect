@@ -5,6 +5,7 @@ A complete research + internship portal built with Flask backend and plain HTML/
 ## 🚀 Features
 
 ### For Students:
+
 - **Browse Research Papers**: Search and filter research papers by domain, year, and keywords
 - **View Faculty Profiles**: Explore faculty members and their research areas
 - **Participate in Projects**: Apply for ongoing research projects
@@ -13,6 +14,7 @@ A complete research + internship portal built with Flask backend and plain HTML/
 - **Authentication**: Login/Register functionality with localStorage
 
 ### For Faculty:
+
 - Profile pages with research areas and publications
 - Project listings with application management
 
@@ -69,6 +71,7 @@ research_campus_connect/
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
+
 - Python 3.8 or higher
 - pip (Python package manager)
 
@@ -85,6 +88,7 @@ python database/seed.py
 ```
 
 This will:
+
 - Create the SQLite database
 - Create all tables (papers, faculty, projects, internships, applications, users)
 - Seed the database with mock data
@@ -95,37 +99,43 @@ This will:
 python app.py
 ```
 
-The application will start on `http://localhost:5000`
+The application will start on `http://localhost:5500`
 
 ## 🎯 Usage
 
 ### Accessing the Application
 
-1. **Home Page**: `http://localhost:5000/`
+1. **Home Page**: `http://localhost:5500/`
+
    - View featured papers, projects, and internships
    - Quick navigation to all sections
 
-2. **Research Papers**: `http://localhost:5000/research`
+2. **Research Papers**: `http://localhost:5500/research`
+
    - Search and filter papers
    - Click any paper to view details
 
-3. **Participate in Research**: `http://localhost:5000/participate`
+3. **Participate in Research**: `http://localhost:5500/participate`
+
    - Browse open research projects
    - Apply for projects (fills application form)
 
-4. **Faculty**: `http://localhost:5000/faculty`
+4. **Faculty**: `http://localhost:5500/faculty`
+
    - View all faculty members
    - Click to see detailed profiles with publications
 
-5. **Internships**: `http://localhost:5000/internships`
+5. **Internships**: `http://localhost:5500/internships`
+
    - Browse internship opportunities
    - Apply for internships
 
-6. **Login**: `http://localhost:5000/login`
+6. **Login**: `http://localhost:5500/login`
+
    - Demo credentials: `john@student.edu` / `password123`
    - Or create a new account
 
-7. **Dashboard**: `http://localhost:5000/dashboard` (requires login)
+7. **Dashboard**: `http://localhost:5500/dashboard` (requires login)
    - View your applications
    - Track saved papers
    - See notifications
@@ -135,18 +145,23 @@ The application will start on `http://localhost:5000`
 ### Tables:
 
 1. **papers** - Research papers
+
    - id, title, authors, abstract, domain, year, citations, pdf_url, published_date, keywords
 
 2. **faculty** - Faculty members
+
    - id, name, designation, department, email, phone, research_areas, bio, image_url
 
 3. **projects** - Research projects
+
    - id, title, description, faculty_name, domain, duration, requirements, status, start_date
 
 4. **internships** - Internship opportunities
+
    - id, company, role, description, domain, location, duration, stipend, eligibility, application_deadline, company_logo
 
 5. **applications** - Student applications
+
    - id, student_name, student_email, student_phone, application_type, project_id, internship_id, cover_letter, resume_url, status, applied_date
 
 6. **users** - User accounts
@@ -155,26 +170,32 @@ The application will start on `http://localhost:5000`
 ## 🔌 API Endpoints
 
 ### Papers
+
 - `GET /api/papers` - Get all papers (supports search, domain, year filters)
 - `GET /api/papers/<id>` - Get specific paper
 
 ### Faculty
+
 - `GET /api/faculty` - Get all faculty (supports department filter)
 - `GET /api/faculty/<id>` - Get specific faculty with publications
 
 ### Projects
+
 - `GET /api/projects` - Get all projects (supports status filter)
 - `POST /api/projects/apply` - Submit research project application
 
 ### Internships
+
 - `GET /api/internships` - Get all internships (supports domain filter)
 - `POST /api/internships/apply` - Submit internship application
 
 ### Authentication
+
 - `POST /api/login` - User login
 - `POST /api/register` - User registration
 
 ### Dashboard
+
 - `GET /api/dashboard/applications?email=<email>` - Get user's applications
 
 ## 🎨 Design Features
@@ -189,7 +210,7 @@ The application will start on `http://localhost:5000`
 ## 🧪 Testing the Application
 
 1. **Browse Papers**: Go to Research page and use search/filters
-2. **Apply for Project**: 
+2. **Apply for Project**:
    - Go to Participate page
    - Click "Apply Now" on any open project
    - Fill and submit the form
@@ -208,15 +229,19 @@ The application will start on `http://localhost:5000`
 ## 🔧 Customization
 
 ### Add More Data
+
 Edit `database/seed.py` and add more entries to the respective lists, then run:
+
 ```bash
 python database/seed.py
 ```
 
 ### Change Styling
+
 Edit CSS files in `static/css/` directory
 
 ### Add New Features
+
 1. Create new API routes in `app.py`
 2. Add corresponding JavaScript in `static/js/`
 3. Update HTML templates in `templates/`
@@ -224,18 +249,21 @@ Edit CSS files in `static/css/` directory
 ## 🐛 Troubleshooting
 
 **Database not found:**
+
 ```bash
 python database/seed.py
 ```
 
 **CORS errors:**
+
 - Ensure Flask-CORS is installed
-- Check if API_BASE URL in JS files matches your Flask server
+- Use relative API base (`/api`) in JS files so it matches the Flask server port (default 5500)
 
 **Port already in use:**
-Change port in `app.py`:
+The default port is 5500. To change the port, edit `app.py`:
+
 ```python
-app.run(debug=True, port=5001)
+app.run(debug=True, port=5501)
 ```
 
 ## 📦 Dependencies
@@ -247,6 +275,7 @@ app.run(debug=True, port=5001)
 ## 🚀 Production Deployment
 
 For production:
+
 1. Use proper password hashing (bcrypt)
 2. Add proper session management
 3. Use environment variables for secrets
@@ -262,6 +291,7 @@ This is a demo project for educational purposes.
 ## 👨‍💻 Development
 
 Built with:
+
 - **Backend**: Python Flask + SQLite
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Architecture**: RESTful API + SPA-style frontend

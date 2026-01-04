@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Practice | Campus Connect</title>
@@ -14,9 +15,8 @@
 
 <body>
 
-  <!-- ===== NAVBAR (UNCHANGED, SAME AS OTHER PAGES) ===== -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="main-nav">
-    <!-- <a href="index.html">Home</a> -->
     <a href="student-dashboard.html">Dashboard</a>
     <a href="jobs.html">Jobs</a>
     <a href="internships.html">Internships</a>
@@ -24,9 +24,10 @@
     <a href="research.html">Research</a>
     <a href="ats.html">ATS Checker</a>
     <a href="updates.html">Hiring Updates</a>
+
     <a href="profile.html" class="profile-bubble active">
-  <span>RK</span>
-</a>
+      <span>RK</span>
+    </a>
   </nav>
 
   <!-- ===== PAGE HEADER ===== -->
@@ -37,12 +38,10 @@
 
   <!-- ===== CONTROLS ===== -->
   <section class="practice-controls">
-    <input
-      class="search-input"
-      type="text"
+
+    <input class="search-input" type="text"
       placeholder="🔍 Search skills, topics, questions..."
-      oninput="searchModules(this.value)"
-    />
+      oninput="searchModules(this.value)" />
 
     <select id="categoryFilter" onchange="applyFilters()">
       <option value="All">All Categories</option>
@@ -55,25 +54,26 @@
     <select onchange="sortModules(this.value)">
       <option value="">Sort By</option>
       <option value="level">Difficulty</option>
-      <option value="time">Estimated Time</option>
     </select>
 
     <div class="right-controls">
       <button class="progress-btn" onclick="openProgress()">Overall Progress</button>
       <button class="progress-btn" onclick="openScoreModal()">Your Scores</button>
     </div>
+
   </section>
 
   <!-- ===== YOUR SCORES MODAL ===== -->
-  <div id="scoreModal" class="modal-overlay">
-    <div class="modal-box">
-      <h3>Your Quiz Scores</h3>
-      <div id="scoreList"></div>
-      <button onclick="closeScoreModal()">Close</button>
-    </div>
+<div id="scoreModal" class="modal-overlay">
+  <div class="modal-box">
+    <h3>Your Quiz Scores</h3>
+    <div id="scoreList"></div>
+    <button onclick="closeScoreModal()">Close</button>
   </div>
+</div>
 
-  <!-- ===== MAIN LAYOUT ===== -->
+
+  <!-- ===== MAIN CONTENT ===== -->
   <section class="practice-layout">
 
     <!-- MAIN PRACTICE GRID -->
@@ -90,6 +90,7 @@
   <!-- ===== OVERALL PROGRESS MODAL ===== -->
   <div id="progressModal" class="modal-overlay">
     <div class="modal-box">
+
       <h3>Practice Progress</h3>
 
       <div class="ring">
@@ -114,13 +115,13 @@
     </div>
   </div>
 
-  <!-- JS -->
-  <script src="js/practice.js"></script>
+  <!-- ===== SCRIPTS ===== -->
+ 
+
   <link rel="stylesheet" href="css/chatbot.css">
-<script src="js/chatbot.js" defer></script>
-
-
-
+  <script src="js/practice.js"></script>
+  <script src="js/chatbot.js" defer></script>
 
 </body>
+
 </html>

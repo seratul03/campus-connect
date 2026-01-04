@@ -1,7 +1,7 @@
 // Research details page JavaScript - Display specific paper details
 
-// API base URL
-const API_BASE = "http://localhost:5000/api";
+// API base URL (use same-origin to avoid port mismatches)
+const API_BASE = "/api";
 
 // Mock data for additional paper details (citation history, H-index data)
 const mockPaperExtras = {

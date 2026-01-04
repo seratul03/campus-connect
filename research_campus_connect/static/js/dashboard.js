@@ -1,7 +1,7 @@
 // Dashboard JavaScript - Display user's applications and saved papers
 
-// API base URL
-const API_BASE = "http://localhost:5000/api";
+// API base URL (same-origin; default server port is 5500)
+const API_BASE = "/api";
 
 // Current user - set default email for demo
 let currentUser = { name: "User", email: "demo@example.com" };

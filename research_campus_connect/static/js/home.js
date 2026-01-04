@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:5000/api";
+// Use same-origin to work on any port (default 5500)
+const API_BASE = "/api";
 
 async function loadPapers() {
   const res = await fetch(`${API_BASE}/papers`);

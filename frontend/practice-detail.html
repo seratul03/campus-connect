@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Practice Module</title>
+  <link rel="stylesheet" href="css/practice-detail.css">
+</head>
+
+<body>
+
+  <div class="top-row">
+    <button onclick="goPractice()">← Back to Practice</button>
+  </div>
+
+  <div class="module-detail">
+
+    <div class="header-row">
+      <div>
+        <h2 id="d_title"></h2>
+        <span class="badge-level" id="d_level"></span>
+        <span id="completedBadge" class="completed" style="display:none;">Completed</span>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Estimated Time</label>
+        <span><span id="d_time">
+      </div>
+
+      <div class="info-item">
+        <label>Topics Covered</label>
+        <ul id="d_topics"></ul>
+      </div>
+    </div>
+<div class="divider"></div>
+
+<h4>Your Quiz Performance</h4>
+
+<div class="score-box">
+  <p>Last Score: <strong id="lastScore">—</strong></p>
+  <p>Best Score: <strong id="bestScoreDetail">—</strong></p>
+  <p>Total Attempts: <strong id="attemptsCount">0</strong></p>
+</div>
+    <div class="divider"></div>
+
+    <h4>Start Learning</h4>
+    <div class="progress-wrap">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-info">
+        <span id="statusText">Loading...</span>
+        <span id="percentText">0%</span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="quiz-btn" onclick="startQuiz()">Start Quiz</button>
+      <button class="quiz-btn" onclick="reattemptQuiz()">Re-attempt Quiz</button>
+      <button class="code-btn" onclick="startCoding()">Coding Practice</button>
+      <button id="completeBtn" class="complete-btn" onclick="markComplete()">Mark as Complete</button>
+
+    </div>
+  </div>
+
+
+
+
+  <script src="js/practice-detail.js"></script>
+</body>
+
+</html>

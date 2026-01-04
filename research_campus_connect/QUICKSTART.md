@@ -3,40 +3,46 @@
 ## 🚀 Getting Started (3 Simple Steps)
 
 ### 1. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 2. Setup Database
+
 ```bash
 python database/seed.py
 ```
 
 ### 3. Run Application
+
 ```bash
 python app.py
 ```
 
-Then open: **http://localhost:5000**
+Then open: **http://localhost:5500**
 
 ---
 
 ## 📱 Quick Test Guide
 
 ### Test 1: Browse Research Papers
-1. Go to http://localhost:5000/research
+
+1. Go to http://localhost:5500/research
 2. Use search box to search for "AI" or "Machine Learning"
 3. Use filters to select domain and year
 4. Click any paper card to view full details
 
 ### Test 2: View Faculty Profiles
-1. Go to http://localhost:5000/faculty
+
+1. Go to http://localhost:5500/faculty
 2. Filter by department (e.g., "Computer Science")
 3. Click "View Profile" on any faculty
 4. See their bio, research areas, and publications
 
 ### Test 3: Apply for Research Project
-1. Go to http://localhost:5000/participate
+
+1. Go to http://localhost:5500/participate
 2. Find an "OPEN" project
 3. Click "Apply Now"
 4. Fill form:
@@ -47,13 +53,15 @@ Then open: **http://localhost:5000**
 5. Submit and see success message
 
 ### Test 4: Browse Internships
-1. Go to http://localhost:5000/internships
+
+1. Go to http://localhost:5500/internships
 2. Filter by domain
 3. Click "Apply Now" on any internship
 4. Fill and submit application form
 
 ### Test 5: Login & Dashboard
-1. Go to http://localhost:5000/login
+
+1. Go to http://localhost:5500/login
 2. Use demo credentials:
    - **Email**: john@student.edu
    - **Password**: password123
@@ -62,6 +70,7 @@ Then open: **http://localhost:5000**
 5. See your applications and stats
 
 ### Test 6: Save Papers
+
 1. Go to any research paper details page
 2. Click "Save Paper" button
 3. Go to Dashboard → Saved Papers section
@@ -72,15 +81,18 @@ Then open: **http://localhost:5000**
 ## 🎯 Demo Accounts
 
 ### Student Account
+
 - **Email**: john@student.edu
 - **Password**: password123
 - Has 2 sample applications (1 research, 1 internship)
 
 ### Additional Users
+
 - **Email**: jane@student.edu
 - **Password**: password123
 
 ### Create New Account
+
 1. Go to login page
 2. Click "Register"
 3. Fill form and submit
@@ -91,21 +103,25 @@ Then open: **http://localhost:5000**
 ## 📊 What's in the Database?
 
 ### Research Papers (8 papers)
+
 - Domains: AI, Machine Learning, Computer Vision, Quantum Computing, Blockchain, Cybersecurity, etc.
 - Years: 2023-2024
 - Full abstracts and citation counts
 
 ### Faculty Members (7 faculty)
+
 - Departments: Computer Science, Physics, Information Systems, Cybersecurity
 - Each has research areas and bio
 - Papers linked to faculty authors
 
 ### Research Projects (6 projects)
+
 - Status: Open and Ongoing
 - Domains: AI, Quantum Computing, Blockchain, Computer Vision, etc.
 - Students can apply
 
 ### Internships (8 internships)
+
 - Companies: Google, Microsoft, Amazon, Tesla, Meta, IBM, NVIDIA, Coinbase
 - Roles: SWE Intern, AI Intern, Cloud Intern, etc.
 - Full details including stipend and eligibility
@@ -117,26 +133,31 @@ Then open: **http://localhost:5000**
 You can test APIs directly:
 
 ### Get All Papers
+
 ```bash
-curl http://localhost:5000/api/papers
+curl http://localhost:5500/api/papers
 ```
 
 ### Get Specific Paper
+
 ```bash
 curl http://localhost:5000/api/papers/1
 ```
 
 ### Get Faculty
+
 ```bash
 curl http://localhost:5000/api/faculty
 ```
 
 ### Get Projects
+
 ```bash
 curl http://localhost:5000/api/projects
 ```
 
 ### Submit Application (POST)
+
 ```bash
 curl -X POST http://localhost:5000/api/projects/apply \
   -H "Content-Type: application/json" \
@@ -155,6 +176,7 @@ curl -X POST http://localhost:5000/api/projects/apply \
 ## ✅ Features Checklist
 
 **Pages:**
+
 - ✅ Home (index.html)
 - ✅ Research Papers (research.html)
 - ✅ Paper Details (research-details.html)
@@ -166,6 +188,7 @@ curl -X POST http://localhost:5000/api/projects/apply \
 - ✅ Dashboard (dashboard.html)
 
 **Functionality:**
+
 - ✅ Search & Filter Papers
 - ✅ View Paper Details
 - ✅ Apply for Research Projects
@@ -177,6 +200,7 @@ curl -X POST http://localhost:5000/api/projects/apply \
 - ✅ Application Tracking
 
 **Technical:**
+
 - ✅ Flask Backend
 - ✅ SQLite Database
 - ✅ REST APIs
@@ -234,6 +258,7 @@ curl -X POST http://localhost:5000/api/projects/apply \
 ## 📧 Support
 
 If you encounter issues:
+
 1. Check the README.md for detailed documentation
 2. Verify all files are in correct locations
 3. Check Flask terminal output for errors

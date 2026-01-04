@@ -2,6 +2,7 @@
 from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import os
+import json
 import api
 from admin.analytics import admin_analytics
 from admin.jobs import add_job as admin_add_job, get_jobs as admin_get_jobs, delete_job as admin_delete_job
@@ -21,6 +22,13 @@ app = Flask(__name__)
 # Enable CORS for all domains so your frontend can talk to it
 CORS(app)
 
+# Configure paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+PRACTICE_PATH = os.path.join(DATA_DIR, "practice.json")
+SCORE_PATH = os.path.join(DATA_DIR, "score.json")
+PROFILE_PATH = os.path.join(DATA_DIR, "profile.json")
+
 # Configure upload folder for resumes
 RESUME_UPLOAD_FOLDER = r"C:\Users\Seratul Mustakim\Desktop\Ai saves\campus-connect\Resumes_uploaded"
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
@@ -34,6 +42,23 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Helper functions for JSON operations
+def _safe_load_json(path, default=None):
+    if default is None:
+        default = {}
+    try:
+        if not os.path.exists(path):
+            return default
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+def _safe_write_json(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
 # ---------- STUDENT ----------
 @app.route("/api/jobs")
@@ -119,6 +144,69 @@ def chat():
     return jsonify({
         "reply": "Sorry 😅 I don't understand that yet. Please ask something else."
     })
+
+# ---------- PRACTICE & SCORE ROUTES ----------
+# Profile routes
+@app.route("/api/profile", methods=["GET"])
+def get_profile():
+    data = _safe_load_json(PROFILE_PATH, default={})
+    return jsonify(data)
+
+@app.route("/api/profile", methods=["PUT"])
+def update_profile():
+    payload = request.get_json(force=True, silent=True) or {}
+    _safe_write_json(PROFILE_PATH, payload)
+    return jsonify({"message": "Profile updated!"})
+
+# Practice routes
+@app.route("/api/practice", methods=["GET"])
+def get_practice():
+    try:
+        data = _safe_load_json(PRACTICE_PATH, default={"categories": []})
+        return jsonify(data)
+    except Exception:
+        return jsonify({"error": "Failed to load practice data"}), 500
+
+@app.route("/api/practice/progress", methods=["PUT"]) 
+def update_practice_progress():
+    payload = request.get_json(force=True, silent=True) or {}
+    title = payload.get("title")
+    progress = payload.get("progress")
+
+    if title is None or progress is None:
+        return jsonify({"error": "'title' and 'progress' are required"}), 400
+
+    data = _safe_load_json(PRACTICE_PATH, default={"categories": []})
+
+    for cat in data.get("categories", []):
+        for m in cat.get("modules", []):
+            if m.get("title") == title:
+                m["progress"] = progress
+
+    _safe_write_json(PRACTICE_PATH, data)
+    return jsonify({"message": "Progress saved"})
+
+# Score routes
+@app.route("/save-score", methods=["POST"])
+def save_score():
+    data = request.json
+    module = data.get("module")
+    score = data.get("score")
+
+    scores = _safe_load_json(SCORE_PATH, default={})
+
+    # store BEST score only
+    prev = scores.get(module, 0)
+    scores[module] = max(prev, score)
+
+    _safe_write_json(SCORE_PATH, scores)
+
+    return jsonify({"status": "saved", "best": scores[module]})
+
+@app.route("/get-scores", methods=["GET"])
+def get_scores():
+    scores = _safe_load_json(SCORE_PATH, default={})
+    return jsonify(scores)
 
 # ---------- RESUME UPLOAD ----------
 @app.route("/api/upload-resume", methods=["POST"])
