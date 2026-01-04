@@ -1,3 +1,4 @@
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
 const form = document.getElementById("profileForm");
 const backlogRadios = document.querySelectorAll('input[name="backlog_status"]');
 const backlogCount = document.getElementById("backlogCount");
@@ -113,20 +114,21 @@ photoInput.addEventListener('change', () => {
   reader.readAsDataURL(f);
 });
 
-// Resume file name visual feedback (Optional)
+// Resume input (optional) - only attach handler if present
 const resumeInput = document.getElementById("resumeFile");
-resumeInput.addEventListener('change', function() {
-  const msg = document.querySelector('.file-msg');
-  if(this.files && this.files[0]) {
-    msg.textContent = `Selected: ${this.files[0].name}`;
-    msg.style.color = 'var(--primary)';
-  }
-});
+if (resumeInput) {
+  resumeInput.addEventListener('change', function() {
+    const msg = document.querySelector('.file-msg');
+    if(this.files && this.files[0] && msg) {
+      msg.textContent = `Selected: ${this.files[0].name}`;
+      msg.style.color = 'var(--primary)';
+    }
+  });
+}
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const data = {
+// Helper to gather form data into object (only fields present in rr.html)
+function gatherFormData() {
+  return {
     fullName: document.getElementById('fullName').value || '',
     email: document.getElementById('email').value || '',
     universityName: document.getElementById('universityName').value || '',
@@ -137,47 +139,118 @@ form.addEventListener("submit", (e) => {
     semester: document.getElementById('semester').value || '',
     graduationYear: document.getElementById('graduationYear').value || '',
     backlogStatus: (document.querySelector('input[name="backlog_status"]:checked')||{}).value || '',
-    backlogNumber: document.getElementById('backlogNumber').value || '',
+    backlogNumber: Number(document.getElementById('backlogNumber').value) || 0,
     city: document.getElementById('city').value || '',
     district: document.getElementById('district').value || '',
     state: document.getElementById('state').value || '',
-    skills: [...userSkills] // Save the skills array
+    skills: [...userSkills]
   };
+}
+
+// Load existing profile from backend and populate form
+async function loadProfile() {
+  try {
+    const resp = await fetch(`${API_BASE}/api/profile`);
+    if (!resp.ok) return;
+    const p = await resp.json();
+    if (!p) return;
+
+    // Load photo from localStorage (not from JSON)
+    const savedPhoto = localStorage.getItem('profilePhoto');
+    if (savedPhoto) photoPreview.src = savedPhoto;
+    if (p.fullName) document.getElementById('fullName').value = p.fullName;
+    if (p.email) document.getElementById('email').value = p.email;
+    if (p.universityName) document.getElementById('universityName').value = p.universityName;
+    if (p.rollNumber) document.getElementById('rollNumber').value = p.rollNumber;
+    if (p.registrationNumber) document.getElementById('registrationNumber').value = p.registrationNumber;
+    if (p.program) document.getElementById('program').value = p.program;
+    if (p.specialization) document.getElementById('specialization').value = p.specialization;
+    if (p.semester) document.getElementById('semester').value = p.semester;
+    if (p.graduationYear) document.getElementById('graduationYear').value = p.graduationYear;
+    if (p.backlogStatus) {
+      const sel = document.querySelector(`input[name="backlog_status"][value="${p.backlogStatus}"]`);
+      if (sel) sel.checked = true;
+    }
+    if (p.backlogNumber !== undefined) document.getElementById('backlogNumber').value = p.backlogNumber || '';
+    if (p.city) document.getElementById('city').value = p.city;
+    if (p.district) document.getElementById('district').value = p.district;
+    if (p.state) document.getElementById('state').value = p.state;
+    if (Array.isArray(p.skills)) {
+      userSkills = p.skills.map(s => String(s).toLowerCase());
+      renderSkills();
+    }
+
+    toggleBacklogVisibility();
+  } catch (e) {
+    console.warn('Could not load profile:', e);
+  }
+}
+
+// Save profile to backend (PUT /api/profile)
+// Photo is excluded from JSON save - stored only in localStorage
+async function saveProfile(data) {
+  try {
+    // Clone data and remove photo before saving to JSON file
+    const dataForJson = {...data};
+    delete dataForJson.photo;
+    
+    const resp = await fetch(`${API_BASE}/api/profile`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataForJson)
+    });
+    return resp.ok;
+  } catch (e) {
+    console.error('Save failed', e);
+    return false;
+  }
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
   const file = photoInput.files && photoInput.files[0];
+  const data = gatherFormData();
 
-  function finishSave(photoDataUrl) {
-    if (photoDataUrl) data.photo = photoDataUrl;
-    
-    // Save to local storage
-    localStorage.setItem('profileData', JSON.stringify(data));
-    
-    // Visual feedback button
-    const btn = document.querySelector('.btn.primary');
-    const originalText = btn.innerText;
-    btn.innerText = "Saved! ✓";
-    btn.style.background = "#10b981"; // Green
-    
-    setTimeout(() => {
-        btn.innerText = originalText;
-        btn.style.background = ""; 
-        location.href = 'yo.html';
-    }, 1000);
-  }
-
+  // If there's a new photo, save to localStorage only (not JSON)
   if (file) {
     const reader = new FileReader();
-    reader.onload = (ev) => finishSave(ev.target.result);
+    reader.onload = async (ev) => {
+      const photoDataUrl = ev.target.result;
+      // Save photo to localStorage
+      localStorage.setItem('profilePhoto', photoDataUrl);
+      
+      // Save profile data (without photo) to JSON via backend
+      const ok = await saveProfile(data);
+      if (ok) {
+        const btn = document.querySelector('.btn.primary');
+        const originalText = btn.innerText;
+        btn.innerText = "Saved! ✓";
+        btn.style.background = "#10b981";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "";
+          location.href = 'yo.html';
+        }, 800);
+      }
+    };
     reader.readAsDataURL(file);
   } else {
-    // Preserve existing photo if any
-    const existing = localStorage.getItem('profileData');
-    if (existing) {
-      try {
-        const parsed = JSON.parse(existing);
-        if (parsed && parsed.photo) data.photo = parsed.photo;
-      } catch (e) {}
+    // No new photo uploaded - just save profile data
+    const ok = await saveProfile(data);
+    if (ok) {
+      const btn = document.querySelector('.btn.primary');
+      const originalText = btn.innerText;
+      btn.innerText = "Saved! ✓";
+      btn.style.background = "#10b981";
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = "";
+        location.href = 'yo.html';
+      }, 800);
     }
-    finishSave();
   }
 });
+
+// Initialize
+loadProfile();

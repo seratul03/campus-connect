@@ -29,7 +29,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PRACTICE_PATH = os.path.join(DATA_DIR, "practice.json")
 SCORE_PATH = os.path.join(DATA_DIR, "score.json")
-PROFILE_PATH = os.path.join(DATA_DIR, "profile.json")
+# Profile path now points to Profile/profile.json
+PROFILE_PATH = os.path.join(BASE_DIR, "..", "Profile", "profile.json")
 
 # Configure upload folder for resumes
 RESUME_UPLOAD_FOLDER = r"C:\Users\Seratul Mustakim\Desktop\Ai saves\campus-connect\Resumes_uploaded"
@@ -99,7 +100,34 @@ def ats():
 
 @app.route("/api/match-jobs", methods=["POST"])
 def match():
-    skills = request.json.get("skills", [])
+    # Prefer skills from request body
+    skills = []
+    try:
+        payload = request.get_json(silent=True) or {}
+        if isinstance(payload, dict):
+            skills = payload.get("skills", []) or []
+    except Exception:
+        skills = []
+
+    # If frontend didn't provide skills, fall back to server-side profile files
+    if not skills:
+        # First try backend data profile path
+        profile_candidates = [PROFILE_PATH]
+        # Also check repository-level Profile folder (common in this project)
+        repo_profile = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Profile", "profile.json"))
+        profile_candidates.append(repo_profile)
+
+        for p in profile_candidates:
+            try:
+                if os.path.exists(p):
+                    with open(p, "r", encoding="utf-8") as f:
+                        prof = json.load(f)
+                        if isinstance(prof, dict) and prof.get("skills"):
+                            skills = prof.get("skills", [])
+                            break
+            except Exception:
+                continue
+
     return jsonify(api.match_jobs(skills))
 
 # ---------- ADMIN ----------
@@ -157,7 +185,52 @@ def get_profile():
 @app.route("/api/profile", methods=["PUT"])
 def update_profile():
     payload = request.get_json(force=True, silent=True) or {}
-    _safe_write_json(PROFILE_PATH, payload)
+
+    # Persist only the allowed fields (photo is intentionally ignored)
+    allowed_fields = [
+        "photo",  # photo will be stripped below
+        "fullName",
+        "email",
+        "universityName",
+        "rollNumber",
+        "registrationNumber",
+        "program",
+        "specialization",
+        "semester",
+        "graduationYear",
+        "backlogStatus",
+        "backlogNumber",
+        "city",
+        "district",
+        "state",
+        "skills",
+    ]
+
+    clean = {k: payload.get(k, "") for k in allowed_fields}
+
+    # Remove photo before saving to disk
+    clean.pop("photo", None)
+
+    # Normalize numbers
+    def _to_int(val, default=0):
+        try:
+            return int(val)
+        except Exception:
+            return default
+
+    clean["graduationYear"] = _to_int(clean.get("graduationYear"))
+    clean["backlogNumber"] = _to_int(clean.get("backlogNumber"))
+
+    # Normalize skills list
+    skills = clean.get("skills") or []
+    if not isinstance(skills, list):
+        skills = []
+    clean["skills"] = [str(s).strip().lower() for s in skills if str(s).strip()]
+
+    # Default backlog status
+    clean["backlogStatus"] = clean.get("backlogStatus") or "cleared"
+
+    _safe_write_json(PROFILE_PATH, clean)
     return jsonify({"message": "Profile updated!"})
 
 # Practice routes

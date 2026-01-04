@@ -7,14 +7,28 @@ async function loadJobs() {
   const container = document.getElementById("jobs");
 
   try {
+    // Try to get real user skills from backend profile API
+    let skillsPayload = [];
+    try {
+      const profileRes = await fetch("http://127.0.0.1:5000/api/profile");
+      if (profileRes.ok) {
+        const profileJson = await profileRes.json();
+        skillsPayload = profileJson.skills || [];
+      } else {
+        const local = JSON.parse(localStorage.getItem('profileData') || '{}');
+        skillsPayload = local.skills || [];
+      }
+    } catch (e) {
+      const local = JSON.parse(localStorage.getItem('profileData') || '{}');
+      skillsPayload = local.skills || [];
+    }
+
     const res = await fetch(
       "http://127.0.0.1:5000/api/match-jobs",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          skills: ["Python", "DSA", "HTML"]
-        })
+        body: JSON.stringify({ skills: skillsPayload })
       }
     );
 

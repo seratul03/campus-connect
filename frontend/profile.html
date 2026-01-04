@@ -97,6 +97,11 @@
 
   <!-- JS -->
   <script>
+    const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
+    const PROFILE_ENDPOINT = `${API_BASE}/api/profile`;
+    const PROFILE_STORAGE_KEY = "profileData";
+    const PHOTO_STORAGE_KEY = "profilePhoto";
+
     const toggle = document.getElementById("mailToggle");
     const toast = document.getElementById("toast");
     const KEY = "mail_notifications_enabled";
@@ -126,26 +131,21 @@
     }
 
     setState(localStorage.getItem(KEY) !== "false");
+    toggle.addEventListener("click", () => setState(!toggle.classList.contains("on"), true));
 
-    toggle.addEventListener("click", () => {
-      setState(!toggle.classList.contains("on"), true);
-    });
-
-    // Resume upload handler
     resumeUploadInput.addEventListener("change", async function() {
       const file = this.files[0];
       if (!file) return;
 
       const formData = new FormData();
       formData.append("resume", file);
-      
-      // Get user email for filename
-      const profileData = JSON.parse(localStorage.getItem('profileData') || '{}');
+
+      const profileData = JSON.parse(localStorage.getItem(PROFILE_STORAGE_KEY) || '{}');
       const userEmail = profileData.email || 'unknown';
       formData.append("email", userEmail);
 
       try {
-        const response = await fetch("http://localhost:5000/api/upload-resume", {
+        const response = await fetch(`${API_BASE}/api/upload-resume`, {
           method: "POST",
           body: formData
         });
@@ -165,7 +165,6 @@
       }
     });
 
-    // View resume handler
     viewResumeBtn.addEventListener("click", function() {
       const filename = localStorage.getItem("resumeFilename");
       if (!filename) {
@@ -176,15 +175,14 @@
       const fileExt = filename.split('.').pop().toLowerCase();
       
       if (fileExt === 'pdf') {
-        resumeViewer.innerHTML = `<iframe src="http://localhost:5000/api/view-resume/${filename}" width="100%" height="600px"></iframe>`;
+        resumeViewer.innerHTML = `<iframe src="${API_BASE}/api/view-resume/${filename}" width="100%" height="600px"></iframe>`;
       } else {
-        resumeViewer.innerHTML = `<p>Resume: ${filename}</p><a href="http://localhost:5000/api/download-resume/${filename}" class="btn btn-primary" download>Download Resume</a>`;
+        resumeViewer.innerHTML = `<p>Resume: ${filename}</p><a href="${API_BASE}/api/download-resume/${filename}" class="btn btn-primary" download>Download Resume</a>`;
       }
       
       resumeModal.style.display = "block";
     });
 
-    // Modal close handlers
     modalClose.addEventListener("click", () => {
       resumeModal.style.display = "none";
     });
@@ -195,62 +193,92 @@
       }
     });
 
-    // Check if resume exists on page load
     if (localStorage.getItem("resumeFilename")) {
       viewResumeBtn.style.display = "inline-block";
     }
 
-    // Load saved profile data (if any) and apply to page
-    (function loadProfile() {
+    function applyProfile(data, photo) {
+      if (!data) return;
+
+      if (data.fullName) {
+        document.getElementById('displayName').textContent = data.fullName;
+        const initials = data.fullName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        document.getElementById('navProfileInitials').textContent = initials;
+        document.getElementById('profileAvatar').textContent = initials;
+      }
+      
+      if (data.program || data.semester) {
+        const tagline = [data.program || '', data.semester ? `• ${data.semester}` : ''].filter(Boolean).join(' ');
+        if (tagline) document.getElementById('displayTagline').textContent = tagline;
+      }
+      if (data.universityName) document.getElementById('displayUniversity').textContent = data.universityName;
+
+      if (data.email) document.getElementById('p_email').textContent = data.email;
+      if (data.rollNumber) document.getElementById('p_roll').textContent = data.rollNumber;
+      if (data.registrationNumber) document.getElementById('p_reg').textContent = data.registrationNumber;
+      if (data.city || data.district || data.state) {
+        const parts = [data.city, data.district, data.state].filter(Boolean);
+        document.getElementById('p_location').textContent = parts.join(', ');
+      }
+
+      if (data.program) document.getElementById('p_program').textContent = data.program + (data.specialization ? (' ' + data.specialization) : '');
+      if (data.semester) document.getElementById('p_semester').textContent = data.semester;
+      if (data.graduationYear) document.getElementById('p_grad').textContent = data.graduationYear;
+
+      if (Array.isArray(data.skills) && data.skills.length > 0) {
+        const skillsContainer = document.getElementById('p_skills');
+        skillsContainer.innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+      }
+
+      const photoToUse = photo || data.photo;
+      if (photoToUse) {
+        const avatar = document.getElementById('profileAvatar');
+        avatar.style.backgroundImage = `url('${photoToUse}')`;
+        avatar.textContent = '';
+        avatar.style.backgroundSize = 'cover';
+        avatar.style.backgroundPosition = 'center';
+      }
+    }
+
+    function getStoredProfile() {
       try {
-        const raw = localStorage.getItem('profileData');
-        if (!raw) return;
-        const data = JSON.parse(raw);
+        const raw = localStorage.getItem(PROFILE_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        console.warn('Could not parse stored profile', e);
+        return null;
+      }
+    }
 
-        if (data.fullName) {
-          document.getElementById('displayName').textContent = data.fullName;
-          // Update navbar initials
-          const initials = data.fullName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-          document.getElementById('navProfileInitials').textContent = initials;
-          document.getElementById('profileAvatar').textContent = initials;
-        }
-        
-        if (data.program || data.semester) {
-          const tagline = [data.program || '', data.semester ? `• ${data.semester}` : ''].filter(Boolean).join(' ');
-          if (tagline) document.getElementById('displayTagline').textContent = tagline;
-        }
-        if (data.universityName) document.getElementById('displayUniversity').textContent = data.universityName;
+    async function loadProfile() {
+      const stored = getStoredProfile();
+      const savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY) || (stored && stored.photo) || null;
+      let remoteProfile = null;
 
-        if (data.email) document.getElementById('p_email').textContent = data.email;
-        if (data.rollNumber) document.getElementById('p_roll').textContent = data.rollNumber;
-        if (data.registrationNumber) document.getElementById('p_reg').textContent = data.registrationNumber;
-        if (data.city || data.district || data.state) {
-          const parts = [data.city, data.district, data.state].filter(Boolean);
-          document.getElementById('p_location').textContent = parts.join(', ');
-        }
-
-        if (data.program) document.getElementById('p_program').textContent = data.program + (data.specialization ? (' ' + data.specialization) : '');
-        if (data.semester) document.getElementById('p_semester').textContent = data.semester;
-        if (data.graduationYear) document.getElementById('p_grad').textContent = data.graduationYear;
-
-        // Skills
-        if (Array.isArray(data.skills) && data.skills.length > 0) {
-          const skillsContainer = document.getElementById('p_skills');
-          skillsContainer.innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
-        }
-
-        // Photo
-        if (data.photo) {
-          const avatar = document.getElementById('profileAvatar');
-          avatar.style.backgroundImage = `url('${data.photo}')`;
-          avatar.textContent = '';
-          avatar.style.backgroundSize = 'cover';
-          avatar.style.backgroundPosition = 'center';
+      try {
+        const resp = await fetch(PROFILE_ENDPOINT);
+        if (resp.ok) {
+          remoteProfile = await resp.json();
         }
       } catch (e) {
-        console.warn('Could not load profile data', e);
+        console.warn('Could not fetch profile from backend', e);
       }
-    })();
+
+      const profile = remoteProfile || stored || {};
+
+      if (remoteProfile) {
+        const merged = { ...remoteProfile, photo: savedPhoto || remoteProfile.photo || null };
+        localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(merged));
+      }
+
+      if (savedPhoto) {
+        localStorage.setItem(PHOTO_STORAGE_KEY, savedPhoto);
+      }
+
+      applyProfile(profile, savedPhoto);
+    }
+
+    loadProfile();
   </script>
 
 </body>

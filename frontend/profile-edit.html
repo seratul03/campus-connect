@@ -170,6 +170,11 @@
 </div>
 
 <script>
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
+const PROFILE_ENDPOINT = `${API_BASE}/api/profile`;
+const PROFILE_STORAGE_KEY = "profileData";
+const PHOTO_STORAGE_KEY = "profilePhoto";
+
 const form = document.getElementById("profileForm");
 const backlogRadios = document.querySelectorAll('input[name="backlog_status"]');
 const backlogCount = document.getElementById("backlogCount");
@@ -179,10 +184,8 @@ const skillInput = document.getElementById("skillInput");
 const addSkillBtn = document.getElementById("addSkillBtn");
 const skillsList = document.getElementById("skillsList");
 
-// Skills array to track added skills
 let userSkills = [];
 
-// Render skills to display
 function renderSkills() {
   skillsList.innerHTML = userSkills.map((skill, index) => 
     `<div class="skill-tag">
@@ -191,7 +194,6 @@ function renderSkills() {
     </div>`
   ).join('');
 
-  // Attach remove event listeners
   document.querySelectorAll('.remove-skill').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.index);
@@ -204,20 +206,14 @@ function renderSkills() {
 const skillHint = document.getElementById('skillHint');
 const clearSkillsBtn = document.getElementById('clearSkillsBtn');
 
-// Show hint message
 function showHint(message) {
   skillHint.textContent = message;
   skillHint.classList.add('show');
   skillInput.classList.add('shake');
-  setTimeout(() => {
-    skillInput.classList.remove('shake');
-  }, 400);
-  setTimeout(() => {
-    skillHint.classList.remove('show');
-  }, 2500);
+  setTimeout(() => skillInput.classList.remove('shake'), 400);
+  setTimeout(() => skillHint.classList.remove('show'), 2500);
 }
 
-// Add skill handler
 function addSkill() {
   const skill = skillInput.value.trim().toLowerCase();
   if (!skill) {
@@ -240,7 +236,6 @@ function addSkill() {
 
 addSkillBtn.addEventListener('click', addSkill);
 
-// Clear all skills handler
 clearSkillsBtn.addEventListener('click', () => {
   if (userSkills.length === 0) {
     showHint('⚠️ No skills to clear!');
@@ -250,7 +245,6 @@ clearSkillsBtn.addEventListener('click', () => {
   renderSkills();
 });
 
-// Allow Enter key to add skill
 skillInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
@@ -267,14 +261,9 @@ function toggleBacklogVisibility() {
   }
 }
 
-backlogRadios.forEach((radio) => {
-  radio.addEventListener("change", toggleBacklogVisibility);
-});
-
-// Run once on load
+backlogRadios.forEach((radio) => radio.addEventListener("change", toggleBacklogVisibility));
 toggleBacklogVisibility();
 
-// Live preview when selecting a profile image
 photoInput.addEventListener('change', () => {
   const f = photoInput.files && photoInput.files[0];
   if (!f) return;
@@ -285,57 +274,88 @@ photoInput.addEventListener('change', () => {
   reader.readAsDataURL(f);
 });
 
-// Load existing profile data on page load
-(function loadExistingData() {
+function updateInitials(name) {
+  if (!name) return;
+  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+  const nav = document.getElementById('navProfileInitials');
+  if (nav) nav.textContent = initials;
+}
+
+function populateForm(data) {
+  if (!data) return;
+  if (data.fullName) document.getElementById('fullName').value = data.fullName;
+  if (data.email) document.getElementById('email').value = data.email;
+  if (data.universityName) document.getElementById('universityName').value = data.universityName;
+  if (data.rollNumber) document.getElementById('rollNumber').value = data.rollNumber;
+  if (data.registrationNumber) document.getElementById('registrationNumber').value = data.registrationNumber;
+  if (data.program) document.getElementById('program').value = data.program;
+  if (data.specialization) document.getElementById('specialization').value = data.specialization;
+  if (data.semester) document.getElementById('semester').value = data.semester;
+  if (data.graduationYear) document.getElementById('graduationYear').value = data.graduationYear;
+  if (data.city) document.getElementById('city').value = data.city;
+  if (data.district) document.getElementById('district').value = data.district;
+  if (data.state) document.getElementById('state').value = data.state;
+
+  if (data.backlogStatus) {
+    const radio = document.querySelector(`input[name="backlog_status"][value="${data.backlogStatus}"]`);
+    if (radio) radio.checked = true;
+  }
+  if (data.backlogNumber !== undefined) {
+    document.getElementById('backlogNumber').value = data.backlogNumber || '';
+  }
+
+  if (Array.isArray(data.skills)) {
+    userSkills = data.skills.map(s => String(s).toLowerCase());
+    renderSkills();
+  }
+
+  toggleBacklogVisibility();
+  updateInitials(data.fullName);
+}
+
+function loadFromLocal() {
   try {
-    const raw = localStorage.getItem('profileData');
+    const raw = localStorage.getItem(PROFILE_STORAGE_KEY);
     if (!raw) return;
     const data = JSON.parse(raw);
+    populateForm(data);
+    const savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY) || data.photo;
+    if (savedPhoto) photoPreview.src = savedPhoto;
+  } catch (e) {
+    console.warn('Could not load profile data from localStorage', e);
+  }
+}
 
-    if (data.fullName) document.getElementById('fullName').value = data.fullName;
-    if (data.email) document.getElementById('email').value = data.email;
-    if (data.universityName) document.getElementById('universityName').value = data.universityName;
-    if (data.rollNumber) document.getElementById('rollNumber').value = data.rollNumber;
-    if (data.registrationNumber) document.getElementById('registrationNumber').value = data.registrationNumber;
-    if (data.program) document.getElementById('program').value = data.program;
-    if (data.specialization) document.getElementById('specialization').value = data.specialization;
-    if (data.semester) document.getElementById('semester').value = data.semester;
-    if (data.graduationYear) document.getElementById('graduationYear').value = data.graduationYear;
-    if (data.city) document.getElementById('city').value = data.city;
-    if (data.district) document.getElementById('district').value = data.district;
-    if (data.state) document.getElementById('state').value = data.state;
-    
-    if (data.backlogStatus) {
-      const radio = document.querySelector(`input[name="backlog_status"][value="${data.backlogStatus}"]`);
-      if (radio) radio.checked = true;
-      toggleBacklogVisibility();
-    }
-    
-    if (data.backlogNumber) document.getElementById('backlogNumber').value = data.backlogNumber;
-    
-    if (Array.isArray(data.skills)) {
-      userSkills = [...data.skills];
-      renderSkills();
-    }
+function persistLocal(data, photoDataUrl) {
+  const stored = { ...data };
+  if (photoDataUrl) {
+    stored.photo = photoDataUrl;
+    localStorage.setItem(PHOTO_STORAGE_KEY, photoDataUrl);
+  }
+  localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(stored));
+}
 
-    if (data.photo) {
-      photoPreview.src = data.photo;
-    }
+async function loadProfile() {
+  const savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY);
+  if (savedPhoto) photoPreview.src = savedPhoto;
 
-    // Update navbar initials
-    if (data.fullName) {
-      const initials = data.fullName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-      document.getElementById('navProfileInitials').textContent = initials;
+  try {
+    const resp = await fetch(PROFILE_ENDPOINT);
+    if (resp.ok) {
+      const p = await resp.json();
+      populateForm(p);
+      persistLocal(p, savedPhoto);
+      return;
     }
   } catch (e) {
-    console.warn('Could not load profile data', e);
+    console.warn('Could not fetch profile from backend', e);
   }
-})();
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  loadFromLocal();
+}
 
-  const data = {
+function gatherFormData() {
+  return {
     fullName: document.getElementById('fullName').value || '',
     email: document.getElementById('email').value || '',
     universityName: document.getElementById('universityName').value || '',
@@ -346,50 +366,65 @@ form.addEventListener("submit", (e) => {
     semester: document.getElementById('semester').value || '',
     graduationYear: document.getElementById('graduationYear').value || '',
     backlogStatus: (document.querySelector('input[name="backlog_status"]:checked')||{}).value || '',
-    backlogNumber: document.getElementById('backlogNumber').value || '',
+    backlogNumber: Number(document.getElementById('backlogNumber').value) || 0,
     city: document.getElementById('city').value || '',
     district: document.getElementById('district').value || '',
     state: document.getElementById('state').value || '',
-    skills: [...userSkills] // Save the skills array
+    skills: [...userSkills]
   };
+}
 
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => resolve(ev.target.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = gatherFormData();
   const file = photoInput.files && photoInput.files[0];
+  let photoDataUrl = localStorage.getItem(PHOTO_STORAGE_KEY) || null;
 
-  function finishSave(photoDataUrl) {
-    if (photoDataUrl) data.photo = photoDataUrl;
-    
-    // Save to local storage
-    localStorage.setItem('profileData', JSON.stringify(data));
-    
-    // Visual feedback button
+  if (file) {
+    try {
+      photoDataUrl = await readFileAsDataUrl(file);
+    } catch (err) {
+      console.error('Could not read photo', err);
+    }
+  }
+
+  try {
+    const resp = await fetch(PROFILE_ENDPOINT, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (!resp.ok) throw new Error('Save failed');
+
+    persistLocal(data, photoDataUrl);
+
     const btn = document.querySelector('.btn.primary');
     const originalText = btn.innerText;
     btn.innerText = "Saved! ✓";
-    btn.style.background = "#10b981"; // Green
-    
+    btn.style.background = "#10b981";
     setTimeout(() => {
-        btn.innerText = originalText;
-        btn.style.background = ""; 
-        location.href = 'profile.html';
-    }, 1000);
-  }
-
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (ev) => finishSave(ev.target.result);
-    reader.readAsDataURL(file);
-  } else {
-    // Preserve existing photo if any
-    const existing = localStorage.getItem('profileData');
-    if (existing) {
-      try {
-        const parsed = JSON.parse(existing);
-        if (parsed && parsed.photo) data.photo = parsed.photo;
-      } catch (e) {}
-    }
-    finishSave();
+      btn.innerText = originalText;
+      btn.style.background = "";
+      location.href = 'profile.html';
+    }, 800);
+  } catch (err) {
+    alert("Could not save profile. Please try again.");
+    console.error(err);
   }
 });
+
+loadProfile();
 </script>
 </body>
 </html>
