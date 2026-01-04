@@ -7,7 +7,6 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from skill_extractor import extract_short_skills
 from job_formatter import format_job_description
-from ai_explainer import generate_ai_explanation
 
 
 def _jobs_directory() -> str:
@@ -136,16 +135,6 @@ def add_job(job: Dict[str, Any]) -> Dict[str, Any]:
     # Ensure field exists even when formatter is disabled
     if "formatted_description" not in job:
         job["formatted_description"] = job.get("description", "")
-
-    # ENABLED: Generate AI explanation for students
-    try:
-        generate_ai_explanation(job)
-        print(f"✓ AI explanation generated for job {job.get('id')}")
-    except Exception as e:
-        print(f"⚠ AI explanation generation failed for job {job.get('id')}: {e}")
-        # Ensure fallback exists
-        if "ai_explanation" not in job:
-            job["ai_explanation"] = f"This is a {job.get('role', 'position')} role at {job.get('company', 'a leading company')}. Check the full job description below for details."
 
     # Save as individual file
     try:

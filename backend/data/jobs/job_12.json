@@ -1,25 +1,23 @@
 {
   "id": 12,
-  "company": "PwC India",
-  "role": "Associate – Python Data Engineer",
-  "experience": "0–2 Years",
-  "job_type": "Full Time",
-  "responsibilities": [
-    "Help organisations uncover enterprise insights and drive business results using smarter data analytics",
-    "Implement enterprise content and data management applications",
-    "Extract insights from industry or sector trends",
-    "Review work for quality, accuracy and relevance",
-    "Use structured communication when influencing and connecting with others",
-    "Uphold the firm's code of ethics and business conduct"
-  ],
+  "company_name": "PwC India",
+  "location": "Kolkata",
+  "job_role": "Python Data Engineer",
+  "ctc": "9.5 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
   "required_skills": [
-    "Communication",
-    "Problem Solving",
-    "Teamwork"
+    "Python",
+    "SQL",
+    "ETL",
+    "Data Warehousing"
   ],
+  "eligibility_criteria": "B.Tech / MCA in CS or Data-related fields",
+  "full_job_description": "Build data pipelines and transform large datasets for analytics.",
   "short_required_skills": [
-    "Communication",
-    "Problem Solving",
-    "Teamwork"
+    "Python",
+    "SQL",
+    "ETL",
+    "Data Warehousing"
   ]
 }

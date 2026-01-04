@@ -241,7 +241,9 @@ def match_jobs(student_skills):
         
         # Create a rich text representation of the job for AI matching
         skills_text = ' '.join(display_skills) if display_skills else ''
-        job_text = f"{job.get('role', '')} at {job.get('company', '')}. Requires {skills_text}. {description}"
+        company = job.get('company') or job.get('company_name', '')
+        role = job.get('role') or job.get('job_role', '')
+        job_text = f"{role} at {company}. Requires {skills_text}. {description}"
         
         # Calculate Match using AI (semantic similarity for ranking)
         perc = calculate_similarity(student_profile_text, job_text)
@@ -256,8 +258,8 @@ def match_jobs(student_skills):
         missing = missing[:5]
         
         results.append({
-            "company": job.get("company", "Unknown"),
-            "role": job.get("role", "Unknown Position"),
+            "company": job.get("company") or job.get("company_name", "Unknown"),
+            "role": job.get("role") or job.get("job_role", "Unknown Position"),
             "match_percentage": int(perc), # AI Score
             "missing_skills": missing      # Only core missing skills (3-5 max)
         })

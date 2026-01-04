@@ -1,21 +1,23 @@
 {
   "id": 8,
-  "company": "StartupX Labs",
-  "role": "Junior Web Developer",
-  "ctc": "5 LPA",
+  "company_name": "StartupX Labs",
   "location": "Remote",
-  "experience": "0–1 Year",
+  "job_role": "Junior Web Developer",
+  "ctc": "5 LPA",
+  "experience_required": "0–1 Year",
   "employment_type": "Full-time",
   "required_skills": [
     "HTML",
     "CSS",
-    "JavaScript"
+    "JavaScript",
+    "Git"
   ],
-  "eligibility": "Any Graduate",
-  "description": "Maintain and enhance startup web products.",
+  "eligibility_criteria": "Any Graduate with web basics",
+  "full_job_description": "Maintain and enhance web applications with guidance from senior developers.",
   "short_required_skills": [
     "HTML",
     "CSS",
-    "JavaScript"
+    "JavaScript",
+    "Git"
   ]
 }

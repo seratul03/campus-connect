@@ -1,18 +1,18 @@
 {
   "id": 4,
-  "company": "Accenture",
-  "role": "Cloud Associate",
-  "ctc": "9 LPA",
+  "company_name": "Accenture",
   "location": "Mumbai",
-  "experience": "0–2 Years",
+  "job_role": "Cloud Associate",
+  "ctc": "9 LPA",
+  "experience_required": "0–2 Years",
   "employment_type": "Full-time",
   "required_skills": [
     "AWS",
     "Linux",
     "Networking"
   ],
-  "eligibility": "B.Tech / MCA",
-  "description": "Deploy and manage cloud infrastructure.",
+  "eligibility_criteria": "B.Tech / MCA with cloud fundamentals",
+  "full_job_description": "Deploy and manage cloud infrastructure while ensuring system availability and security.",
   "short_required_skills": [
     "AWS",
     "Linux",

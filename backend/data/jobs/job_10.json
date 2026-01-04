@@ -1,45 +1,21 @@
 {
   "id": 10,
-  "company": "BAAR Technologies",
-  "role": "Jr. Python Developer",
-  "experience": "0–1 Years",
-  "job_type": "Full Time",
-  "location": [
-    "Kolkata",
-    "Mumbai",
-    "Pune"
-  ],
-  "responsibilities": [
-    "Writing reusable, testable, and efficient code in Python",
-    "Understanding of business requirement",
-    "Design and implementation of BAAR Workflow to achieve business requirement"
-  ],
-  "skills_and_qualifications": [
-    "Well versed with Python",
-    "Logical thinking is required to design and implement BAAR Workflow",
-    "Good understanding of scripting language",
-    "Understanding of fundamental design principles behind a scalable application",
-    "Familiarity with event-driven programming in Python",
-    "Able to create database schemas that represent and support business processes",
-    "Strong unit test and debugging skills",
-    "Experience in working with libraries like Pandas, Numpy etc",
-    "Some knowledge in SQL is preferred"
-  ],
+  "company_name": "BAAR Technologies",
+  "location": "Kolkata",
+  "job_role": "Junior Python Developer",
+  "ctc": "5.5 LPA",
+  "experience_required": "0–1 Year",
+  "employment_type": "Full-time",
   "required_skills": [
-    "Well versed with Python",
-    "Logical thinking is required to design and implement BAAR Workflow",
-    "Good understanding of scripting language",
-    "Understanding of fundamental design principles behind a scalable application",
-    "Familiarity with event-driven programming in Python",
-    "Able to create database schemas that represent and support business processes",
-    "Strong unit test and debugging skills",
-    "Experience in working with libraries like Pandas, Numpy etc"
+    "Python",
+    "Pandas",
+    "SQL"
   ],
+  "eligibility_criteria": "B.Tech / BCA / B.Sc",
+  "full_job_description": "Write efficient Python code and assist in workflow automation.",
   "short_required_skills": [
     "Python",
-    "SQL",
     "Pandas",
-    "NumPy",
-    "Problem Solving"
+    "SQL"
   ]
 }

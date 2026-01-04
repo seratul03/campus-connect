@@ -279,6 +279,11 @@ def download_resume(filename):
 if __name__ == "__main__":
     # Serve static frontend files (register after API routes so they are not shadowed)
     FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+    ADMIN_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "admin")
+
+    @app.route("/admin/<path:filename>")
+    def serve_admin(filename):
+        return send_from_directory(ADMIN_DIR, filename)
 
     @app.route("/<path:filename>")
     def serve_frontend(filename):

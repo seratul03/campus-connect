@@ -1,39 +1,23 @@
 {
   "id": 14,
-  "company": "Cognizant",
-  "role": "AIML Data Scientist",
-  "experience": "1–2 Years",
-  "job_type": "Full Time",
+  "company_name": "Cognizant",
   "location": "Kolkata",
-  "responsibilities": [
-    "Apply Machine Learning and Deep Learning algorithms to solve business challenges",
-    "Improve model accuracy to deliver greater business impact",
-    "Work with domain teams to understand business context",
-    "Design, develop and deploy deep learning models",
-    "Build CI/CD pipelines for ML model deployment",
-    "Integrate AI and ML models using REST APIs"
-  ],
-  "technical_expertise": [
-    "Machine learning and statistical sciences",
-    "Python / R / SQL",
-    "Tensorflow / Pytorch",
-    "NLP, Computer Vision, Deep Learning",
-    "Git / Github",
-    "Cloud platforms and GPU based compute"
-  ],
+  "job_role": "AIML Data Scientist",
+  "ctc": "12 LPA",
+  "experience_required": "1–2 Years",
+  "employment_type": "Full-time",
   "required_skills": [
-    "Machine learning and statistical sciences",
-    "Python / R / SQL",
-    "Tensorflow / Pytorch",
-    "NLP, Computer Vision, Deep Learning",
-    "Git / Github",
-    "Cloud platforms and GPU based compute"
-  ],
-  "short_required_skills": [
-    "R",
-    "Git",
+    "Machine Learning",
+    "Python",
     "TensorFlow",
-    "Computer Vision",
-    "GitHub"
+    "SQL"
+  ],
+  "eligibility_criteria": "B.Tech AIML / Data Science",
+  "full_job_description": "Build ML models and deploy AI-driven solutions.",
+  "short_required_skills": [
+    "Machine Learning",
+    "Python",
+    "TensorFlow",
+    "SQL"
   ]
 }

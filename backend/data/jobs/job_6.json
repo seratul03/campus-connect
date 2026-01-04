@@ -1,21 +1,23 @@
 {
   "id": 6,
-  "company": "HCL",
-  "role": "DevOps Engineer",
-  "ctc": "11 LPA",
+  "company_name": "HCL",
   "location": "Noida",
-  "experience": "2–5 Years",
+  "job_role": "DevOps Engineer",
+  "ctc": "11 LPA",
+  "experience_required": "2–5 Years",
   "employment_type": "Full-time",
   "required_skills": [
     "Docker",
     "Kubernetes",
-    "CI/CD"
+    "CI/CD",
+    "Linux"
   ],
-  "eligibility": "B.Tech / MCA",
-  "description": "Automate deployment pipelines and infrastructure.",
+  "eligibility_criteria": "B.Tech / MCA with DevOps experience",
+  "full_job_description": "Automate deployment pipelines and manage infrastructure for high availability.",
   "short_required_skills": [
     "Docker",
     "Kubernetes",
-    "CI/CD"
+    "CI/CD",
+    "Linux"
   ]
 }

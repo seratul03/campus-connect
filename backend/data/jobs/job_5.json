@@ -1,28 +1,23 @@
 {
   "id": 5,
-  "company": "Capgemini",
-  "role": "Full Stack Developer",
-  "ctc": "10 LPA",
+  "company_name": "Capgemini",
   "location": "Bangalore",
-  "experience": "2–4 Years",
+  "job_role": "Full Stack Developer",
+  "ctc": "10 LPA",
+  "experience_required": "2–4 Years",
   "employment_type": "Full-time",
   "required_skills": [
     "React",
     "Node.js",
-    "MongoDB"
+    "MongoDB",
+    "REST APIs"
   ],
-  "eligibility": "B.Tech / MCA / M.Sc in Computer Science or related field with proven experience in full stack development.",
-  "description": "Capgemini is seeking experienced Full Stack Developers to design and develop scalable web applications. Join our innovative team working on cutting-edge projects for global clients. You will be responsible for both front-end and back-end development, ensuring seamless integration and optimal performance. This role offers great opportunities to work with modern technologies and architectures.",
-  "responsibilities": "• Design and develop responsive web applications using React.js\n• Build robust backend services and APIs using Node.js\n• Work with MongoDB for database design and optimization\n• Implement authentication, authorization, and security best practices\n• Optimize applications for maximum speed and scalability\n• Collaborate with UI/UX designers to implement intuitive interfaces\n• Write unit tests and perform code reviews\n• Deploy applications using modern DevOps practices\n• Troubleshoot and debug production issues\n• Mentor junior developers and share knowledge\n• Participate in architectural discussions and technical planning",
-  "preferred_qualifications": "Experience with TypeScript, knowledge of GraphQL, familiarity with microservices architecture, experience with AWS or Azure cloud services, understanding of Docker and Kubernetes, exposure to agile/scrum methodologies, contributions to open-source projects.",
-  "benefits": "• Competitive salary of 10 LPA with performance bonuses\n• Comprehensive health and wellness benefits\n• Flexible work arrangements and remote work options\n• Annual learning and development budget\n• Latest technology stack and tools\n• International project exposure\n• Sponsored certifications and training\n• Employee stock options\n• Collaborative and innovative work culture\n• Modern office amenities and recreational facilities",
-  "about_company": "Capgemini is a global leader in partnering with companies to transform and manage their business by harnessing the power of technology. The Group is guided everyday by its purpose of unleashing human energy through technology for an inclusive and sustainable future. Capgemini is a responsible and diverse organization of over 340,000 team members in more than 50 countries.",
-  "posted_date": "December 18, 2025",
-  "deadline": "January 10, 2026",
-  "openings": "15",
+  "eligibility_criteria": "B.Tech / MCA with web development experience",
+  "full_job_description": "Build scalable web applications and APIs with modern frontend and backend technologies.",
   "short_required_skills": [
     "React",
     "Node.js",
-    "MongoDB"
+    "MongoDB",
+    "REST APIs"
   ]
 }

@@ -24,8 +24,12 @@ async function loadJobs() {
 
     jobs.forEach(job => {
       // find original job entry to get the id and extra details
-      const source = allJobs.find(j => j.company === job.company && j.role === job.role) || {};
-      const jobId = source.id || "";
+      const source = allJobs.find(j => {
+        const comp = j.company || j.company_name || "";
+        const role = j.role || j.job_role || "";
+        return comp === job.company && role === job.role;
+      }) || {};
+      const jobId = source.id || source.job_id || "";
       const badgeClass =
         job.match_percentage >= 85 ? "recommended" : "improve";
 

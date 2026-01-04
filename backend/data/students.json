@@ -14,7 +14,7 @@
     "id": 99,
     "name": "Placement Admin",
     "email": "admin@college.edu",
-    "password": "admin",
+    "password": "admin123",
     "role": "admin"
   }
 ]

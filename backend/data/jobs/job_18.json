@@ -1,0 +1,21 @@
+{
+  "id": 18,
+  "company_name": "Zoho",
+  "location": "Chennai",
+  "job_role": "Software Developer",
+  "ctc": "7.5 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Java",
+    "SQL",
+    "Problem Solving"
+  ],
+  "eligibility_criteria": "Any Engineering Graduate",
+  "full_job_description": "Develop business software products and internal tools.",
+  "short_required_skills": [
+    "Java",
+    "SQL",
+    "Problem Solving"
+  ]
+}

@@ -1,36 +1,23 @@
 {
   "id": 13,
-  "company": "Soul AI",
-  "role": "Java Developer",
-  "experience": "0–2 Years",
-  "job_type": "Full Time",
-  "responsibilities": [
-    "Evaluate and validate patches across multi-module Java repositories",
-    "Execute JUnit test suites, review failures, and diagnose regressions",
-    "Debug complex backend logic and enterprise patterns",
-    "Review PRs for maintainability, code quality, and correctness",
-    "Work with Maven/Gradle build systems",
-    "Collaborate with developers to ensure scalable Java backend code"
-  ],
-  "skills": [
-    "JUnit",
-    "Maven/Gradle",
-    "OOP fundamentals",
-    "Debugging large Java projects",
-    "Understanding of Spring ecosystem"
-  ],
+  "company_name": "Soul AI",
+  "location": "Remote",
+  "job_role": "Java Developer",
+  "ctc": "8.5 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
   "required_skills": [
+    "Java",
+    "Spring",
     "JUnit",
-    "Maven/Gradle",
-    "OOP fundamentals",
-    "Debugging large Java projects",
-    "Understanding of Spring ecosystem"
+    "Maven"
   ],
+  "eligibility_criteria": "B.Tech / MCA",
+  "full_job_description": "Develop and test enterprise-grade Java backend systems.",
   "short_required_skills": [
+    "Java",
+    "Spring",
     "JUnit",
-    "Maven/Gradle",
-    "OOP fundamentals",
-    "Debugging large Java projects",
-    "Understanding of Spring ecosystem"
+    "Maven"
   ]
 }

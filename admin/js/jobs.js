@@ -103,3 +103,46 @@ async function deleteJob(id) {
     showToast('Network error');
   }
 }
+
+async function deleteAllJobs() {
+  if (!confirm('Are you sure you want to delete ALL jobs? This action cannot be undone!')) return;
+  
+  try {
+    // First, fetch all jobs to get their IDs
+    const res = await fetch("http://127.0.0.1:5000/api/admin/jobs");
+    if (!res.ok) {
+      showToast("Failed to load jobs");
+      return;
+    }
+    const jobs = await res.json();
+    
+    if (!jobs || !jobs.length) {
+      showToast('No jobs to delete');
+      return;
+    }
+    
+    // Delete each job
+    let successCount = 0;
+    let failCount = 0;
+    
+    for (const job of jobs) {
+      try {
+        const deleteRes = await fetch(`http://127.0.0.1:5000/api/admin/jobs/${job.id}`, { method: 'DELETE' });
+        if (deleteRes.ok) {
+          successCount++;
+        } else {
+          failCount++;
+        }
+      } catch (e) {
+        failCount++;
+        console.error('Error deleting job:', job.id, e);
+      }
+    }
+    
+    showToast(`Deleted ${successCount} jobs. ${failCount > 0 ? failCount + ' failed.' : ''}`);
+    loadAllJobs();
+  } catch (e) {
+    console.error(e);
+    showToast('Network error');
+  }
+}
