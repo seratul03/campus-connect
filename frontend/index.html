@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Campus Connect | Smart Career Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/pages.css" />
+
+    <style>
+      /* =========================
+       HOME PAGE ONLY STYLES
+    ========================= */
+
+      .hero {
+        max-width: 1100px;
+        margin: 80px auto 60px;
+        text-align: center;
+        padding: 64px 32px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 28px;
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 720px;
+        margin: 0 auto 36px;
+        line-height: 1.6;
+      }
+
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 14px 26px;
+        border-radius: 14px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: var(--ios-blue);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(0, 122, 255, 0.35);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--glass-border);
+        color: var(--ios-blue);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(0, 122, 255, 0.08);
+      }
+
+      /* Features */
+      .section {
+        max-width: 1100px;
+        margin: 80px auto;
+        padding: 0 24px;
+      }
+
+      .section h2 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+      }
+
+      .section p.section-desc {
+        text-align: center;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto 48px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        padding: 28px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 22px;
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .feature-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      .feature-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Steps */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .step {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--glass-border);
+        text-align: center;
+      }
+
+      .step span {
+        display: inline-block;
+        background: var(--ios-blue);
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        line-height: 36px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>Campus Connect</h1>
+      <p>
+        A smart career and research portal designed to help students discover
+        internships, jobs, research opportunities, and become job-ready using
+        ATS insights and skill-based recommendations.
+      </p>
+
+      <div class="hero-actions">
+        <a href="login.html" class="btn-primary">Get Started / Login</a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <h2>What You Can Do</h2>
+      <p class="section-desc">
+        Campus Connect brings everything a student needs for career preparation
+        into one intelligent platform.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>ATS Resume Analysis</h3>
+          <p>
+            Check resume compatibility with industry ATS systems and get
+            actionable improvement suggestions.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Jobs & Internships</h3>
+          <p>
+            Browse curated opportunities with eligibility checks and match
+            percentages.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Research Opportunities</h3>
+          <p>Discover ongoing research projects and academic collaborations.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Practice Modules</h3>
+          <p>
+            Prepare for interviews with structured practice and skill-building
+            modules.
+          </p>
+        </div>
+      </div>
+
+      <!-- Research Preview (shows 4-5 cards and an explore button) -->
+      <section
+        class="section"
+        id="researchPreviewSection"
+        style="margin-top: 36px"
+      >
+        <h2>Research Preview</h2>
+        <p class="section-desc">
+          A quick look at recent research projects. Explore more on the Research
+          Portal.
+        </p>
+
+        <div class="features-grid" id="researchPreviewGrid"></div>
+
+        <div style="text-align: center; margin-top: 18px">
+          <a
+            href="http://localhost:5000/research"
+            target="_blank"
+            class="btn-secondary"
+            >Explore More</a
+          >
+        </div>
+      </section>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <h2>How It Works</h2>
+
+      <div class="steps">
+        <div class="step">
+          <span>1</span>
+          <p>Access the student dashboard</p>
+        </div>
+
+        <div class="step">
+          <span>2</span>
+          <p>Upload resume and explore opportunities</p>
+        </div>
+
+        <div class="step">
+          <span>3</span>
+          <p>Get ATS score, eligibility & recommendations</p>
+        </div>
+
+        <div class="step">
+          <span>4</span>
+          <p>Practice, improve, and apply confidently</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Campus Connect • Smart Career & Research Portal</footer>
+
+    <script>
+      // Load a small preview (4-5 items) from the research data used by the research section
+      fetch("../backend/data/research.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const grid = document.getElementById("researchPreviewGrid");
+          if (!grid) return;
+          const items = data.slice(0, 5);
+          items.forEach((p) => {
+            const d = document.createElement("div");
+            d.className = "feature-card";
+            d.innerHTML = `
+            <h3>${p.title}</h3>
+            <p style="color:var(--text-muted);margin:8px 0">${p.mentor} • ${
+              p.domain
+            }</p>
+            <p style="color:var(--text-muted);font-size:0.95rem">${(
+              p.description || ""
+            ).slice(0, 160)}${
+              (p.description || "").length > 160 ? "..." : ""
+            }</p>
+          `;
+            grid.appendChild(d);
+          });
+        })
+        .catch((err) => console.error("Failed to load research preview:", err));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Practice | Campus Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Practice-specific styles -->
+  <link rel="stylesheet" href="css/practice.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR (UNCHANGED, SAME AS OTHER PAGES) ===== -->
+  <nav class="main-nav">
+    <!-- <a href="index.html">Home</a> -->
+    <a href="student-dashboard.html">Dashboard</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="internships.html">Internships</a>
+    <a href="practice.html" class="active">Practice</a>
+    <a href="research.html">Research</a>
+    <a href="ats.html">ATS Checker</a>
+    <a href="updates.html">Hiring Updates</a>
+    <a href="profile.html" class="profile-bubble active">
+  <span>RK</span>
+</a>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <h1>Practice & Skill Building</h1>
+    <p>Improve your skills based on ATS & job eligibility</p>
+  </section>
+
+  <!-- ===== CONTROLS ===== -->
+  <section class="practice-controls">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="🔍 Search skills, topics, questions..."
+      oninput="searchModules(this.value)"
+    />
+
+    <select id="categoryFilter" onchange="applyFilters()">
+      <option value="All">All Categories</option>
+    </select>
+
+    <select id="levelFilter" onchange="applyFilters()">
+      <option value="All">All Levels</option>
+    </select>
+
+    <select onchange="sortModules(this.value)">
+      <option value="">Sort By</option>
+      <option value="level">Difficulty</option>
+      <option value="time">Estimated Time</option>
+    </select>
+
+    <div class="right-controls">
+      <button class="progress-btn" onclick="openProgress()">Overall Progress</button>
+      <button class="progress-btn" onclick="openScoreModal()">Your Scores</button>
+    </div>
+  </section>
+
+  <!-- ===== YOUR SCORES MODAL ===== -->
+  <div id="scoreModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Your Quiz Scores</h3>
+      <div id="scoreList"></div>
+      <button onclick="closeScoreModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <section class="practice-layout">
+
+    <!-- MAIN PRACTICE GRID -->
+    <div id="practiceContainer" class="practice-grid"></div>
+
+    <!-- RIGHT-SIDE RECOMMENDATIONS -->
+    <aside class="recommendation-panel">
+      <h2>Recommended for You</h2>
+      <div id="recommendationList"></div>
+    </aside>
+
+  </section>
+
+  <!-- ===== OVERALL PROGRESS MODAL ===== -->
+  <div id="progressModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Practice Progress</h3>
+
+      <div class="ring">
+        <span id="overallPercent">0%</span>
+      </div>
+
+      <div class="stats">
+        <p>Completed: <strong id="countCompleted">0</strong></p>
+        <p>In Progress: <strong id="countProgress">0</strong></p>
+        <p>Not Started: <strong id="countNot">0</strong></p>
+
+        <hr>
+
+        <h4>Overall Scores</h4>
+
+        <p>Best Score: <strong id="bestScore">0%</strong></p>
+        <p>Average Score: <strong id="avgScore">0%</strong></p>
+        <p>Total Attempts: <strong id="scoreAttempts">0</strong></p>
+      </div>
+
+      <button onclick="closeProgress()">Close</button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/practice.js"></script>
+  <link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js" defer></script>
+
+
+
+
+</body>
+</html>

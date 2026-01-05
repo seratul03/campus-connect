@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hiring Updates | Campus Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --glass: rgba(255, 255, 255, 0.7);
+      --border: rgba(255, 255, 255, 0.45);
+      --blue: #007aff;
+      --text: #0a2540;
+      --muted: #6b7c93;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef3ff, #f7f9ff, #ffffff);
+      color: var(--text);
+      padding: 0px;
+    }
+
+    /* Header Card */
+    .header-card {
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .header-card h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .notif-badge {
+      background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+      color: white;
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 6px 14px rgba(255, 59, 48, 0.35);
+    }
+
+    /* Updates Container */
+    .updates-container {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Update Card */
+    .update-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      margin-bottom: 14px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .update-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .update-info h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .update-info p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Status Pills */
+    .status-pill {
+      font-size: 0.7rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .selected {
+      background: linear-gradient(135deg, #34c759, #6ee7a5);
+      color: #053b22;
+    }
+
+    .shortlisted {
+      background: linear-gradient(135deg, #ffd60a, #ffec99);
+      color: #6b5200;
+    }
+
+    .rejected {
+      background: linear-gradient(135deg, #ff453a, #ff9a9a);
+      color: #5a0000;
+    }
+
+    .new {
+      background: linear-gradient(135deg, #0a84ff, #6ab8ff);
+      color: white;
+    }
+
+    /* Unread Indicator */
+    .unread-dot {
+  width: 9px;
+  height: 9px;
+  background: #ff3b30;
+  border-radius: 50%;
+  position: absolute;
+  right: 140px; /* space before status pill */
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.18);
+}
+
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      width: 92%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(22px);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+      animation: pop 0.35s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: translateY(12px) scale(0.96);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-content h2 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+
+    .modal-content h4 {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .modal-content p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .close-btn {
+      margin-top: 24px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: none;
+      background: linear-gradient(135deg, #007aff, #5fa8ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(0, 122, 255, 0.35);
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+<nav class="main-nav">
+  <a href="student-dashboard.html">Dashboard</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="internships.html">Internships</a>
+  <a href="practice.html">Practice</a>
+  <a href="research.html">Research</a>
+  <a href="ats.html">ATS Checker</a>
+  <a href="updates.html" class="active">Hiring Updates</a>
+  <a href="profile.html" class="profile-bubble active"><span>RK</span></a>
+</nav>
+
+<div class="header-card">
+  <h1>Hiring Updates</h1>
+  <span class="notif-badge" id="notifCount">0</span>
+</div>
+
+<div class="updates-container" id="updatesContainer"></div>
+
+<!-- Modal -->
+<div class="modal" id="mailModal">
+  <div class="modal-content">
+    <h2 id="modalCompany"></h2>
+    <h4 id="modalRole"></h4>
+    <p id="modalMessage"></p>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+    const updates = [
+      {
+        company: "Google",
+        role: "Software Engineer Intern",
+        message:
+          "You have been shortlisted for Technical Interview Round 1. Please check your email for further instructions.",
+        status: "shortlisted",
+        unread: true
+      },
+      {
+        company: "Microsoft",
+        role: "Cloud Support Engineer",
+        message:
+          "Congratulations! You are selected for the final HR round scheduled next week.",
+        status: "selected",
+        unread: true
+      },
+      {
+        company: "Amazon",
+        role: "SDE Intern",
+        message:
+          "Thank you for applying. Unfortunately, your profile was not selected at this time.",
+        status: "rejected",
+        unread: false
+      },
+      {
+        company: "Infosys",
+        role: "System Engineer",
+        message:
+          "A new job opportunity matching your profile is available. Apply before the deadline.",
+        status: "new",
+        unread: true
+      }
+    ];
+
+    const container = document.getElementById("updatesContainer");
+    const notifCount = document.getElementById("notifCount");
+
+    function renderUpdates() {
+      container.innerHTML = "";
+      const unreadCount = updates.filter(u => u.unread).length;
+      notifCount.textContent = unreadCount;
+
+      updates.forEach((u, index) => {
+        const card = document.createElement("div");
+        card.className = "update-card";
+
+        card.innerHTML = `
+          ${u.unread ? `<span class="unread-dot"></span>` : ""}
+          <div class="update-info">
+            <h3>${u.company} – ${u.role}</h3>
+            <p>${u.message.slice(0, 60)}...</p>
+          </div>
+          <span class="status-pill ${u.status}">${u.status}</span>
+        `;
+
+        card.onclick = () => openModal(index);
+        container.appendChild(card);
+      });
+    }
+
+    function openModal(index) {
+      const u = updates[index];
+      u.unread = false;
+
+      document.getElementById("modalCompany").textContent = u.company;
+      document.getElementById("modalRole").textContent = u.role;
+      document.getElementById("modalMessage").textContent = u.message;
+
+      document.getElementById("mailModal").style.display = "flex";
+      renderUpdates();
+    }
+
+    function closeModal() {
+      document.getElementById("mailModal").style.display = "none";
+    }
+
+    renderUpdates();
+  </script>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "id": 5,
+  "company_name": "Capgemini",
+  "location": "Bangalore",
+  "job_role": "Full Stack Developer",
+  "ctc": "10 LPA",
+  "experience_required": "2–4 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "React",
+    "Node.js",
+    "MongoDB",
+    "REST APIs"
+  ],
+  "eligibility_criteria": "B.Tech / MCA with web development experience",
+  "full_job_description": "Build scalable web applications and APIs with modern frontend and backend technologies.",
+  "short_required_skills": [
+    "React",
+    "Node.js",
+    "MongoDB",
+    "REST APIs"
+  ]
+}

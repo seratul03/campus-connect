@@ -1,0 +1,12 @@
+from transformers import pipeline
+
+summarizer = pipeline(
+    "summarization",
+    model="models/pegasus_cnn_dailymail",
+    tokenizer="models/pegasus_cnn_dailymail"
+)
+
+text = "Infosys is a global leader in next-generation digital services and consulting, with a strong legacy of driving innovation and excellence for enterprises worldwide. Founded in India, the company has grown into a multinational organization serving clients across industries such as banking, finance, healthcare, manufacturing, retail, and technology. Infosys is known for its deep expertise in software development, enterprise solutions, cloud computing, data analytics, artificial intelligence, and digital transformation.\n\nThe company places a strong emphasis on building long-term partnerships with its clients by understanding their business challenges and delivering tailored, scalable solutions. Infosys has played a key role in helping organizations modernize legacy systems, migrate to cloud platforms, and adopt emerging technologies that enhance efficiency and competitiveness. Its structured delivery models, strong governance, and focus on quality have made it a trusted partner for some of the world’s largest enterprises.\n\nInfosys is also widely recognized for its investment in talent development and continuous learning. Through extensive training programs, internal learning platforms, and global education initiatives, the company ensures that its employees remain at the forefront of technological advancements. The organization promotes a culture of innovation, ethical business practices, and sustainability, encouraging employees to think creatively and responsibly.\n\nIn addition to its commercial success, Infosys is committed to corporate social responsibility and sustainable growth. The company actively supports initiatives in education, digital inclusion, environmental sustainability, and community development. With a strong global presence, robust research capabilities, and a future-focused mindset, Infosys continues to shape the digital journeys of businesses while contributing positively to society."
+
+out = summarizer(text, min_length=20, max_length=90, do_sample=False)
+print("✅ SUMMARY:", out[0]["summary_text"])

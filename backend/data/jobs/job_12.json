@@ -1,0 +1,23 @@
+{
+  "id": 12,
+  "company_name": "PwC India",
+  "location": "Kolkata",
+  "job_role": "Python Data Engineer",
+  "ctc": "9.5 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "SQL",
+    "ETL",
+    "Data Warehousing"
+  ],
+  "eligibility_criteria": "B.Tech / MCA in CS or Data-related fields",
+  "full_job_description": "Build data pipelines and transform large datasets for analytics.",
+  "short_required_skills": [
+    "Python",
+    "SQL",
+    "ETL",
+    "Data Warehousing"
+  ]
+}

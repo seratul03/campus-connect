@@ -1,0 +1,21 @@
+{
+  "id": 20,
+  "company_name": "Swiggy",
+  "location": "Bangalore",
+  "job_role": "Backend Engineer",
+  "ctc": "13 LPA",
+  "experience_required": "2–4 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "Django",
+    "Microservices"
+  ],
+  "eligibility_criteria": "B.Tech / MCA",
+  "full_job_description": "Develop high-performance backend services for large-scale systems.",
+  "short_required_skills": [
+    "Python",
+    "Django",
+    "Microservices"
+  ]
+}

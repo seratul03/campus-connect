@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Job – Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="../frontend/css/layout.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body>
+  <div class="admin-container">
+    <header class="admin-header glass">
+      <div>
+        <h2>Add Job Posting</h2>
+        <p class="subtitle">Campus Connect · Admin Panel</p>
+      </div>
+      <button class="danger-btn" onclick="goBack()">Cancel</button>
+    </header>
+
+    <section class="glass form-section" style="max-width: 800px; margin: 0 auto;">
+      <h3 style="margin-bottom: 30px;">Job Details</h3>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <input id="company" placeholder="Company Name" />
+        <input id="role" placeholder="Role (e.g. SDE-1)" />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <input id="ctc" placeholder="CTC (e.g. 12 LPA)" />
+        <input id="location" placeholder="Location (e.g. Bangalore)" />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <input id="experience" placeholder="Experience (e.g. 0-2 yrs)" />
+        <input id="employment_type" placeholder="Type (Full-time, Intern)" />
+      </div>
+
+      <input id="required_skills" placeholder="Required Skills (comma-separated)" />
+      <input id="eligibility" placeholder="Eligibility (e.g. CGPA > 7.0, 2024 Batch)" />
+      
+      <input id="job_id" type="hidden" />
+
+      <textarea id="description" placeholder="Paste full job description here..." rows="8"></textarea>
+
+      <div style="margin-top: 20px;">
+        <button class="primary-btn" id="submitBtn">Post Job</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast">
+    <span id="toastMsg">Job added successfully</span>
+  </div>
+
+  <script src="js/add-job.js"></script>
+</body>
+</html>

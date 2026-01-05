@@ -1,0 +1,296 @@
+/* Jobs Container */
+.jobs-container {
+  padding: 48px 28px;
+  max-width: 1100px;
+  margin: 30px auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+:root {
+  --jobs-bg: rgba(255, 255, 255, 0.6);
+  --card-radius: 14px;
+  --muted: #6b7280;
+  --accent-1: #2563eb;
+  --accent-2: #1e3a8a;
+}
+
+/* Header */
+.jobs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.jobs-header h2 {
+  font-size: 22px;
+  margin: 0;
+  color: var(--text-dark);
+  letter-spacing: -0.2px;
+}
+
+.jobs-header button {
+  width: auto;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, var(--jobs-bg), rgba(255, 255, 255, 0.8));
+  color: var(--text-dark);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Jobs Grid */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Job Card */
+.job-card {
+  padding: 28px 28px 22px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: var(--jobs-bg);
+  backdrop-filter: blur(6px) saturate(110%);
+  /* Entrance Animation */
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  overflow: visible;
+}
+
+/* Stagger Loop */
+.job-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.job-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.job-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.job-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.job-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.job-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.86)
+  );
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+  z-index: 2;
+}
+
+.job-card h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.job-card p {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* Match Percentage */
+.match {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--text-dark), #475569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 20px 0;
+  letter-spacing: -1px;
+}
+
+/* Modal Notification - Centered with Backdrop */
+.toast-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+/* Backdrop Blur Overlay */
+.toast-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.toast-container.active::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Centered Glass Notification Modal */
+.toast {
+  position: relative;
+  min-width: 340px;
+  max-width: 420px;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 251, 255, 0.98),
+    rgba(232, 241, 255, 0.94)
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #0f172a;
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08),
+    0 0 0 1px rgba(219, 234, 254, 0.85) inset,
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+  transform: scale(0.85) translateY(-20px);
+  opacity: 0;
+  transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 350ms ease;
+  pointer-events: auto;
+  border: 1px solid rgba(219, 234, 254, 0.9);
+}
+
+.toast.show {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Icon with enhanced glass effect */
+.toast .icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+}
+
+.toast.success .icon {
+  background: linear-gradient(135deg, #bfdbfe, #60a5fa);
+  color: #fff;
+}
+
+.toast .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toast .title {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  color: #1d4ed8;
+}
+
+.toast .desc {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badges */
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  padding: 7px 15px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  z-index: -1;
+  transform: translateY(-2px);
+}
+
+.recommended {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.improve {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+/* Button */
+.job-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.job-actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.job-actions .apply {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(30, 64, 175, 0.15);
+}
+
+.job-actions .learn-more {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.job-actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.12);
+}
+.job-actions button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.1);
+}

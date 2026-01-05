@@ -1,0 +1,23 @@
+{
+  "id": 3,
+  "company_name": "Wipro",
+  "location": "Hyderabad",
+  "job_role": "Data Analyst",
+  "ctc": "7.2 LPA",
+  "experience_required": "1–3 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Excel"
+  ],
+  "eligibility_criteria": "B.Tech / B.Sc in CS, Statistics, or related field",
+  "full_job_description": "Analyze data, create dashboards, and generate insights to support business decisions.",
+  "short_required_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Excel"
+  ]
+}

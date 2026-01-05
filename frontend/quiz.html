@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+
+<body>
+
+<div class="quiz-wrapper">
+
+  <!-- ================== DIFFICULTY SELECT ================== -->
+  <div id="difficultyScreen" class="difficulty-box">
+
+    <button class="back-btn" onclick="goBack()">← Back</button>
+
+    <h2>Select Difficulty</h2>
+
+    <div class="difficulty-option" data-level="easy">
+      <div class="dot easy"></div>
+      <div>
+        <h4>Easy</h4>
+        <p>10 Questions</p>
+      </div>
+    </div>
+
+    <div class="difficulty-option" data-level="medium">
+      <div class="dot medium"></div>
+      <div>
+        <h4>Medium</h4>
+        <p>10 Questions</p>
+      </div>
+    </div>
+
+    <div class="difficulty-option" data-level="hard">
+      <div class="dot hard"></div>
+      <div>
+        <h4>Hard</h4>
+        <p>10 Questions</p>
+      </div>
+    </div>
+
+    <button class="start-btn" onclick="begin()">Start Quiz</button>
+  </div>
+
+
+  <!-- ================== QUIZ HEADER ================== -->
+  <div class="quiz-header" id="quizHeader" style="display:none;">
+
+  <div class="quiz-left">
+    <h2>Quiz</h2>
+
+    <!-- Timer under Quiz -->
+    <div class="timer-row">
+      <span id="time">⏱ 00:00:00</span>
+    </div>
+  </div>
+
+  <!-- Question number (right aligned) -->
+  <span id="quizHeaderText"></span>
+
+</div>
+
+
+
+  <!-- ================== QUIZ CONTENT ================== -->
+  <div id="quizBox"></div>
+
+</div>
+
+
+<!-- ================== TIME OVER MODAL ================== -->
+<div id="timeModal" class="modal-overlay">
+  <div class="modal-card">
+    <h3>⏱ Time Over</h3>
+    <p>Your quiz has been submitted.</p>
+
+    <button id="viewResultsBtn" class="next-btn">
+      View Results
+    </button>
+  </div>
+</div>
+
+
+<!-- ================== POPUP ================== -->
+<div class="custom-popup" id="popupBox">
+  <div class="popup-card">
+    <h3 id="popupMsg">Message here</h3>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+
+<!-- IMPORTANT: question bank FIRST -->
+<script src="js/questionBank.js"></script>
+
+<!-- Then the quiz logic -->
+<script src="js/quiz.js"></script>
+
+</body>
+</html>

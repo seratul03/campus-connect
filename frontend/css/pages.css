@@ -1,0 +1,363 @@
+/* ================================
+   Campus Connect – Pages CSS
+   iOS Glassmorphism Inspired
+================================ */
+
+/* Root Variables */
+:root {
+  --ios-blue: #007aff;
+  --bg-gradient: linear-gradient(180deg, #f4f8ff, #eef3ff, #ffffff);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --text-dark: #0a2540;
+  --text-muted: #6b7c93;
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Inter, sans-serif;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* ================================
+   Page Layout
+================================ */
+
+.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 48px 20px 80px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* ================================
+   Glass Card
+================================ */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  padding: 26px;
+  transition: transform 0.35s var(--ease),
+              box-shadow 0.35s var(--ease);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================
+   Card Grid
+================================ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ================================
+   Card Content
+================================ */
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+/* ================================
+   Tags / Badges
+================================ */
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+/* ================================
+   Buttons
+================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s var(--ease);
+}
+
+.btn-primary {
+  background: var(--ios-blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 122, 255, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--ios-blue);
+  color: var(--ios-blue);
+}
+
+.btn-outline:hover {
+  background: rgba(0, 122, 255, 0.1);
+}
+
+/* ================================
+   Search & Filters
+================================ */
+
+.search-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.search-bar input,
+.search-bar select {
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* ================================
+   Empty State
+================================ */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ================================
+   Smooth Animations
+================================ */
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .glass-card {
+    padding: 22px;
+  }
+}
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #0a2540;
+  padding: 6px 12px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.main-nav a:hover {
+  background: rgba(0, 122, 255, 0.12);
+  color: #007aff;
+}
+
+/* ================================
+   GLOBAL NAVBAR (SINGLE SOURCE)
+================================ */
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  padding: 16px 20px;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+
+  padding: 8px 14px;
+  border-radius: 12px;
+
+  transition: background 0.3s var(--ease),
+              color 0.3s var(--ease);
+}
+
+.main-nav a:hover {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+}
+
+.main-nav a.active {
+  color: #2186fa;
+  background: rgba(33, 134, 250, 0.12);
+}
+
+@media (max-width: 700px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+.main-nav a:hover {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+}
+
+/* Chatbot Launch Section */
+.chatbot-launch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  margin-top: 28px;
+}
+
+.chatbot-bubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chatbot-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 16px 36px rgba(0, 122, 255, 0.25);
+}
+
+.chatbot-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0a2540;
+}
+.chatbot-text:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Job Details</title>
+
+<style>
+:root {
+  --primary:#2563eb;
+  --bg:#f1f5f9;
+  --glass:rgba(255,255,255,.75);
+  --border:rgba(15,23,42,.08);
+  --text-dark:#0f172a;
+  --text-light:#64748b;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text-dark);
+}
+
+.page {
+  max-width: 1440px;
+  margin: auto;
+  padding: 40px 48px;
+}
+
+.job-header{
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  width: 910px;
+  border-radius:18px;
+  padding:28px 32px;
+  margin-bottom:28px;
+}
+
+.job-header h1{
+  margin:0;
+  font-size:2.1rem;
+}
+
+.company{
+  color:var(--primary);
+  font-weight:700;
+  margin-top:6px;
+}
+
+.meta{
+  display:flex;
+  gap:18px;
+  margin-top:12px;
+  color:var(--text-light);
+  font-size:.95rem;
+}
+
+.main-grid{
+  display:grid;
+  grid-template-columns: 2.3fr 1fr;
+  gap:28px;
+}
+
+.card{
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:26px;
+}
+
+.section-title{
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.skill{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(37,99,235,.12);
+  color:var(--primary);
+  font-size:.85rem;
+  font-weight:700;
+}
+
+.description{
+  line-height:1.8;
+  color:#334155;
+  white-space:pre-line;
+  font-size:0.98rem;
+}
+
+.description ul, .description ol {
+  margin: 10px 0;
+  padding-left: 24px;
+}
+
+.description li {
+  margin: 6px 0;
+}
+
+.side-card{
+  position:relative;
+  top:-180px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  height: fit-content;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:.95rem;
+}
+.info-row span{
+  color:var(--text-light);
+  font-weight:600;
+}
+
+.btn{
+  padding:14px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary{
+  background:var(--primary);
+  color:white;
+}
+.btn-outline{
+  background:white;
+  border:1px solid var(--border);
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+}
+.actions .btn{
+  flex:1;
+}
+
+.info-box{
+  border:1px dashed var(--border);
+  background:rgba(255,255,255,.9);
+}
+.info-box .description{
+  margin:0;
+  color:var(--text-light);
+  font-size:.95rem;
+}
+
+@media(max-width: 900px){
+  .page{
+    padding:24px 18px;
+  }
+  .job-header{
+    width:100%;
+    padding:20px 24px;
+  }
+  .main-grid{
+    grid-template-columns:1fr;
+  }
+  .side-card{
+    position:static;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="job-header">
+    <h1 id="job-role">—</h1>
+    <div id="company" class="company">—</div>
+    <div class="meta">
+      <span id="location">—</span>
+      <span id="job-type">—</span>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT CONTENT -->
+    <div class="card">
+      <div class="section-title">Job Description</div>
+      <div class="description" id="job-description">
+        No description available.
+      </div>
+
+      <br><br>
+
+      <div class="section-title">Key Responsibilities</div>
+      <div class="description" id="responsibilities">
+        —
+      </div>
+
+      <br><br>
+
+      <div class="section-title">Required Skills</div>
+      <div class="skills" id="skills">
+        <!-- skills will be injected here -->
+      </div>
+
+      <br><br>
+
+      <div class="section-title">Qualifications & Eligibility</div>
+      <div class="description" id="eligibility">
+        —
+      </div>
+
+      <br><br>
+
+      <div class="section-title">Benefits & Perks</div>
+      <div class="description" id="benefits">
+        —
+      </div>
+
+      <br><br>
+
+      <div class="section-title">About the Company</div>
+      <div class="description" id="about-company">
+        —
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="side-card">
+      <div class="card">
+        <div class="info-row">
+          <span>CTC</span>
+          <strong id="ctc">—</strong>
+        </div>
+        <div class="info-row">
+          <span>Experience</span>
+          <strong id="experience">—</strong>
+        </div>
+        <div class="info-row">
+          <span>Job Type</span>
+          <strong id="jobtype">—</strong>
+        </div>
+        <div class="info-row">
+          <span>Posted Date</span>
+          <strong id="posted-date">—</strong>
+        </div>
+        <div class="info-row">
+          <span>Deadline</span>
+          <strong id="deadline">—</strong>
+        </div>
+        <div class="info-row">
+          <span>Openings</span>
+          <strong id="openings">—</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="actions">
+          <button class="btn btn-primary" id="apply-now">Apply Now</button>
+          <button class="btn btn-outline" id="save-job">Save Job</button>
+        </div>
+      </div>
+
+      <div class="card info-box">
+        <div class="section-title">AI explanation</div>
+        <div class="description" id="ai_explanation">
+          ------------------
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+import { fetchAIExplanation } from './js/ai_explanation.js';
+  const applyBtn = document.getElementById('apply-now');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', () => {
+      window.location.href = 'jobs.html';
+    });
+  }
+
+  let aboutCompanyData = null;
+  const loadAboutCompanyData = async () => {
+    if (aboutCompanyData) return aboutCompanyData;
+    try {
+      const res = await fetch('admin/about_company.json');
+      if (res.ok) {
+        aboutCompanyData = await res.json();
+      }
+    } catch (err) {
+      console.error('Failed to load about_company.json', err);
+    }
+    return aboutCompanyData || [];
+  };
+
+  const fillAboutCompany = async (companyName) => {
+    if (!companyName) return;
+    const data = await loadAboutCompanyData();
+    const match = data.find(entry => (entry.company_name || '').toLowerCase() === companyName.toLowerCase());
+    if (match && match.about_company) {
+      const aboutEl = document.getElementById('about-company');
+      if (aboutEl) aboutEl.textContent = match.about_company;
+    }
+  };
+
+  const renderJob = (job) => {
+    document.getElementById('job-role').textContent = job.role || job.job_role || '—';
+    document.getElementById('company').textContent = job.company || job.company_name || '—';
+    document.getElementById('location').textContent = job.location || '—';
+    document.getElementById('job-type').textContent = job.employment_type || '—';
+
+    // Main content sections
+    document.getElementById('job-description').textContent = job.description || job.detailed_description || job.full_job_description || 'No description available.';
+    document.getElementById('responsibilities').textContent = job.responsibilities || job.key_responsibilities || 'Will be discussed during the interview process.';
+    document.getElementById('eligibility').textContent = job.eligibility || job.qualifications || job.eligibility_criteria || '—';
+    // document.getElementById('preferred-qualifications').textContent = job.preferred_qualifications || job.additional_qualifications || 'Not specified';
+    document.getElementById('benefits').textContent = job.benefits || job.perks || 'Competitive salary, health insurance, and professional development opportunities.';
+    document.getElementById('about-company').textContent = job.about_company || job.company_description || `${job.company || job.company_name} is a leading organization in the industry.`;
+    const notesEl = document.getElementById('application-notes');
+    if (notesEl) {
+      notesEl.textContent = job.application_notes || job.notes || job.next_steps || 'Save this job to keep it on your radar and check back for updates.';
+    }
+
+    // Side panel info
+    document.getElementById('ctc').textContent = job.ctc || job.salary || '—';
+    document.getElementById('experience').textContent = job.experience || job.experience_required || '—';
+    document.getElementById('jobtype').textContent = job.employment_type || job.job_type || '—';
+    document.getElementById('posted-date').textContent = job.posted_date || job.date_posted || new Date().toLocaleDateString();
+    document.getElementById('deadline').textContent = job.deadline || job.application_deadline || 'Open until filled';
+    document.getElementById('openings').textContent = job.openings || job.vacancies || '—';
+
+    // populate skills
+    const skillsEl = document.getElementById('skills');
+    skillsEl.innerHTML = '';
+    const jobSkills = job.required_skills || job.skills || [];
+    if (Array.isArray(jobSkills) && jobSkills.length) {
+      jobSkills.forEach(s => {
+        const d = document.createElement('div');
+        d.className = 'skill';
+        d.textContent = s;
+        skillsEl.appendChild(d);
+      });
+    }
+
+    fillAboutCompany(job.company || job.company_name);
+    // Fetch and update AI explanation
+    fetchAIExplanation(job.company || job.company_name);
+  };
+
+  // Populate fields from query params or by fetching job data from backend
+  (async function populate() {
+    const params = new URLSearchParams(location.search);
+    const idParam = params.get('id');
+    const roleParam = params.get('role') || '';
+    const companyParam = params.get('company') || '';
+
+    let jobList = [];
+    try {
+      const res = await fetch('http://127.0.0.1:5000/api/jobs');
+      if (res.ok) {
+        jobList = await res.json();
+      }
+    } catch (e) {
+      console.error('Failed to load job details', e);
+      document.getElementById('job-description').textContent = 'Failed to load job details from server.';
+    }
+
+    if (jobList.length) {
+      if (idParam) {
+        const matchById = jobList.find(j => String(j.id) === String(idParam) || String(j.job_id) === String(idParam));
+        if (matchById) {
+          renderJob(matchById);
+          return;
+        }
+      }
+
+      if (companyParam || roleParam) {
+        const matchByText = jobList.find(j => {
+          const comp = j.company || j.company_name || '';
+          const role = j.role || j.job_role || '';
+          const companyMatch = companyParam ? comp === companyParam : true;
+          const roleMatch = roleParam ? role === roleParam : true;
+          return companyMatch && roleMatch;
+        });
+
+        if (matchByText) {
+          renderJob(matchByText);
+          return;
+        }
+      }
+    }
+
+    // Fallback: use provided query params
+    if (roleParam) document.getElementById('job-role').textContent = roleParam;
+    if (companyParam) document.getElementById('company').textContent = companyParam;
+  })();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="profile-wrapper">
+      <!-- Card container (3D) -->
+      <div class="card" id="card">
+        <!-- FRONT -->
+        <div class="card-face card-front">
+          <div class="card-header">
+            <div class="logo-placeholder">
+                <img src="Brainware_University.svg" alt="">
+            </div>
+          </div>
+
+          <div class="photo-wrapper">
+            <img id="photo" alt="Profile photo" />
+          </div>
+
+          <div class="info">
+            <h3 id="name"></h3>
+            <p id="position"></p>
+            <h2 class="title" id="dept"></h2>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-face card-back">
+            <div class="card-header">
+            <div class="logo-placeholder">
+                <img src="Brainware_University.svg" alt="">
+            </div>
+          </div>
+          <div class="details">
+            <h3>Profile Details</h3>
+
+            <div class="detail-row">
+              <span class="label">Department</span>
+              <span class="value" id="d-dept"></span>
+            </div>
+
+            <div class="detail-row">
+              <span class="label">Position</span>
+              <span class="value" id="d-position"></span>
+            </div>
+
+            <div class="detail-row">
+              <span class="label">Qualification</span>
+              <span class="value" id="d-qualification"></span>
+            </div>
+
+            <div class="detail-row">
+              <span class="label">Roles</span>
+              <span class="value" id="d-roles"></span>
+            </div>
+
+            <div class="detail-row">
+              <span class="label">Research Areas</span>
+              <div class="chips" id="d-research"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flip button -->
+      <button id="flipBtn">See more</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

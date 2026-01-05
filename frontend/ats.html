@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart ATS Checker – Campus Connect</title>
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/ats.css" />
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    <nav class="main-nav">
+  <!-- <a href="index.html">Home</a> -->
+  <a href="student-dashboard.html">Dashboard</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="internships.html">Internships</a>
+  <a href="practice.html">Practice</a>
+  <a href="research.html">Research</a>
+  <a href="ats.html" class="active">ATS Checker</a>
+  <a href="updates.html">Hiring Updates</a>
+  <a href="profile.html" class="profile-bubble active">
+  <span>RK</span>
+</a>
+</nav>
+
+
+  <div class="ats-wrapper">
+    <div class="ats-header">
+      <div>
+        <h1>ATS Resume Optimizer</h1>
+        <p>AI-powered analysis to beat the hiring bots.</p>
+      </div>
+      <button onclick="goBack()" class="btn-secondary">Back to Dashboard</button>
+    </div>
+
+    <div class="ats-grid">
+      
+      <div class="glass card upload-section">
+        <h3>1. Upload Resume</h3>
+        <p class="subtext">Supported formats: PDF, DOCX</p>
+        
+        <div class="file-drop-area" id="dropZone">
+          <span class="file-icon">📄</span>
+          <span class="file-msg">Drag & Drop or Click to Upload</span>
+          <input type="file" id="resumeInput" accept=".pdf,.docx" />
+        </div>
+        <div id="fileName" class="file-selected hidden"></div>
+
+        <div class="jd-section">
+  <div class="jd-header">
+    <h3>2. Job Description</h3>
+    <span class="jd-optional">Optional</span>
+  </div>
+
+  <p class="subtext">
+    Paste the job description to improve keyword matching and ATS score accuracy.
+  </p>
+
+  <div class="jd-box">
+    <textarea
+      id="jdInput"
+      placeholder="Paste full job description here (roles, skills, requirements, tools)..."
+      maxlength="3000"
+      oninput="updateJDCount()"
+    ></textarea>
+
+    <div class="jd-footer">
+      <span class="jd-hint">💡 Tip: Include skills, tools, and qualifications</span>
+      <span class="jd-count"><span id="jdCount">0</span>/3000</span>
+    </div>
+  </div>
+</div>
+
+
+
+        <button onclick="analyze()" id="analyzeBtn">Analyze Resume</button>
+      </div>
+
+      <div class="glass card result-section" id="resultCard">
+        
+        <div id="loader" class="hidden">
+          <div class="spinner"></div>
+          <p>Scanning document & matching keywords...</p>
+        </div>
+
+        <div id="emptyState">
+          <div class="illustration">📊</div>
+          <h3>Ready to Analyze</h3>
+          <p>Upload your resume to see your ATS score, missing keywords, and actionable feedback.</p>
+        </div>
+
+        <div id="results" class="hidden">
+          <div class="score-circle-container">
+            <div class="score-circle" id="scoreCircle">
+              <span id="scoreVal">0</span>%
+            </div>
+            <p>ATS Compatibility Score</p>
+          </div>
+
+          <div class="stats-row">
+            <div class="mini-stat">
+              <span class="label">Skill Relevance</span>
+              <span class="value" id="skillRelevanceVal">--</span>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Experience Fit</span>
+              <span class="value" id="experienceVal">--</span>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Project Fit</span>
+              <span class="value" id="projectVal">--</span>
+            </div>
+          </div>
+
+          <div class="stats-row">
+            <div class="mini-stat">
+              <span class="label">Must-Have Coverage</span>
+              <span class="value" id="mandatoryVal">--</span>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Nice-to-Have</span>
+              <span class="value" id="niceToHaveVal">--</span>
+            </div>
+          </div>
+
+          <div class="role-fit-section">
+            <h4>🎯 Role Level Fit</h4>
+            <div class="role-bars">
+              <div class="role-bar">
+                <span class="role-label">Intern</span>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="internBar" style="width: 0%"></div>
+                </div>
+                <span class="role-score" id="internScore">0%</span>
+              </div>
+              <div class="role-bar">
+                <span class="role-label">Junior</span>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="juniorBar" style="width: 0%"></div>
+                </div>
+                <span class="role-score" id="juniorScore">0%</span>
+              </div>
+              <div class="role-bar">
+                <span class="role-label">Mid-Level</span>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="midBar" style="width: 0%"></div>
+                </div>
+                <span class="role-score" id="midScore">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-box">
+            <h4>💡 Improvement Plan</h4>
+            <ul id="feedbackList"></ul>
+          </div>
+
+          <div class="missing-concepts-box">
+            <h4>⚠️ Missing JD Concepts</h4>
+            <div id="missingConcepts" class="concepts-list"></div>
+          </div>
+
+          <div class="keywords-box">
+            <h4>✅ Detected Keywords</h4>
+            <div id="matchedKeywords" class="chips-container"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ats.js"></script>
+  <link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js" defer></script>
+
+
+</body>
+</html>
