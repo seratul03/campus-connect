@@ -1,3 +1,8 @@
+const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
+const PROFILE_ENDPOINT = `${API_BASE}/api/profile`;
+const MATCH_ENDPOINT = `${API_BASE}/api/match-jobs`;
+const JOBS_ENDPOINT = `${API_BASE}/api/jobs`;
+
 // Real jobs functionality - fetches from backend API
 async function loadJobs() {
   // Check authentication first
@@ -10,7 +15,7 @@ async function loadJobs() {
     // Try to get real user skills from backend profile API
     let skillsPayload = [];
     try {
-      const profileRes = await fetch("http://127.0.0.1:5000/api/profile");
+      const profileRes = await fetch(PROFILE_ENDPOINT);
       if (profileRes.ok) {
         const profileJson = await profileRes.json();
         skillsPayload = profileJson.skills || [];
@@ -24,7 +29,7 @@ async function loadJobs() {
     }
 
     const res = await fetch(
-      "http://127.0.0.1:5000/api/match-jobs",
+      MATCH_ENDPOINT,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -33,7 +38,7 @@ async function loadJobs() {
     );
 
     const jobs = await res.json();
-    const allRes = await fetch("http://127.0.0.1:5000/api/jobs");
+    const allRes = await fetch(JOBS_ENDPOINT);
     const allJobs = allRes.ok ? await allRes.json() : [];
 
     jobs.forEach(job => {

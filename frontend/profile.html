@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>My Profile | Campus Connect</title>
@@ -8,6 +9,34 @@
   <!-- Global Styles -->
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/profile.css" />
+  <style>
+    /* Modal for showing all skills
+    .skills-modal {
+      height: 100%;
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      z-index: 10000;
+      padding: 20px;
+    }
+
+    .skills-modal.show { display: flex; }
+
+    .skills-modal-content {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 18px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .see-all-btn { margin-top: 10px; padding: 6px 10px; font-size: 0.85rem; } */
+  </style>
 </head>
 
 <body>
@@ -47,7 +76,8 @@
 
       <div class="profile-card">
         <h3>Personal Information</h3>
-        <div class="profile-field"><label>Email</label><span id="p_email">bwubta23157@brainwareuniversity.ac.in</span></div>
+        <div class="profile-field"><label>Email</label><span id="p_email">bwubta23157@brainwareuniversity.ac.in</span>
+        </div>
         <div class="profile-field"><label>University Roll No</label><span id="p_roll">23010332148</span></div>
         <div class="profile-field"><label>Registration No</label><span id="p_reg">23013001761</span></div>
         <div class="profile-field"><label>Location</label><span id="p_location">Barasat, North 24 Parganas</span></div>
@@ -68,8 +98,8 @@
           <span class="skill-tag">HTML</span>
           <span class="skill-tag">CSS</span>
           <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">AI / ML</span>
         </div>
+        <button id="seeAllSkillsBtn" class="btn btn-secondary see-all-btn" style="display:none">See all skills</button>
       </div>
 
     </section>
@@ -95,6 +125,28 @@
     </div>
   </div>
 
+  <!-- All-skills modal -->
+  <div id="skillsModal" class="skills-modal" aria-hidden="true">
+    <div class="skills-modal-backdrop"></div>
+    <div class="skills-modal-content" role="dialog" aria-modal="true" aria-labelledby="skillsModalTitle">
+      <div class="modal-header">
+        <div class="header-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#007AFF"/></svg>
+          <h3 id="skillsModalTitle">All Skills</h3>
+        </div>
+          <button id="closeSkillsModal" class="close-btn">Done</button>
+      </div>
+
+        <div style="padding:12px 20px">
+          <input id="skillsSearch" class="skill-search" placeholder="Search skills..." aria-label="Search skills" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);box-shadow:none;">
+        </div>
+
+        <div id="allSkillsList" class="skills-grid" style="padding:6px 24px 20px"></div>
+
+      <div class="scroll-fade" aria-hidden="true"></div>
+    </div>
+  </div>
+
   <!-- JS -->
   <script>
     const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
@@ -110,6 +162,10 @@
     const resumeModal = document.getElementById("resumeModal");
     const modalClose = document.querySelector(".modal-close");
     const resumeViewer = document.getElementById("resumeViewer");
+    const skillsSearch = document.getElementById('skillsSearch');
+
+    // keep current skills accessible for searching
+    let currentAllSkills = [];
 
     function showToast(msg, state) {
       toast.textContent = msg;
@@ -117,7 +173,7 @@
       setTimeout(() => toast.classList.remove("show"), 2500);
     }
 
-    function setState(enabled, notify=false) {
+    function setState(enabled, notify = false) {
       toggle.classList.toggle("on", enabled);
       toggle.classList.toggle("off", !enabled);
       localStorage.setItem(KEY, enabled);
@@ -133,7 +189,7 @@
     setState(localStorage.getItem(KEY) !== "false");
     toggle.addEventListener("click", () => setState(!toggle.classList.contains("on"), true));
 
-    resumeUploadInput.addEventListener("change", async function() {
+    resumeUploadInput.addEventListener("change", async function () {
       const file = this.files[0];
       if (!file) return;
 
@@ -151,7 +207,7 @@
         });
 
         const result = await response.json();
-        
+
         if (response.ok) {
           localStorage.setItem("resumeFilename", result.filename);
           showToast("Resume uploaded successfully!", "on");
@@ -165,7 +221,7 @@
       }
     });
 
-    viewResumeBtn.addEventListener("click", function() {
+    viewResumeBtn.addEventListener("click", function () {
       const filename = localStorage.getItem("resumeFilename");
       if (!filename) {
         showToast("No resume found", "off");
@@ -173,13 +229,13 @@
       }
 
       const fileExt = filename.split('.').pop().toLowerCase();
-      
+
       if (fileExt === 'pdf') {
         resumeViewer.innerHTML = `<iframe src="${API_BASE}/api/view-resume/${filename}" width="100%" height="600px"></iframe>`;
       } else {
         resumeViewer.innerHTML = `<p>Resume: ${filename}</p><a href="${API_BASE}/api/download-resume/${filename}" class="btn btn-primary" download>Download Resume</a>`;
       }
-      
+
       resumeModal.style.display = "block";
     });
 
@@ -197,6 +253,19 @@
       viewResumeBtn.style.display = "inline-block";
     }
 
+
+    function toggleModal(show) {
+      const modal = document.getElementById('skillsModal');
+      if (show) {
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+      } else {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+
     function applyProfile(data, photo) {
       if (!data) return;
 
@@ -206,7 +275,7 @@
         document.getElementById('navProfileInitials').textContent = initials;
         document.getElementById('profileAvatar').textContent = initials;
       }
-      
+
       if (data.program || data.semester) {
         const tagline = [data.program || '', data.semester ? `• ${data.semester}` : ''].filter(Boolean).join(' ');
         if (tagline) document.getElementById('displayTagline').textContent = tagline;
@@ -227,8 +296,67 @@
 
       if (Array.isArray(data.skills) && data.skills.length > 0) {
         const skillsContainer = document.getElementById('p_skills');
-        skillsContainer.innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+        const seeAllBtn = document.getElementById('seeAllSkillsBtn');
+        const skillsModal = document.getElementById('skillsModal');
+        const allSkillsList = document.getElementById('allSkillsList');
+
+        const firstFive = data.skills.slice(0, 5);
+        skillsContainer.innerHTML = firstFive.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+
+          if (data.skills.length > 5) {
+            seeAllBtn.style.display = 'inline-block';
+            if (!seeAllBtn.dataset.listenerAttached) {
+              const openModal = () => {
+                currentAllSkills = data.skills.slice();
+                allSkillsList.innerHTML = currentAllSkills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+                skillsSearch.value = '';
+                skillsModal.classList.add('show');
+                skillsModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+              };
+
+              const closeModal = () => {
+                skillsModal.classList.remove('show');
+                skillsModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+              };
+
+              seeAllBtn.addEventListener('click', openModal);
+              document.getElementById('closeSkillsModal').addEventListener('click', closeModal);
+
+              skillsModal.addEventListener('click', (e) => {
+                if (e.target === skillsModal || e.target.classList.contains('skills-modal-backdrop')) {
+                  closeModal();
+                }
+              });
+
+              // Close on Escape
+              window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && skillsModal.classList.contains('show')) {
+                  closeModal();
+                }
+              });
+
+              seeAllBtn.dataset.listenerAttached = '1';
+            }
+          } else {
+            seeAllBtn.style.display = 'none';
+          }
       }
+
+        // Search handler (live filtering)
+        if (skillsSearch) {
+          skillsSearch.addEventListener('input', function () {
+            const q = this.value.trim().toLowerCase();
+            const filtered = currentAllSkills.filter(s => s.toLowerCase().includes(q));
+            const allSkillsListEl = document.getElementById('allSkillsList');
+            if (!filtered.length) {
+              allSkillsListEl.innerHTML = `<div style="color: #6b7280; padding:12px">No skills match “${this.value}”</div>`;
+            } else {
+              allSkillsListEl.innerHTML = filtered.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+            }
+          });
+        }
 
       const photoToUse = photo || data.photo;
       if (photoToUse) {
@@ -282,4 +410,5 @@
   </script>
 
 </body>
+
 </html>

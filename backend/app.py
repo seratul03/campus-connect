@@ -29,8 +29,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PRACTICE_PATH = os.path.join(DATA_DIR, "practice.json")
 SCORE_PATH = os.path.join(DATA_DIR, "score.json")
-# Profile path now points to Profile/profile.json
-PROFILE_PATH = os.path.join(BASE_DIR, "..", "Profile", "profile.json")
+# Profile path now points to backend/profile.json (moved into backend folder)
+PROFILE_PATH = os.path.join(BASE_DIR, "profile.json")
 
 # Configure upload folder for resumes
 RESUME_UPLOAD_FOLDER = r"C:\Users\Seratul Mustakim\Desktop\Ai saves\campus-connect\Resumes_uploaded"
@@ -111,11 +111,8 @@ def match():
 
     # If frontend didn't provide skills, fall back to server-side profile files
     if not skills:
-        # First try backend data profile path
+        # Only use the backend-local profile path
         profile_candidates = [PROFILE_PATH]
-        # Also check repository-level Profile folder (common in this project)
-        repo_profile = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Profile", "profile.json"))
-        profile_candidates.append(repo_profile)
 
         for p in profile_candidates:
             try:
@@ -231,7 +228,7 @@ def update_profile():
     clean["backlogStatus"] = clean.get("backlogStatus") or "cleared"
 
     _safe_write_json(PROFILE_PATH, clean)
-    return jsonify({"message": "Profile updated!"})
+    return jsonify({"message": "Profile updated!", "profile": clean})
 
 # Practice routes
 @app.route("/api/practice", methods=["GET"])
