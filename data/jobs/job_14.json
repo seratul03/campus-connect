@@ -1,0 +1,23 @@
+{
+  "id": 14,
+  "company_name": "Cognizant",
+  "location": "Kolkata",
+  "job_role": "AIML Data Scientist",
+  "ctc": "12 LPA",
+  "experience_required": "1–2 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Machine Learning",
+    "Python",
+    "TensorFlow",
+    "SQL"
+  ],
+  "eligibility_criteria": "B.Tech AIML / Data Science",
+  "full_job_description": "Build ML models and deploy AI-driven solutions.",
+  "short_required_skills": [
+    "Machine Learning",
+    "Python",
+    "TensorFlow",
+    "SQL"
+  ]
+}

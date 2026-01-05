@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "company_name": "Infosys",
+  "location": "Bangalore",
+  "job_role": "Software Engineer",
+  "ctc": "8 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "SQL",
+    "OOP",
+    "Git"
+  ],
+  "eligibility_criteria": "B.Tech / MCA in Computer Science or related field",
+  "full_job_description": "Develop, test, and maintain enterprise software applications while collaborating with cross-functional teams.",
+  "short_required_skills": [
+    "Python",
+    "SQL",
+    "OOP",
+    "Git"
+  ]
+}

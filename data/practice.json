@@ -1,0 +1,250 @@
+{
+  "categories": [
+    {
+      "id": "dsa",
+      "title": "Data Structures & Algorithms",
+      "description": "Practice core DSA topics commonly asked in technical interviews.",
+      "modules": [
+        {
+          "id": 1,
+          "title": "Arrays & Strings",
+          "level": "Beginner",
+          "estimated_time": "3 Hours",
+          "topics": [
+            "Array traversal",
+            "String manipulation",
+            "Two pointer technique"
+          ],
+          "practice_type": "Coding + MCQ",
+          "sample_questions": [
+            "Reverse an array",
+            "Find the maximum element",
+            "Check if a string is palindrome"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Linked Lists",
+          "level": "Intermediate",
+          "estimated_time": "4 Hours",
+          "topics": [
+            "Singly linked list",
+            "Doubly linked list",
+            "Cycle detection"
+          ],
+          "practice_type": "Coding",
+          "sample_questions": [
+            "Reverse a linked list",
+            "Detect loop in linked list",
+            "Find middle element"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python",
+      "title": "Python Programming",
+      "description": "Build strong Python fundamentals for backend, data, and AI roles.",
+      "modules": [
+        {
+          "id": 3,
+          "title": "Python Basics",
+          "level": "Beginner",
+          "estimated_time": "2 Hours",
+          "topics": [
+            "Variables",
+            "Loops",
+            "Functions"
+          ],
+          "practice_type": "MCQ + Coding",
+          "sample_questions": [
+            "Difference between list and tuple",
+            "Write a function to check prime number",
+            "Loop control statements"
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Object Oriented Programming",
+          "level": "Intermediate",
+          "estimated_time": "3 Hours",
+          "topics": [
+            "Classes and objects",
+            "Inheritance",
+            "Polymorphism"
+          ],
+          "practice_type": "Coding + Interview",
+          "sample_questions": [
+            "Explain inheritance with example",
+            "What is method overriding?",
+            "Create a class in Python"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "title": "Web Development",
+      "description": "Prepare for frontend and full stack roles.",
+      "modules": [
+        {
+          "id": 5,
+          "title": "HTML & CSS Fundamentals",
+          "level": "Beginner",
+          "estimated_time": "2.5 Hours",
+          "topics": [
+            "Semantic HTML",
+            "Flexbox",
+            "Responsive design"
+          ],
+          "practice_type": "Mini Tasks",
+          "sample_questions": [
+            "Difference between class and id",
+            "Create a responsive card layout",
+            "What is semantic HTML?"
+          ]
+        },
+        {
+          "id": 6,
+          "title": "JavaScript Basics",
+          "level": "Intermediate",
+          "estimated_time": "3 Hours",
+          "topics": [
+            "DOM manipulation",
+            "Events",
+            "ES6 features"
+          ],
+          "practice_type": "Coding",
+          "sample_questions": [
+            "Explain event bubbling",
+            "Create a to-do app logic",
+            "Difference between var, let, const"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sql",
+      "title": "SQL & Databases",
+      "description": "Practice database queries for data and backend roles.",
+      "modules": [
+        {
+          "id": 7,
+          "title": "SQL Basics",
+          "level": "Beginner",
+          "estimated_time": "2 Hours",
+          "topics": [
+            "SELECT queries",
+            "WHERE clause",
+            "ORDER BY"
+          ],
+          "practice_type": "Query Practice",
+          "sample_questions": [
+            "Fetch all records from a table",
+            "Find employees with salary > 50000",
+            "Sort records by date"
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Joins & Subqueries",
+          "level": "Advanced",
+          "estimated_time": "3.5 Hours",
+          "topics": [
+            "INNER JOIN",
+            "LEFT JOIN",
+            "Subqueries"
+          ],
+          "practice_type": "Query Practice",
+          "sample_questions": [
+            "Find employees without department",
+            "Second highest salary",
+            "Join multiple tables"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aptitude",
+      "title": "Aptitude & Logical Reasoning",
+      "description": "Improve quantitative and logical skills for placement exams.",
+      "modules": [
+        {
+          "id": 9,
+          "title": "Quantitative Aptitude",
+          "level": "Beginner",
+          "estimated_time": "2 Hours",
+          "topics": [
+            "Percentage",
+            "Profit & Loss",
+            "Time & Work"
+          ],
+          "practice_type": "MCQ",
+          "sample_questions": [
+            "Percentage increase problems",
+            "Simple interest calculation",
+            "Time and work formulas"
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Logical Reasoning",
+          "level": "Intermediate",
+          "estimated_time": "2.5 Hours",
+          "topics": [
+            "Series",
+            "Puzzles",
+            "Blood relations"
+          ],
+          "practice_type": "MCQ",
+          "sample_questions": [
+            "Number series completion",
+            "Seating arrangement puzzle",
+            "Family tree questions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "Interview Preparation",
+      "description": "Prepare for HR and technical interviews.",
+      "modules": [
+        {
+          "id": 11,
+          "title": "HR Interview Questions",
+          "level": "Beginner",
+          "estimated_time": "1.5 Hours",
+          "topics": [
+            "Self introduction",
+            "Strengths & weaknesses",
+            "Career goals"
+          ],
+          "practice_type": "Interview",
+          "sample_questions": [
+            "Tell me about yourself",
+            "Why should we hire you?",
+            "Where do you see yourself in 5 years?"
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Technical Interview",
+          "level": "Advanced",
+          "estimated_time": "4 Hours",
+          "topics": [
+            "System design basics",
+            "Code optimization",
+            "Debugging"
+          ],
+          "practice_type": "Interview + Case Study",
+          "sample_questions": [
+            "Design a URL shortener",
+            "Optimize a slow SQL query",
+            "Explain MVC architecture"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "papers": [
+    {
+      "title": "Deep Learning Approaches for Natural Language Processing in Sentiment Analysis",
+      "authors": "Bablu Pramanik, Dr. Saumya Das",
+      "venue": "Journal of AI Research · 2024",
+      "summary": "Transformer-based deep learning models applied to sentiment analysis on large-scale social media datasets.",
+      "tags": ["nlp", "deep-learning", "sentiment-analysis"],
+      "pdf_url": "https://example.com/papers/dl-nlp.pdf"
+    },
+    {
+      "title": "Low Power VLSI Design Techniques for Energy-Efficient Computing",
+      "authors": "Dr. Biswarup Mukherjee, Dr. Shukla Banik",
+      "venue": "International Journal of VLSI Systems · 2024",
+      "summary": "Energy-efficient VLSI techniques including power gating and dynamic voltage scaling for modern processors.",
+      "tags": ["vlsi", "low-power", "hardware"],
+      "pdf_url": "https://example.com/papers/low-power-vlsi.pdf"
+    },
+    {
+      "title": "IoT-Based Smart Agriculture: Machine Learning Approaches for Crop Monitoring",
+      "authors": "Anirbit Sengupta, Sumana Mahanta, Dr. Shivnath Ghosh",
+      "venue": "Journal of Smart Agriculture · 2024",
+      "summary": "IoT-enabled crop monitoring systems using machine learning for disease detection and yield prediction.",
+      "tags": ["iot", "agriculture", "machine-learning"],
+      "pdf_url": "https://example.com/papers/iot-agriculture.pdf"
+    },
+    {
+      "title": "Advanced Image Processing Techniques for Medical Diagnosis",
+      "authors": "Dr. Saumya Das, Riya Das, Pritam Paul",
+      "venue": "Journal of Medical AI · 2023",
+      "summary": "Deep learning–based image processing techniques for automated diagnosis using X-ray and MRI scans.",
+      "tags": ["medical-ai", "image-processing", "diagnostics"],
+      "pdf_url": "https://example.com/papers/medical-imaging.pdf"
+    },
+    {
+      "title": "Blockchain and IoT Integration for Secure Distributed Systems",
+      "authors": "Rubi Sarkar, Rudranath Mitra",
+      "venue": "International Journal of Distributed Systems · 2024",
+      "summary": "Secure IoT architectures using blockchain for transparency and tamper-proof data management.",
+      "tags": ["blockchain", "iot", "security"],
+      "pdf_url": "https://example.com/papers/blockchain-iot.pdf"
+    },
+    {
+      "title": "Cognitive Computing: Integrating AI with Human-like Reasoning",
+      "authors": "Sharmistha Dey, Dr. Saumya Das",
+      "venue": "Cognitive AI Journal · 2024",
+      "summary": "Cognitive computing systems that merge AI with principles from cognitive science for human-like reasoning.",
+      "tags": ["cognitive-ai", "reasoning", "machine-learning"],
+      "pdf_url": "https://example.com/papers/cognitive-computing.pdf"
+    }
+  ]
+}
