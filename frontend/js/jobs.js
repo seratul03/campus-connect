@@ -103,13 +103,29 @@ async function loadJobs() {
   }
 }
 
-function handleApply(company, role) {
+async function handleApply(company, role) {
+  const profileRes = await fetch(PROFILE_ENDPOINT);
+  const profile = profileRes.ok ? await profileRes.json() : {};
+  const email = profile.email;
+
+  if (!email) {
+    showToast("Profile incomplete", "Add email in profile first", "error");
+    return;
+  }
+
+  await fetch(`${API_BASE}/api/apply-job`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ company, role, email })
+  });
+
   showToast(
-    `Application sent`,
-    `You're all set — applied for ${role} at ${company}.`,
+    "Application sent",
+    `Applied for ${role} at ${company}`,
     "success"
   );
 }
+
 
 function goBack() {
   window.location.href = "student-dashboard.html";

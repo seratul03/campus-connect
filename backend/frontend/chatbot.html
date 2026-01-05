@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/frontend/css/chatbot.css" />
+</head>
+<body>
+
+  <!-- Page Wrapper -->
+  <div class="chatbot-page">
+
+    <!-- Chatbot Card -->
+    <div id="chatbot-window">
+      <div class="chat-header">
+        <span>Campus Career Assistant</span>
+        <span class="status">● Online</span>
+      </div>
+
+      <div id="chat-messages"></div>
+
+      <div class="chat-input">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Ask about jobs, internships, ATS..."
+        />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/frontend/js/chatbot.js"></script>
+</body>
+</html>

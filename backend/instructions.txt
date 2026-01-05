@@ -1,0 +1,50 @@
+How to run this project (AI models)
+
+If you have internet:
+
+        Just run the project normally.
+
+        The AI models will download automatically the first time.
+
+        This happens only once.
+
+        After that, the project works even without internet.
+
+If you do NOT have internet:
+
+        The project will work only if the AI models were already downloaded earlier.
+
+        The models must already exist on your system from a previous run.
+
+        If they are not present, the project will not start.
+
+AI Models used in this project:
+
+        1. sentence-transformers/all-MiniLM-L6-v2
+           - Used for: Job matching & similarity scoring
+           - Size: ~90 MB
+
+        2. distilbert-base-uncased
+           - Used for: Text tokenization & parsing
+           - Size: ~260 MB
+
+        3. google/flan-t5-base
+           - Used for: Job description formatting & AI explanations
+           - Size: ~990 MB
+           - Note: This was the model that exceeded GitHub's 100MB limit
+
+        Total download size: ~1.3 GB (one-time download)
+
+Important to know:
+
+        The AI models are NOT included in the GitHub repository (they're too large).
+
+        You never need to download any model manually.
+
+        The models are stored automatically on your system the first time you run the project.
+
+        Restarting or closing the project does not delete the models.
+
+        The models are saved locally in the 'models/' folder after first download.
+
+        All models are from HuggingFace and will be cached in your system's default cache location.

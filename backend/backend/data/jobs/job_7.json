@@ -1,0 +1,21 @@
+{
+  "id": 7,
+  "company_name": "IBM",
+  "location": "Bangalore",
+  "job_role": "AI Engineer",
+  "ctc": "14 LPA",
+  "experience_required": "1–3 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Machine Learning",
+    "Python",
+    "TensorFlow"
+  ],
+  "eligibility_criteria": "B.Tech in AIML / Data Science",
+  "full_job_description": "Design, train, and deploy AI models to solve real-world business problems.",
+  "short_required_skills": [
+    "Machine Learning",
+    "Python",
+    "TensorFlow"
+  ]
+}

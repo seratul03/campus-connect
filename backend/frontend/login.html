@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Connect | Login</title>
+
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="main-nav">
+    <span class="brand">Campus Connect</span>
+  </nav>
+
+  <!-- ================= LOGIN SECTION ================= -->
+  <div class="center">
+    <div class="glass card">
+      <h1>Welcome Back</h1>
+      <p>Login with your college credentials</p>
+
+      <input id="email" type="email" placeholder="Email" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <br /><br />
+      <button onclick="login()">Login</button>
+
+      <p id="error" style="color:red;"></p>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/auth.js"></script>
+
+</body>
+</html>

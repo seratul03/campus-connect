@@ -1,0 +1,23 @@
+{
+  "id": 11,
+  "company_name": "Nature Technologies",
+  "location": "Greater Kolkata",
+  "job_role": "Python Developer",
+  "ctc": "8 LPA",
+  "experience_required": "1–3 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "Flask",
+    "REST APIs",
+    "MySQL"
+  ],
+  "eligibility_criteria": "B.Tech in CS or related field",
+  "full_job_description": "Develop backend systems, APIs, and scalable applications.",
+  "short_required_skills": [
+    "Python",
+    "Flask",
+    "REST APIs",
+    "MySQL"
+  ]
+}

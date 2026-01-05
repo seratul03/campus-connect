@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Details • Campus Research Connect</title>
+    <link rel="stylesheet" href="/static/css/research-details.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">Campus Research Connect</h1>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+          <li><a href="/research" class="nav-link active">Research</a></li>
+          <li><a href="/participate" class="nav-link">Participate</a></li>
+          <li><a href="/faculty" class="nav-link">Faculty</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Research Details -->
+    <section class="details">
+      <div class="container">
+        <!-- Loading -->
+        <p id="loading" class="loading">Loading paper details...</p>
+
+        <!-- Paper Content -->
+        <article id="paper-content" style="display: none">
+          <!-- Header -->
+          <header class="paper-header">
+            <h1 id="paper-title" class="paper-title"></h1>
+
+            <p class="paper-meta">
+              <span id="paper-authors"></span> • <span id="paper-year"></span> •
+              <span id="paper-domain"></span>
+            </p>
+
+            <!-- H-index badge -->
+            <div class="metrics">
+              <span id="h-index-badge" class="h-badge"> H-index: — </span>
+            </div>
+          </header>
+
+          <!-- Abstract -->
+          <section class="paper-section">
+            <h2>Abstract</h2>
+            <p id="paper-abstract" class="abstract-text"></p>
+          </section>
+
+          <!-- Citation Graph -->
+          <section class="paper-section">
+            <h2>Citation Trend</h2>
+            <svg id="citation-graph" width="100%" height="220"></svg>
+          </section>
+
+          <!-- Keywords -->
+          <section class="paper-section">
+            <h2>Keywords</h2>
+            <div id="paper-keywords" class="tags"></div>
+          </section>
+
+          <!-- Actions -->
+          <div class="paper-actions">
+            <button id="save-btn" class="btn btn-primary">Save Paper</button>
+            <a id="pdf-link" class="btn btn-secondary" target="_blank">
+              Download PDF
+            </a>
+          </div>
+
+          <!-- Related Papers -->
+          <section class="paper-section">
+            <h2>Related Papers</h2>
+            <div id="related-papers" class="related-grid"></div>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Campus Research Connect • All rights reserved</p>
+    </footer>
+
+    <script src="/static/js/research-details.js"></script>
+  </body>
+</html>

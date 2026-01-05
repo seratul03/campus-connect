@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Jobs – Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../frontend/css/layout.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header glass">
+      <div>
+        <h2>All Job Postings</h2>
+        <p class="subtitle">Campus Connect · Admin Panel</p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="danger-btn" onclick="deleteAllJobs()" style="background: #ff3b30;">Delete All Jobs</button>
+        <button class="danger-btn" onclick="goBack()">Back</button>
+      </div>
+    </header>
+
+    <section class="glass" style="margin-top:20px; padding:20px;">
+      <h3>Jobs</h3>
+      <ul id="allJobsList" style="list-style:none; padding:0; margin:0;"></ul>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"><span id="toastMsg"></span></div>
+  <script src="js/jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research Projects | Campus Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+:root {
+  --ios-purple: #5856d6;
+  --text-dark: #0a2540;
+  --text-muted: #5b6b7c;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Inter, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #f5f6ff, #eef0ff, #ffffff);
+  color: var(--text-dark);
+}
+
+/* NAV */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 18px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 56px 20px 32px;
+}
+
+header h1 {
+  font-size: 2.6rem;
+}
+
+header p {
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 10px auto 0;
+}
+
+/* CONTROLS (ADVANCED GLASS) */
+.controls {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  padding: 0 20px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.controls input,
+.controls select {
+  appearance: none;
+  padding: 14px 44px 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.9),
+      rgba(255,255,255,0.6)
+    );
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 12px 30px rgba(0,0,0,0.08);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  transition:
+    box-shadow 0.4s var(--ease),
+    transform 0.3s var(--ease),
+    border 0.3s ease;
+}
+
+.controls select {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.9),
+      rgba(255,255,255,0.6)
+    ),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%235856d6'><path d='M6 8l4 4 4-4'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.controls input:hover,
+.controls select:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    0 18px 38px rgba(0,0,0,0.12);
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: var(--ios-purple);
+  box-shadow:
+    0 0 0 4px rgba(88, 86, 214, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 18px 40px rgba(0,0,0,0.15);
+}
+
+.controls input::placeholder {
+  color: var(--text-muted);
+}
+
+#resultCount {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* GRID */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 22px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transition: transform 0.4s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  margin-bottom: 6px;
+}
+
+.mentor {
+  color: var(--ios-purple);
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 10px 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+}
+
+/* APPLY BUTTON */
+.apply-btn {
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: none;
+  background: var(--ios-purple);
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(88,86,214,0.35);
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Disable underline/reveal effects on links for this page */
+a, a:link, a:visited { text-decoration: none !important; color: inherit; }
+a:hover, a:focus { text-decoration: none !important; box-shadow: none !important; outline: none !important; }
+</style>
+
+  <link rel="stylesheet" href="css/pages.css">
+
+</head>
+
+<body>
+    <nav class="main-nav">
+  <!-- <a href="index.html">Home</a> -->
+  <a href="student-dashboard.html">Dashboard</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="internships.html">Internships</a>
+  <a href="practice.html">Practice</a>
+  <a href="research.html" class="active">Research</a>
+  <a href="ats.html">ATS Checker</a>
+  <a href="updates.html">Hiring Updates</a>
+  <a href="profile.html" class="profile-bubble active">
+  <span>RK</span>
+</a>
+</nav>
+
+
+<header>
+    <div class="controls">
+  <input type="text" id="searchInput" placeholder="Search by title, domain, mentor, skill…" />
+  
+  <select id="sortSelect">
+    <option value="">Sort By</option>
+    <option value="title">Title (A–Z)</option>
+    <option value="domain">Domain</option>
+    <option value="duration">Duration</option>
+  </select>
+
+  <div id="resultCount"></div>
+</div>
+
+  <h1>Research Opportunities</h1>
+  <p>Collaborate with faculty and work on real-world research problems.</p>
+</header>
+
+<div class="container" id="previewResearchContainer">
+  <!-- papers from backend/data/papers.json will be rendered here -->
+</div>
+
+<div style="text-align:center;margin:16px 0 36px;">
+  <a class="apply-btn" href="http://127.0.0.1:5500" target="_blank" rel="noopener">Explore More Research</a>
+</div>
+
+<!-- Lower 'Science Papers' section removed per request -->
+
+<script>
+let allPapers = [];
+
+fetch("../backend/data/papers.json")
+  .then(res => res.json())
+  .then(data => {
+    const papersArray = data.papers || data;
+    allPapers = papersArray;
+    renderPapers(papersArray);
+  }).catch(err => console.error('Failed to load papers:', err));
+
+function renderPapers(papers) {
+  const preview = document.getElementById("previewResearchContainer");
+  preview.innerHTML = "";
+
+  papers.forEach(p => {
+    const authors = Array.isArray(p.authors) ? p.authors.join(', ') : (p.authors || '');
+    const venue = p.venue || p.journal || '';
+    const yearText = p.year ? ` • ${p.year}` : '';
+    const summary = p.summary || p.abstract || '';
+    const tags = (p.tags || p.keywords || []).map(k => `<span class="tag">${k}</span>`).join("");
+    const link = p.pdf_url || p.pdf || p.link || '#';
+
+    const html = `
+      <h3>${p.title}</h3>
+      <div class="mentor">${authors}</div>
+
+      <div class="meta">
+        ${venue}${yearText}
+      </div>
+
+      <p class="meta">${summary}</p>
+
+      <div class="tags">${tags}</div>
+
+      <a class="apply-btn" href="${link}" target="_blank" rel="noopener">Read Paper</a>
+    `;
+
+    const cardPreview = document.createElement("div");
+    cardPreview.className = "card";
+    cardPreview.innerHTML = html;
+    preview.appendChild(cardPreview);
+  });
+}
+</script>
+
+<footer>© 2025 Campus Connect · Research Portal</footer>
+
+<script>
+/* Micro-interaction for glass controls (kept) */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".controls input, .controls select")
+    .forEach(el => {
+      el.addEventListener("mousedown", () => el.style.transform = "scale(0.97)");
+      el.addEventListener("mouseup", () => el.style.transform = "");
+      el.addEventListener("mouseleave", () => el.style.transform = "");
+    });
+});
+</script>
+
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js" defer></script>
+
+
+
+</body>
+</html>

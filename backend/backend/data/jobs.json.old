@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "company": "Infosys",
+    "role": "Software Engineer",
+    "ctc": "8 LPA",
+    "location": "Bangalore",
+    "experience": "0–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Python", "SQL", "OOP", "Git"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Develop enterprise applications and client solutions."
+  },
+  {
+    "id": 2,
+    "company": "TCS",
+    "role": "System Engineer",
+    "ctc": "6.5 LPA",
+    "location": "Pune",
+    "experience": "0–1 Year",
+    "employment_type": "Full-time",
+    "required_skills": ["Java", "DSA", "Problem Solving"],
+    "eligibility": "B.Tech / BCA",
+    "description": "Support enterprise systems and software solutions."
+  },
+  {
+    "id": 3,
+    "company": "Wipro",
+    "role": "Data Analyst",
+    "ctc": "7.2 LPA",
+    "location": "Hyderabad",
+    "experience": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["SQL", "Python", "Power BI"],
+    "eligibility": "B.Tech / B.Sc",
+    "description": "Analyze business data and create dashboards."
+  },
+  {
+    "id": 4,
+    "company": "Accenture",
+    "role": "Cloud Associate",
+    "ctc": "9 LPA",
+    "location": "Mumbai",
+    "experience": "0–2 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["AWS", "Linux", "Networking"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Deploy and manage cloud infrastructure."
+  },
+  {
+    "id": 5,
+    "company": "Capgemini",
+    "role": "Full Stack Developer",
+    "ctc": "10 LPA",
+    "location": "Bangalore",
+    "experience": "2–4 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["React", "Node.js", "MongoDB"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Develop scalable web applications."
+  },
+  {
+    "id": 6,
+    "company": "HCL",
+    "role": "DevOps Engineer",
+    "ctc": "11 LPA",
+    "location": "Noida",
+    "experience": "2–5 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Docker", "Kubernetes", "CI/CD"],
+    "eligibility": "B.Tech / MCA",
+    "description": "Automate deployment pipelines and infrastructure."
+  },
+  {
+    "id": 7,
+    "company": "IBM",
+    "role": "AI Engineer",
+    "ctc": "14 LPA",
+    "location": "Bangalore",
+    "experience": "1–3 Years",
+    "employment_type": "Full-time",
+    "required_skills": ["Machine Learning", "Python", "TensorFlow"],
+    "eligibility": "B.Tech AIML / Data Science",
+    "description": "Build and deploy AI-driven solutions."
+  },
+  {
+    "id": 8,
+    "company": "StartupX Labs",
+    "role": "Junior Web Developer",
+    "ctc": "5 LPA",
+    "location": "Remote",
+    "experience": "0–1 Year",
+    "employment_type": "Full-time",
+    "required_skills": ["HTML", "CSS", "JavaScript"],
+    "eligibility": "Any Graduate",
+    "description": "Maintain and enhance startup web products."
+  },
+  {
+    "company": "TechNova Solutions Pvt. Ltd.",
+    "role": "Junior Software Engineer (Backend – Python)",
+    "ctc": "₹6 – 8 LPA",
+    "location": "Bangalore, India (Hybrid – 3 days office, 2 days remote)",
+    "experience": "0 – 2 Years",
+    "employment_type": "Full-time",
+    "required_skills": [
+      "Python",
+      "Data Structures & Algorithms",
+      "OOP Concepts",
+      "SQL",
+      "Git & GitHub",
+      "REST APIs",
+      "Basic Linux",
+      "Problem Solving"
+    ],
+    "eligibility": "B.Tech / B.E. in Computer Science, IT, AI/ML, or related fields  Final-year students and recent graduates are eligible  Minimum CGPA: 6.5 or equivalent  Strong logical thinking and willingness to learn",
+    "description": "TechNova Solutions is looking for a motivated and detail-oriented Junior Software Engineer to join our growing backend development team...",
+    "id": 9
+  }
+]

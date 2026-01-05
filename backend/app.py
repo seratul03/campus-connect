@@ -68,6 +68,70 @@ def _safe_write_json(path, data):
 def jobs():
     return jsonify(api.get_jobs())
 
+# ---------- JOB APPLICATIONS ----------
+APPLICATIONS_PATH = os.path.join(DATA_DIR, "applications.json")
+
+@app.route("/api/apply-job", methods=["POST"])
+def apply_job():
+    payload = request.get_json(force=True, silent=True) or {}
+
+    company = payload.get("company")
+    role = payload.get("role")
+    email = payload.get("email")
+
+    if not company or not role or not email:
+        return jsonify({"error": "Missing fields"}), 400
+
+    applications = _safe_load_json(APPLICATIONS_PATH, default=[])
+
+    applications.append({
+        "company": company,
+        "role": role,
+        "email": email,
+        "status": "applied",
+        "message": "Your application has been successfully submitted.",
+        "unread": True,
+        "timestamp": int(__import__("time").time())
+    })
+
+    _safe_write_json(APPLICATIONS_PATH, applications)
+
+    return jsonify({"message": "Application stored"})
+
+@app.route("/api/hiring-updates")
+def hiring_updates():
+    email = request.args.get("email")
+    if not email:
+        return jsonify([])
+
+    applications = _safe_load_json(APPLICATIONS_PATH, default=[])
+
+    user_updates = [
+        a for a in applications if a.get("email") == email
+    ]
+
+    return jsonify(user_updates)
+
+
+@app.route("/api/clear-notifications", methods=["POST"])
+def clear_notifications():
+    payload = request.get_json(force=True, silent=True) or {}
+    email = payload.get("email")
+    
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+    
+    applications = _safe_load_json(APPLICATIONS_PATH, default=[])
+    
+    # Remove all notifications for this user
+    filtered_applications = [
+        a for a in applications if a.get("email") != email
+    ]
+    
+    _safe_write_json(APPLICATIONS_PATH, filtered_applications)
+    
+    return jsonify({"message": "Notifications cleared successfully"})
+
 
 # ---------- AUTH ----------
 @app.route("/login", methods=["POST"])

@@ -1,0 +1,23 @@
+{
+  "id": 2,
+  "company_name": "TCS",
+  "location": "Pune",
+  "job_role": "System Engineer",
+  "ctc": "6.5 LPA",
+  "experience_required": "0–1 Year",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Java",
+    "DSA",
+    "Linux",
+    "Problem Solving"
+  ],
+  "eligibility_criteria": "B.Tech / BCA in CS or IT",
+  "full_job_description": "Support enterprise systems, troubleshoot issues, and assist in software development and maintenance.",
+  "short_required_skills": [
+    "Java",
+    "DSA",
+    "Linux",
+    "Problem Solving"
+  ]
+}

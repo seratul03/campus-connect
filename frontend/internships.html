@@ -190,8 +190,15 @@
       cursor: pointer;
       font-size: 1.2rem;
     }
+    
+    .save-btn::before {
+      content: "⭐";
+    }
 
-    .save-btn.saved { color: gold; }
+    .save-btn.saved::before { 
+      content: "⭐";
+      color: gold; 
+    }
 
     /* MODAL */
     .modal-backdrop {
@@ -330,7 +337,15 @@
 
   fetch("/api/internships")
     .then(res => res.json())
-    .then(data => { internships = data; render(data); });
+    .then(data => {
+      // ensure we always have an array
+      internships = Array.isArray(data) ? data : (data && Array.isArray(data.internships) ? data.internships : []);
+      render(internships);
+    })
+    .catch(() => {
+      internships = [];
+      render(internships);
+    });
 
   const modal = document.getElementById("applyModal");
   const toast = document.getElementById("toast");
@@ -367,19 +382,22 @@
     data.forEach((i,idx)=>{
       const st=getStatus(i);
       const savedClass=saved.includes(i.id)?"saved":"";
-      c.innerHTML+=`
-      <div class="card">
+      
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
         <span class="save-btn ${savedClass}" onclick="toggleSave(${i.id},this)"></span>
         <span class="status ${st}">${st.replace("-"," ").toUpperCase()}</span>
-        <h3>${i.role}</h3>
-        <div class="company">${i.company}</div>
-        <div class="meta">${i.location} · ${i.mode}<br>Duration: ${i.duration} · ${i.stipend}</div>
-        <p class="meta">${i.description}</p>
-        <div class="tags">${i.skills.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+        <h3>${i.role || 'N/A'}</h3>
+        <div class="company">${i.company || 'N/A'}</div>
+        <div class="meta">${i.location || 'N/A'} · ${i.mode || 'N/A'}<br>Duration: ${i.duration || 'N/A'} · ${i.stipend || 'N/A'}</div>
+        <p class="meta">${i.description || ''}</p>
+        <div class="tags">${(i.skills||[]).map(s=>`<span class="tag">${s}</span>`).join("")}</div>
         <button class="apply-btn" ${st==="closed"?"disabled":""} onclick="openApply(${idx})">
           ${st==="closed"?"Closed":"Apply Now"}
         </button>
-      </div>`;
+      `;
+      c.appendChild(card);
     });
   }
 

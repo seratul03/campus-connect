@@ -1,0 +1,29 @@
+[
+  {
+    "company": "Capgemini",
+    "role": "Full Stack Developer",
+    "email": "bwubta23139@brainwareuniversity.ac.in",
+    "status": "applied",
+    "message": "Your application has been successfully submitted.",
+    "unread": true,
+    "timestamp": 1767599928
+  },
+  {
+    "company": "TechNova Solutions",
+    "role": "Backend Developer",
+    "email": "bwubta23139@brainwareuniversity.ac.in",
+    "status": "applied",
+    "message": "Your application has been successfully submitted.",
+    "unread": true,
+    "timestamp": 1767600827
+  },
+  {
+    "company": "Cognizant",
+    "role": "AIML Data Scientist",
+    "email": "bwubta23139@brainwareuniversity.ac.in",
+    "status": "applied",
+    "message": "Your application has been successfully submitted.",
+    "unread": true,
+    "timestamp": 1767603061
+  }
+]

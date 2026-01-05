@@ -1,0 +1,21 @@
+{
+  "id": 16,
+  "company_name": "Google",
+  "location": "Bangalore",
+  "job_role": "Associate Software Engineer",
+  "ctc": "20 LPA",
+  "experience_required": "0–1 Year",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "C++",
+    "Python",
+    "Algorithms"
+  ],
+  "eligibility_criteria": "B.Tech / M.Tech in CS",
+  "full_job_description": "Work on high-impact software products used by millions.",
+  "short_required_skills": [
+    "C++",
+    "Python",
+    "Algorithms"
+  ]
+}

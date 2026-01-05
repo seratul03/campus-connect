@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty - Campus Research Connect</title>
+
+    <link rel="stylesheet" href="/static/css/faculty.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">Campus Research Connect</h1>
+
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+          <li><a href="/research" class="nav-link">Research</a></li>
+          <li><a href="/participate" class="nav-link">Participate</a></li>
+          <li><a href="/faculty" class="nav-link active">Faculty</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>Our Faculty</h1>
+      <p>Meet our distinguished researchers and educators</p>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters">
+          <div class="search-wrapper">
+            <!-- <span class="search-icon-bubble">
+              🔍
+            </span> -->
+
+            <input
+              type="text"
+              id="name-search"
+              class="search-field"
+              placeholder="Search faculty…"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Grid -->
+    <section class="faculty-list">
+      <div class="container">
+        <div id="loading" class="loading">Loading faculty...</div>
+
+        <div id="faculty-container" class="faculty-grid">
+          <!-- Cards load here -->
+        </div>
+
+        <div id="no-results" class="no-results" style="display: none">
+          No faculty found matching your criteria.
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Campus Research Connect</p>
+    </footer>
+
+    <script src="/static/js/faculty.js"></script>
+  </body>
+</html>

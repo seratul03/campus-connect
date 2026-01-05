@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Dashboard – Campus Connect</title>
+
+    <link rel="stylesheet" href="css/glass.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+  <body>
+    <nav class="main-nav">
+      <!-- <a href="index.html">Home</a> -->
+      <a href="student-dashboard.html" class="active">Dashboard</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="internships.html">Internships</a>
+      <a href="practice.html">Practice</a>
+      <a href="research.html">Research</a>
+      <a href="ats.html">ATS Checker</a>
+      <a href="updates.html">Hiring Updates</a>
+      <a href="profile.html" class="profile-bubble active">
+        <span>RK</span>
+      </a>
+      <button onclick="logout()" style="background: #ff3b30; color: white; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; width: 100px;">Logout</button>
+    </nav>
+
+    <div class="dashboard">
+      <div class="header">
+        <h2>Welcome, Rohan 👋</h2>
+      </div>
+
+      <div class="cards">
+        <div class="glass card-box">
+          <h3>ATS Resume Score</h3>
+          <div id="ats" class="stat">--%</div>
+        </div>
+
+        <div class="glass card-box">
+          <h3>Best Job Match</h3>
+          <div id="match" class="stat">--%</div>
+        </div>
+
+        <div class="glass card-box">
+          <h3>Profile Status</h3>
+          <div class="stat">85%</div>
+        </div>
+
+        <div class="glass card-box">
+          <h3>Recommended Action</h3>
+          <p>Improve SQL & Resume Keywords</p>
+        </div>
+      </div>
+
+      <div class="glass card-box recommendation">
+        <h3>AI Suggestions</h3>
+        <ul id="suggestions">
+          <li>Loading suggestions...</li>
+        </ul>
+      </div>
+
+      <br />
+
+      <div class="cards">
+        <button onclick="go('jobs.html')">Explore Jobs</button>
+        <button onclick="go('ats.html')">ATS Checker</button>
+        <button onclick="go('practice.html')">Get Job Ready</button>
+      </div>
+    </div>
+    <!-- Chatbot Launch Button -->
+    <a href="chatbot.html" class="chatbot-launch">
+      <div class="chatbot-bubble">💬</div>
+      <!-- <div class="chatbot-text">
+    Open Career Assistant
+  </div> -->
+    </a>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <script src="js/chatbot.js" defer></script>
+  </body>
+</html>

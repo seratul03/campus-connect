@@ -1,0 +1,279 @@
+:root {
+  --primary: #007aff;
+  --primary-glow: rgba(0, 122, 255, 0.35);
+  --danger: #ff3b30;
+  --text-main: #1d1d1f;
+  --text-muted: #86868b;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-main);
+  /* Breathing Gradient Background */
+  background: linear-gradient(-45deg, #eef2f3, #e2eafc, #eef2f3, #dbeafe);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animations */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glass Effect Override/Definition */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+}
+
+.form-section{
+    height: 300px;
+}
+.admin-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Header */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  margin-bottom: 40px;
+}
+
+.admin-header h2 {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Breathing hover effect for cards */
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 122, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 42px;
+  font-weight: 700;
+  margin-top: 10px;
+  background: -webkit-linear-gradient(45deg, #333, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Main Grid Layout */
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Changed ratio for better balance */
+  gap: 30px;
+}
+
+.form-section, .activity-section {
+  padding: 36px;
+}
+
+.form-section h3, .activity-section h3 {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* Inputs & Textareas */
+input, textarea {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  color: var(--text-main);
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.01);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+/* Buttons */
+button, .primary-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.primary-btn {
+  display: inline-block;
+  text-align: center;
+  width: 100%; /* Full width looks more modern in forms */
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.primary-btn:hover {
+  background: #0062cc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+.danger-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  width: auto;
+  background: rgba(255, 59, 48, 0.1);
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.danger-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* List Items (Activity) */
+.activity-section ul {
+  list-style: none;
+}
+
+.activity-section li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+}
+
+.activity-section li:last-child {
+  border-bottom: none;
+}
+
+.activity-section li:hover {
+  transform: translateX(4px); /* Subtle nudge */
+}
+
+.activity-section strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.activity-section span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  padding: 16px 24px;
+  border-radius: 50px; /* Pill shape */
+  background: rgba(29, 29, 31, 0.9);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-container {
+    padding: 20px;
+  }
+}

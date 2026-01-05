@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Participate • Campus Research Connect</title>
+    <link rel="stylesheet" href="/static/css/participate.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">Campus Research Connect</h1>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+          <li><a href="/research" class="nav-link">Research</a></li>
+          <li>
+            <a href="/participate" class="nav-link active">Participate</a>
+          </li>
+          <li><a href="/faculty" class="nav-link">Faculty</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+      <h1>Participate in Research</h1>
+      <p>
+        Apply to ongoing research projects and collaborate with faculty members
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <section class="filters">
+      <select id="status-filter">
+        <option value="">All Status</option>
+        <option value="open">Open</option>
+        <option value="ongoing">Ongoing</option>
+      </select>
+
+      <select id="domain-filter">
+        <option value="">All Domains</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="Machine Learning">Machine Learning</option>
+        <option value="Computer Vision">Computer Vision</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+        <option value="Blockchain">Blockchain</option>
+      </select>
+    </section>
+
+    <!-- Projects -->
+    <section class="content">
+      <p id="loading" class="loading">Loading projects...</p>
+      <div id="projects-container" class="grid"></div>
+      <p id="no-results" class="empty">No projects found.</p>
+    </section>
+
+    <!-- Application Modal -->
+    <div id="application-modal" class="modal">
+      <div class="modal-box">
+        <span class="close">&times;</span>
+        <h2>Apply for Research Project</h2>
+
+        <form id="application-form">
+          <input type="hidden" id="project-id" />
+          <input type="hidden" id="project-title-input" />
+
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="student-name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="student-email" required />
+          </div>
+
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" id="student-phone" required />
+          </div>
+
+          <div class="form-group">
+            <label>Why are you interested? *</label>
+            <textarea id="cover-letter" rows="4" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Resume URL (optional)</label>
+            <input type="url" id="resume-url" />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              Submit Application
+            </button>
+            <button type="button" class="btn-outline" onclick="closeModal()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div id="success-message" class="success-message">
+      Application submitted successfully
+    </div>
+
+    <footer class="footer">
+      <p>© 2025 Campus Research Connect</p>
+    </footer>
+
+    <script src="/static/js/participate.js"></script>
+  </body>
+</html>

@@ -3,10 +3,24 @@ async function loadDashboard() {
   const user = checkAuth("student");
   if (!user) return;
 
-  // Update welcome message with actual user name
+  // Attempt to get the real profile name from backend, fall back to session name
+  const API_BASE = window.API_BASE_URL || "http://127.0.0.1:5000";
+  const PROFILE_ENDPOINT = `${API_BASE}/api/profile`;
+  let displayName = user.name || "Student";
+  try {
+    const profileRes = await fetch(PROFILE_ENDPOINT);
+    if (profileRes.ok) {
+      const profileJson = await profileRes.json();
+      // prefer fullName, then name, then fallback
+      displayName = profileJson.fullName || profileJson.name || displayName;
+    }
+  } catch (e) {
+    console.warn("Profile API not available, using session name");
+  }
+
   const welcomeEl = document.querySelector(".header h2");
   if (welcomeEl) {
-    welcomeEl.innerText = `Welcome, ${user.name} 👋`;
+    welcomeEl.innerText = `Welcome, ${displayName} 👋`;
   }
 
   /* -----------------------------
