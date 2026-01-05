@@ -1,0 +1,23 @@
+{
+  "id": 13,
+  "company_name": "Soul AI",
+  "location": "Remote",
+  "job_role": "Java Developer",
+  "ctc": "8.5 LPA",
+  "experience_required": "0–2 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Java",
+    "Spring",
+    "JUnit",
+    "Maven"
+  ],
+  "eligibility_criteria": "B.Tech / MCA",
+  "full_job_description": "Develop and test enterprise-grade Java backend systems.",
+  "short_required_skills": [
+    "Java",
+    "Spring",
+    "JUnit",
+    "Maven"
+  ]
+}

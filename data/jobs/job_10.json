@@ -1,0 +1,21 @@
+{
+  "id": 10,
+  "company_name": "BAAR Technologies",
+  "location": "Kolkata",
+  "job_role": "Junior Python Developer",
+  "ctc": "5.5 LPA",
+  "experience_required": "0–1 Year",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "Pandas",
+    "SQL"
+  ],
+  "eligibility_criteria": "B.Tech / BCA / B.Sc",
+  "full_job_description": "Write efficient Python code and assist in workflow automation.",
+  "short_required_skills": [
+    "Python",
+    "Pandas",
+    "SQL"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": 9,
+  "company_name": "TechNova Solutions",
+  "location": "Bangalore (Hybrid)",
+  "job_role": "Backend Developer",
+  "ctc": "7 LPA",
+  "experience_required": "1–3 Years",
+  "employment_type": "Full-time",
+  "required_skills": [
+    "Python",
+    "SQL",
+    "REST APIs",
+    "Linux"
+  ],
+  "eligibility_criteria": "B.Tech / B.E. in CS or IT",
+  "full_job_description": "Develop backend services, APIs, and database-driven applications.",
+  "short_required_skills": [
+    "Python",
+    "SQL",
+    "REST APIs",
+    "Linux"
+  ]
+}
