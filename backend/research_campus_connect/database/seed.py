@@ -216,6 +216,182 @@ def seed_database():
                 pdf_url="https://example.com/papers/medical-dl.pdf",
                 published_date="March 15, 2024",
                 keywords="Deep Learning, Medical Analysis, Disease Prediction, Healthcare AI"
+            ),
+            Paper(
+                title="Grid Computing and Distributed Resource Management",
+                authors="Kaustav Roy, Dr. Shivnath Ghosh",
+                abstract="This paper presents novel approaches to resource management and load balancing in grid computing environments. We propose intelligent scheduling algorithms that optimize resource utilization across distributed computing nodes while maintaining quality of service guarantees.",
+                domain="Grid Computing",
+                year=2024,
+                citations=54,
+                pdf_url="https://example.com/papers/grid-computing.pdf",
+                published_date="May 20, 2024",
+                keywords="Grid Computing, Resource Management, Distributed Systems, Load Balancing"
+            ),
+            Paper(
+                title="Advanced Machine Learning Techniques for Pattern Recognition",
+                authors="Anindita Chakraborty, Aishee Chakraborty, Somashri Pal Kar",
+                abstract="A comprehensive study on applying advanced machine learning techniques including ensemble methods, transfer learning, and meta-learning for complex pattern recognition tasks. The research demonstrates superior performance on benchmark datasets.",
+                domain="Machine Learning",
+                year=2024,
+                citations=68,
+                pdf_url="https://example.com/papers/ml-pattern-recognition.pdf",
+                published_date="April 18, 2024",
+                keywords="Machine Learning, Pattern Recognition, Ensemble Methods, Transfer Learning"
+            ),
+            Paper(
+                title="Computer Vision and Deep Neural Networks for Automated Quality Control",
+                authors="Riya Das, Subhajeet Das, Dr. Saumya Das",
+                abstract="This research explores the application of computer vision and deep neural networks for automated quality control in manufacturing. We develop a real-time defect detection system using convolutional neural networks with high accuracy and low false positive rates.",
+                domain="Computer Vision",
+                year=2023,
+                citations=81,
+                pdf_url="https://example.com/papers/cv-quality-control.pdf",
+                published_date="November 12, 2023",
+                keywords="Computer Vision, Deep Learning, Quality Control, Defect Detection"
+            ),
+            Paper(
+                title="Network Traffic Analysis Using Machine Learning for Intrusion Detection",
+                authors="Amitava Podder, Dr. Shivnath Ghosh",
+                abstract="An investigation of machine learning approaches for network traffic analysis and intrusion detection. The paper presents a hybrid system combining supervised and unsupervised learning for identifying anomalous network behavior with minimal false alarms.",
+                domain="Network Security",
+                year=2024,
+                citations=76,
+                pdf_url="https://example.com/papers/network-intrusion.pdf",
+                published_date="February 8, 2024",
+                keywords="Network Security, Machine Learning, Intrusion Detection, Traffic Analysis"
+            ),
+            Paper(
+                title="Explainable AI for Healthcare Decision Support Systems",
+                authors="Dr. Saumya Das, Pritam Paul, Sharmistha Dey",
+                abstract="This paper addresses the critical need for explainability in AI-based healthcare systems. We propose novel techniques for making deep learning models interpretable for medical professionals, enabling better trust and adoption of AI-assisted diagnosis systems.",
+                domain="Healthcare AI",
+                year=2024,
+                citations=103,
+                pdf_url="https://example.com/papers/explainable-ai-healthcare.pdf",
+                published_date="March 25, 2024",
+                keywords="Explainable AI, Healthcare, Deep Learning, Interpretability"
+            ),
+            Paper(
+                title="Federated Learning for Privacy-Preserving Medical Research",
+                authors="Sarbani Karak, Mohit Kumar Halder, Dr. Sandipan Biswas",
+                abstract="A study on implementing federated learning frameworks for collaborative medical research while preserving patient privacy. The research demonstrates how multiple hospitals can jointly train machine learning models without sharing sensitive patient data.",
+                domain="Federated Learning",
+                year=2024,
+                citations=87,
+                pdf_url="https://example.com/papers/federated-learning.pdf",
+                published_date="April 30, 2024",
+                keywords="Federated Learning, Privacy, Healthcare, Distributed Learning"
+            ),
+            Paper(
+                title="Smart City Infrastructure Using IoT and Edge Computing",
+                authors="Anirbit Sengupta, Dr. Chandrima Thakur, Rubi Sarkar",
+                abstract="This research presents a comprehensive architecture for smart city infrastructure leveraging IoT sensors and edge computing. We demonstrate real-time data processing for traffic management, environmental monitoring, and public safety applications.",
+                domain="Smart Cities",
+                year=2024,
+                citations=92,
+                pdf_url="https://example.com/papers/smart-city-iot.pdf",
+                published_date="January 28, 2024",
+                keywords="Smart Cities, IoT, Edge Computing, Urban Planning"
+            ),
+            Paper(
+                title="Reinforcement Learning for Autonomous Robotic Systems",
+                authors="Dr. Snigdha Madhab Ghosh, Aishee Chakraborty",
+                abstract="An exploration of reinforcement learning techniques for training autonomous robotic systems. The paper presents novel reward shaping strategies and efficient exploration methods that enable robots to learn complex tasks with minimal human intervention.",
+                domain="Robotics & AI",
+                year=2023,
+                citations=110,
+                pdf_url="https://example.com/papers/rl-robotics.pdf",
+                published_date="September 20, 2023",
+                keywords="Reinforcement Learning, Robotics, Autonomous Systems, Deep RL"
+            ),
+            Paper(
+                title="Natural Language Understanding for Regional Languages",
+                authors="Bablu Pramanik, Ditu Barai, Sudipta Ghosh",
+                abstract="This paper addresses challenges in developing NLP systems for low-resource regional languages. We present novel transfer learning approaches and data augmentation techniques that enable effective language models with limited training data.",
+                domain="Natural Language Processing",
+                year=2024,
+                citations=63,
+                pdf_url="https://example.com/papers/nlp-regional.pdf",
+                published_date="May 15, 2024",
+                keywords="NLP, Regional Languages, Transfer Learning, Low-Resource Languages"
+            ),
+            Paper(
+                title="Energy-Aware Cloud Computing: Green Data Centers",
+                authors="Gulfishan Mobin, Dr. Arup Roy, Kaustav Roy",
+                abstract="A comprehensive study on energy-efficient cloud computing and green data center design. The research proposes novel workload scheduling algorithms and cooling optimization strategies that significantly reduce energy consumption while maintaining performance.",
+                domain="Cloud Computing",
+                year=2023,
+                citations=74,
+                pdf_url="https://example.com/papers/green-cloud.pdf",
+                published_date="October 18, 2023",
+                keywords="Cloud Computing, Energy Efficiency, Green Computing, Data Centers"
+            ),
+            Paper(
+                title="Adversarial Machine Learning: Attacks and Defense Mechanisms",
+                authors="Dr. Snigdha Madhab Ghosh, Sarbani Karak, Mohit Kumar Halder",
+                abstract="This research investigates adversarial attacks on machine learning models and proposes robust defense mechanisms. We demonstrate various attack vectors and develop adversarial training techniques that improve model robustness without sacrificing accuracy.",
+                domain="Machine Learning Security",
+                year=2024,
+                citations=99,
+                pdf_url="https://example.com/papers/adversarial-ml.pdf",
+                published_date="February 12, 2024",
+                keywords="Adversarial ML, Security, Robustness, Defense Mechanisms"
+            ),
+            Paper(
+                title="Time Series Forecasting with Hybrid Deep Learning Models",
+                authors="Dr. Sandipan Biswas, Anindita Chakraborty, Sumana Mahanta",
+                abstract="An investigation of hybrid deep learning architectures combining LSTMs, CNNs, and attention mechanisms for accurate time series forecasting. Applications include stock market prediction, weather forecasting, and demand prediction in various industries.",
+                domain="Data Science",
+                year=2024,
+                citations=85,
+                pdf_url="https://example.com/papers/time-series-dl.pdf",
+                published_date="March 10, 2024",
+                keywords="Time Series, Deep Learning, LSTM, Forecasting, Attention Mechanism"
+            ),
+            Paper(
+                title="5G Network Optimization Using Machine Learning",
+                authors="Dr. Chandrima Thakur, Dr. Saumya Das, Dr. Amit Roy",
+                abstract="This paper explores machine learning techniques for optimizing 5G network performance. We develop intelligent algorithms for resource allocation, handover management, and interference mitigation that significantly improve network efficiency and user experience.",
+                domain="5G Networks",
+                year=2024,
+                citations=108,
+                pdf_url="https://example.com/papers/5g-ml.pdf",
+                published_date="April 5, 2024",
+                keywords="5G, Machine Learning, Network Optimization, Wireless Communication"
+            ),
+            Paper(
+                title="Multi-Modal Biometric Fusion for Enhanced Security",
+                authors="Suvabrata Guharay, Amitava Podder",
+                abstract="A study on fusing multiple biometric modalities including fingerprint, face, iris, and voice for enhanced authentication security. The research demonstrates that multi-modal systems achieve significantly higher accuracy and are more resistant to spoofing attacks.",
+                domain="Biometric Security",
+                year=2023,
+                citations=71,
+                pdf_url="https://example.com/papers/multimodal-biometric.pdf",
+                published_date="December 5, 2023",
+                keywords="Biometrics, Multi-Modal Fusion, Security, Authentication"
+            ),
+            Paper(
+                title="Quantum Machine Learning: Algorithms and Applications",
+                authors="Dr. Kasturi Ghosh, Dr. Priyanka Saha, Dr. Shivnath Ghosh",
+                abstract="An exploration of quantum computing principles applied to machine learning algorithms. This paper presents quantum-enhanced algorithms for classification, clustering, and optimization problems, demonstrating potential quantum advantages for specific applications.",
+                domain="Quantum Computing",
+                year=2024,
+                citations=115,
+                pdf_url="https://example.com/papers/quantum-ml.pdf",
+                published_date="January 20, 2024",
+                keywords="Quantum Computing, Machine Learning, Quantum Algorithms, QML"
+            ),
+            Paper(
+                title="Agricultural Pest Detection Using Computer Vision and IoT",
+                authors="Sumana Mahanta, Anirbit Sengupta, Sunanda Das",
+                abstract="This research presents an integrated system for early detection of agricultural pests using computer vision and IoT sensors. The system employs deep learning models for pest identification and provides real-time alerts to farmers, enabling timely intervention.",
+                domain="Agriculture & AI",
+                year=2024,
+                citations=58,
+                pdf_url="https://example.com/papers/pest-detection.pdf",
+                published_date="May 8, 2024",
+                keywords="Agriculture, Computer Vision, IoT, Pest Detection, Deep Learning"
             )
         ]
         
@@ -682,6 +858,146 @@ def seed_database():
                 requirements="Understanding of antenna theory, knowledge of EM simulation tools (HFSS/CST), basic RF concepts, interest in wearable technology",
                 status="open",
                 start_date="January 2025"
+            ),
+            Project(
+                title="Quantum Machine Learning for Optimization Problems",
+                description="Explore quantum computing algorithms applied to machine learning and optimization problems. Work with quantum simulators and real quantum hardware to develop and test quantum-enhanced ML algorithms for combinatorial optimization.",
+                faculty_name="Dr. Kasturi Ghosh",
+                domain="Quantum Computing",
+                duration="8 months",
+                requirements="Understanding of quantum mechanics, Python programming, familiarity with Qiskit or similar frameworks, strong mathematical background",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Explainable AI for Medical Decision Support",
+                description="Develop interpretable machine learning models for medical diagnosis. Focus on creating visualization tools and explanation mechanisms that help doctors understand AI predictions. Work with real clinical datasets.",
+                faculty_name="Dr. Saumya Das",
+                domain="Healthcare AI",
+                duration="7 months",
+                requirements="Knowledge of ML/DL, Python, experience with medical imaging or clinical data, interest in interpretability techniques",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="5G Network Optimization Using Machine Learning",
+                description="Develop intelligent algorithms for optimizing 5G network performance. Work on resource allocation, handover management, and interference mitigation using reinforcement learning and deep learning techniques.",
+                faculty_name="Dr. Chandrima Thakur",
+                domain="5G Networks",
+                duration="6 months",
+                requirements="Understanding of wireless communication, machine learning fundamentals, Python/MATLAB programming, interest in networking",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Federated Learning for Privacy-Preserving Healthcare",
+                description="Implement a federated learning framework for training ML models across multiple healthcare institutions without sharing sensitive patient data. Focus on privacy-preserving techniques and secure aggregation protocols.",
+                faculty_name="Dr. Sandipan Biswas",
+                domain="Privacy & ML",
+                duration="7 months",
+                requirements="Strong Python skills, knowledge of deep learning frameworks, understanding of cryptography basics, interest in privacy",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="Adversarial Robustness in Deep Neural Networks",
+                description="Research and develop defense mechanisms against adversarial attacks on deep learning models. Explore adversarial training, defensive distillation, and other robustness enhancement techniques with applications in security-critical systems.",
+                faculty_name="Dr. Snigdha Madhab Ghosh",
+                domain="ML Security",
+                duration="6 months",
+                requirements="Strong ML/DL background, PyTorch or TensorFlow, understanding of optimization, interest in security",
+                status="ongoing",
+                start_date="December 2024"
+            ),
+            Project(
+                title="Smart City Traffic Management Using Computer Vision",
+                description="Develop an AI-powered traffic management system using computer vision and edge computing. Implement real-time vehicle detection, traffic flow analysis, and intelligent signal control algorithms.",
+                faculty_name="Riya Das",
+                domain="Computer Vision",
+                duration="8 months",
+                requirements="Computer vision expertise, deep learning knowledge, OpenCV, real-time processing experience, interest in urban systems",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Network Intrusion Detection Using Deep Learning",
+                description="Build an intelligent intrusion detection system using deep learning for analyzing network traffic patterns. Develop models capable of detecting zero-day attacks and novel threats in real-time.",
+                faculty_name="Amitava Podder",
+                domain="Network Security",
+                duration="6 months",
+                requirements="Knowledge of networking protocols, Python programming, ML/DL frameworks, understanding of cybersecurity",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="Agricultural Yield Prediction Using Satellite Imagery and ML",
+                description="Develop a system for predicting crop yields using satellite imagery, weather data, and machine learning. Apply hyperspectral image analysis and time series forecasting for accurate agricultural planning.",
+                faculty_name="Sumana Mahanta",
+                domain="Agriculture & AI",
+                duration="7 months",
+                requirements="Knowledge of remote sensing, machine learning, Python, image processing, interest in agriculture applications",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Reinforcement Learning for Autonomous Navigation",
+                description="Implement reinforcement learning algorithms for autonomous robot navigation in complex environments. Work with simulation environments and real robotic platforms to develop and test navigation strategies.",
+                faculty_name="Dr. Snigdha Madhab Ghosh",
+                domain="Robotics & RL",
+                duration="8 months",
+                requirements="Understanding of RL algorithms, Python programming, experience with ROS (Robot Operating System) preferred, interest in robotics",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="Cloud-Native Application Development with Kubernetes",
+                description="Design and implement cloud-native applications using microservices architecture and Kubernetes. Focus on scalability, fault tolerance, and automated deployment pipelines for ML applications.",
+                faculty_name="Gulfishan Mobin",
+                domain="Cloud Computing",
+                duration="6 months",
+                requirements="Experience with Docker and Kubernetes, programming skills (Python/Java), understanding of DevOps practices, cloud platform knowledge",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Multi-Modal Biometric Authentication System",
+                description="Develop an advanced biometric authentication system that fuses multiple modalities (fingerprint, face, iris, voice). Implement feature extraction, fusion algorithms, and anti-spoofing techniques.",
+                faculty_name="Suvabrata Guharay",
+                domain="Biometric Security",
+                duration="7 months",
+                requirements="Image processing knowledge, machine learning, Python/C++, understanding of biometric systems, interest in security",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="Regional Language NLP: Low-Resource Language Processing",
+                description="Develop NLP models for low-resource regional languages using transfer learning and data augmentation. Focus on machine translation, named entity recognition, and sentiment analysis for regional languages.",
+                faculty_name="Bablu Pramanik",
+                domain="NLP",
+                duration="8 months",
+                requirements="Strong NLP background, knowledge of transformers (BERT, GPT), Python programming, interest in linguistics",
+                status="open",
+                start_date="February 2025"
+            ),
+            Project(
+                title="Time Series Forecasting for Energy Demand Prediction",
+                description="Develop hybrid deep learning models combining LSTM, CNN, and attention mechanisms for accurate energy demand forecasting. Work with real-world energy consumption data from smart grids.",
+                faculty_name="Dr. Sandipan Biswas",
+                domain="Data Science",
+                duration="6 months",
+                requirements="Time series analysis experience, deep learning knowledge, Python, understanding of statistical methods",
+                status="open",
+                start_date="January 2025"
+            ),
+            Project(
+                title="Soft Computing Approaches for Multi-Objective Optimization",
+                description="Implement and compare various soft computing techniques including genetic algorithms, particle swarm optimization, and fuzzy logic for solving complex multi-objective optimization problems in engineering applications.",
+                faculty_name="Dr. Shivnath Ghosh",
+                domain="Soft Computing",
+                duration="7 months",
+                requirements="Understanding of optimization algorithms, MATLAB/Python programming, mathematical background, interest in evolutionary computation",
+                status="open",
+                start_date="February 2025"
             )
         ]
         
@@ -827,9 +1143,49 @@ def seed_database():
                 student_phone="+1-555-1234",
                 application_type="research",
                 project_id=1,
-                project_title="AI-Powered Medical Diagnosis System",
-                cover_letter="I am very interested in healthcare AI...",
+                project_title="AI-Powered Medical Image Analysis System",
+                cover_letter="I am very interested in healthcare AI and have experience with PyTorch and TensorFlow. I would love to contribute to this project.",
                 status="pending"
+            ),
+            Application(
+                student_name="John Doe",
+                student_email="john@student.edu",
+                student_phone="+1-555-1234",
+                application_type="research",
+                project_id=5,
+                project_title="Blockchain-Based Secure Data Management System",
+                cover_letter="I have been following blockchain technology closely and have built several smart contracts using Solidity. This project aligns perfectly with my interests.",
+                status="accepted"
+            ),
+            Application(
+                student_name="John Doe",
+                student_email="john@student.edu",
+                student_phone="+1-555-1234",
+                application_type="research",
+                project_id=10,
+                project_title="Natural Language Processing for Sentiment Analysis",
+                cover_letter="I am passionate about NLP and have worked with BERT and transformer models. I am excited to work on sentiment analysis for social media data.",
+                status="pending"
+            ),
+            Application(
+                student_name="John Doe",
+                student_email="john@student.edu",
+                student_phone="+1-555-1234",
+                application_type="internship",
+                internship_id=2,
+                internship_company="Microsoft",
+                cover_letter="I am a graduate student specializing in AI research and would love to contribute to Microsoft's AI research team.",
+                status="pending"
+            ),
+            Application(
+                student_name="John Doe",
+                student_email="john@student.edu",
+                student_phone="+1-555-1234",
+                application_type="internship",
+                internship_id=5,
+                internship_company="NVIDIA",
+                cover_letter="I have experience with CUDA programming and deep learning optimization. NVIDIA's work in GPU-accelerated computing fascinates me.",
+                status="rejected"
             ),
             Application(
                 student_name="Jane Smith",
@@ -838,8 +1194,18 @@ def seed_database():
                 application_type="internship",
                 internship_id=1,
                 internship_company="Google",
-                cover_letter="I am excited about working at Google...",
+                cover_letter="I am excited about working at Google on cloud computing and distributed systems.",
                 status="accepted"
+            ),
+            Application(
+                student_name="Jane Smith",
+                student_email="jane@student.edu",
+                student_phone="+1-555-5678",
+                application_type="research",
+                project_id=8,
+                project_title="IoT-Based Smart Agriculture Monitoring System",
+                cover_letter="I am interested in applying IoT and ML to solve real-world agricultural problems.",
+                status="pending"
             )
         ]
         

@@ -4,7 +4,7 @@
 const API_BASE = "/api";
 
 // Current user - set default email for demo
-let currentUser = { name: "User", email: "demo@example.com" };
+let currentUser = { name: "John Doe", email: "john@student.edu" };
 let allApplications = [];
 let currentFilter = "all";
 

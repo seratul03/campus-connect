@@ -7,6 +7,22 @@ db = SQLAlchemy()
 # MODELS
 # ============================================
 
+
+class User(db.Model):
+    """Basic user model for dashboard/demo auth"""
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(200), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    role = db.Column(db.String(50), default='student')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<User {self.email}>'
+
+
 class Paper(db.Model):
     """Research papers model"""
     __tablename__ = 'papers'
