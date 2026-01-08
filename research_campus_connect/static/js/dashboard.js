@@ -4,9 +4,65 @@
 const API_BASE = "/api";
 
 // Current user - set default email for demo
-let currentUser = { name: "John Doe", email: "john@student.edu" };
+let currentUser = {
+  name: "Dr. Sandipan Biswas",
+  email: "sandipan.biswas@univ.edu",
+};
 let allApplications = [];
 let currentFilter = "all";
+
+// Mock data using faculty names so the dashboard stays populated without the API
+const MOCK_APPLICATIONS = [
+  {
+    id: 101,
+    type: "research",
+    project_title: "Edge ML for Wireless Receivers",
+    applied_date: "2024-12-10",
+    status: "pending",
+  },
+  {
+    id: 102,
+    type: "research",
+    project_title: "Hyperspectral Crop Analytics with Dr. Snigdha Madhab Ghosh",
+    applied_date: "2024-11-22",
+    status: "accepted",
+  },
+  {
+    id: 103,
+    type: "internship",
+    internship_company: "AIoT Lab (Dr. Shivnath Ghosh)",
+    applied_date: "2024-12-01",
+    status: "pending",
+  },
+  {
+    id: 104,
+    type: "research",
+    project_title: "VLSI Reliability with Dr. Kasturi Ghosh",
+    applied_date: "2024-10-30",
+    status: "accepted",
+  },
+];
+
+const MOCK_SAVED_PAPERS = [
+  {
+    id: 1,
+    title: "Federated Soft Computing for Edge IoT",
+    authors: "Dr. Shivnath Ghosh",
+    year: 2024,
+  },
+  {
+    id: 2,
+    title: "Transformers for Medical Image Segmentation",
+    authors: "Dr. Saumya Das",
+    year: 2023,
+  },
+  {
+    id: 3,
+    title: "Nanoelectronic VLSI Co-design with ML",
+    authors: "Dr. Kasturi Ghosh",
+    year: 2024,
+  },
+];
 
 // Set user name
 function setUserName() {
@@ -24,15 +80,19 @@ async function loadApplications() {
     const response = await fetch(
       `${API_BASE}/dashboard/applications?email=${currentUser.email}`
     );
-    allApplications = await response.json();
+    const data = await response.json();
+    allApplications =
+      Array.isArray(data) && data.length > 0 ? data : MOCK_APPLICATIONS;
 
     document.getElementById("loading").style.display = "none";
     updateStats();
     displayApplications(allApplications);
   } catch (error) {
     console.error("Error loading applications:", error);
-    document.getElementById("loading").textContent =
-      "Error loading applications";
+    allApplications = MOCK_APPLICATIONS;
+    document.getElementById("loading").style.display = "none";
+    updateStats();
+    displayApplications(allApplications);
   }
 }
 
@@ -121,7 +181,13 @@ function filterApplications(type) {
 
 // Load saved papers
 function loadSavedPapers() {
-  const savedPapers = JSON.parse(localStorage.getItem("savedPapers") || "[]");
+  let savedPapers = JSON.parse(localStorage.getItem("savedPapers") || "[]");
+
+  // Seed local storage with faculty-authored papers if empty
+  if (savedPapers.length === 0) {
+    savedPapers = MOCK_SAVED_PAPERS;
+    localStorage.setItem("savedPapers", JSON.stringify(savedPapers));
+  }
   const container = document.getElementById("saved-papers-container");
   const noSavedPapers = document.getElementById("no-saved-papers");
 
