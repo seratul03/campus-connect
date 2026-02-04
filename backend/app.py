@@ -11,9 +11,43 @@ from auth import authenticate
 from werkzeug.utils import secure_filename
 from ai_explanation_api import ai_explanation_api
 
+# Try to import AI chatbot dependencies (optional)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    DOTENV_AVAILABLE = True
+except ImportError:
+    print("Warning: python-dotenv not installed. Using environment variables directly.")
+    DOTENV_AVAILABLE = False
+
+try:
+    from groq import Groq
+    GROQ_AVAILABLE = True
+except ImportError:
+    print("Warning: groq package not installed. Chatbot will use FAQ mode only.")
+    print("Install with: pip install groq python-dotenv")
+    GROQ_AVAILABLE = False
+
 app = Flask(__name__)
 # Enable CORS for all domains so your frontend can talk to it
 CORS(app)
+
+# Initialize Groq client for AI chatbot (if available)
+groq_client = None
+if GROQ_AVAILABLE:
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    if GROQ_API_KEY and GROQ_API_KEY != "your_groq_api_key_here":
+        try:
+            groq_client = Groq(api_key=GROQ_API_KEY)
+            print("✅ AI Chatbot initialized successfully!")
+        except Exception as e:
+            print(f"Warning: Failed to initialize Groq client: {e}")
+            groq_client = None
+    else:
+        print("ℹ️ GROQ_API_KEY not set. Chatbot will use FAQ fallback mode.")
+
+# Conversation memory for chatbot
+conversation_history = []
 
 # Configure paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -242,24 +276,94 @@ def admin_jobs_delete(job_id):
 
 @app.route("/chat", methods=["POST"])
 def chat():
+    """AI-Powered Career Chatbot with conversation memory and context awareness."""
+    global conversation_history
+    
     data = request.json
     if not data or "message" not in data:
-        return jsonify({"reply": "Invalid request"}), 400
+        return jsonify({"reply": "Hey! 👋 I'm here."})
 
-    user_msg = data["message"].lower()
+    user_message = data["message"].strip()
+    if not user_message:
+        return jsonify({"reply": "I'm listening..."})
 
+    # Clear history command
+    if user_message.lower() == "/reset":
+        conversation_history = []
+        return jsonify({"reply": "Memory wiped! 🧹 What shall we talk about?"})
+
+    # If Groq client is available, use AI-powered response
+    if groq_client:
+        try:
+            # Add user message to history
+            conversation_history.append({"role": "user", "content": user_message})
+            
+            # Keep history manageable (last 10 turns)
+            if len(conversation_history) > 10:
+                conversation_history = conversation_history[-10:]
+
+            # Load user profile and scores for context
+            profile_data = _safe_load_json(PROFILE_PATH, default={})
+            scores_data = _safe_load_json(SCORE_PATH, default={})
+            
+            # Data Context
+            profile_str = json.dumps(profile_data)
+            scores_str = json.dumps(scores_data)
+
+            # System prompt with context
+            system_prompt = f"""
+You are "CareerBot", a smart, friendly, and concise senior mentor for Campus Connect platform.
+
+### CONTEXT:
+- User Profile: {profile_str}
+- Scores: {scores_str}
+
+### RULES:
+1. **Memory:** use the conversation history to understand context (e.g., if they say "yes", look at what you offered previously).
+2. **Brevity:** Max 2-3 sentences. No walls of text.
+3. **Tone:** Casual, like a WhatsApp friend.
+4. **Actionable:** If they want resources, give 1-2 specific links or names (e.g., "Check out Corey Schafer on YouTube").
+5. **Campus Connect Features:** Help users with jobs, internships, ATS scores, research papers, and practice coding.
+
+### CURRENT CONVERSATION:
+(The history is automatically attached below)
+"""
+
+            messages = [{"role": "system", "content": system_prompt}] + conversation_history
+
+            completion = groq_client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=messages,
+                temperature=0.7,
+                max_tokens=150,
+                top_p=0.9
+            )
+            
+            reply = completion.choices[0].message.content.strip()
+            
+            # Add AI reply to history
+            conversation_history.append({"role": "assistant", "content": reply})
+            
+            return jsonify({"reply": reply})
+
+        except Exception as e:
+            print(f"LLM Error: {e}")
+            # Fall back to FAQ-based response on error
+            pass
+    
+    # Fallback to FAQ-based chatbot if Groq is not available or failed
+    user_msg_lower = user_message.lower()
+    
     for item in CHATBOT_FAQS:
         for q in item.get("questions", []):
-            if q in user_msg:
+            if q in user_msg_lower:
                 return jsonify({"reply": item["answer"]})
 
         for kw in item.get("keywords", []):
-            if kw and kw in user_msg:
+            if kw and kw in user_msg_lower:
                 return jsonify({"reply": item["answer"]})
 
-    return jsonify({
-        "reply": CHATBOT_FALLBACK
-    })
+    return jsonify({"reply": CHATBOT_FALLBACK})
 
 # ---------- PRACTICE & SCORE ROUTES ----------
 # Profile routes
