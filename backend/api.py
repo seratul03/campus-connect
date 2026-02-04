@@ -31,9 +31,20 @@ model = AutoModel.from_pretrained(
 )
 model.eval()
 
+
+def _safe_load_embeddings(path):
+    """Return persisted job embeddings or an empty mapping on failure."""
+    try:
+        if not os.path.exists(path):
+            return {}
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
 # ---------------- LOAD JOB EMBEDDINGS ----------------
-with open(JOB_EMBED_FILE, "r", encoding="utf-8") as f:
-    JOB_EMBEDDINGS = json.load(f)
+JOB_EMBEDDINGS = _safe_load_embeddings(JOB_EMBED_FILE)
 
 # ---------------- JOB LOADER ----------------
 def load_data(file):
@@ -87,6 +98,45 @@ def get_student_embedding(text):
 
     return F.normalize(emb, p=2, dim=1)[0]
 
+
+def _build_job_text(job):
+    """Compose a deterministic text string for embedding generation."""
+    company = job.get("company") or job.get("company_name", "")
+    role = job.get("role") or job.get("job_role", "")
+    skills = job.get("required_skills", [])[:8]
+    desc = job.get("full_job_description", "")
+    return f"{role} at {company}. Requires {' '.join(skills)}. {desc}"
+
+
+def get_job_embedding(job):
+    """Fetch a cached job embedding or compute one on the fly if missing."""
+    job_id = str(job.get("id")) if job.get("id") is not None else None
+    cached = None
+    if job_id:
+        cached = JOB_EMBEDDINGS.get(job_id)
+
+    if cached:
+        return torch.tensor(cached)
+
+    text = _build_job_text(job)
+    encoded = tokenizer(text, return_tensors="pt", truncation=True)
+    with torch.no_grad():
+        output = model(**encoded)
+
+    token_embeddings = output.last_hidden_state
+    mask = encoded["attention_mask"].unsqueeze(-1).expand(token_embeddings.size()).float()
+
+    emb = torch.sum(token_embeddings * mask, 1) / torch.clamp(
+        mask.sum(1), min=1e-9
+    )
+    emb = F.normalize(emb, p=2, dim=1)[0]
+
+    # Cache in memory for subsequent requests in this process
+    if job_id:
+        JOB_EMBEDDINGS[job_id] = emb.tolist()
+
+    return emb
+
 # ---------------- JOB MATCHING ----------------
 def match_jobs(student_skills):
     jobs = load_data("jobs.json")
@@ -106,12 +156,16 @@ def match_jobs(student_skills):
     }
 
     for job in jobs:
+        # Skip malformed jobs that do not have an id
+        if job.get("id") is None:
+            continue
+
         job_id = str(job.get("id"))
         company = job.get("company") or job.get("company_name", "")
         role = job.get("role") or job.get("job_role", "")
         skills = job.get("required_skills", [])[:5]
 
-        job_vec = torch.tensor(JOB_EMBEDDINGS[job_id])
+        job_vec = get_job_embedding(job)
         ai_score = float(torch.dot(student_vec, job_vec)) * 100
 
         base = TARGET_MATCHES.get(

@@ -10,15 +10,6 @@ from admin.jobs import add_job as admin_add_job, get_jobs as admin_get_jobs, del
 from auth import authenticate
 from werkzeug.utils import secure_filename
 from ai_explanation_api import ai_explanation_api
-# ---------- CHATBOT ----------
-QA_PAIRS = {
-    "hi": "Hello 👋 How can I help you today?",
-    "hello": "Hi there! 😊",
-    "what is campus connect": "Campus Connect is a smart career and research portal for students.",
-    "how to apply for internships": "Go to the Internships section and apply using your profile.",
-    "what is ats score": "ATS score shows how well your resume matches job requirements.",
-    "bye": "Goodbye 👋 Best of luck!"
-}
 
 app = Flask(__name__)
 # Enable CORS for all domains so your frontend can talk to it
@@ -31,6 +22,7 @@ PRACTICE_PATH = os.path.join(DATA_DIR, "practice.json")
 SCORE_PATH = os.path.join(DATA_DIR, "score.json")
 # Profile path now points to backend/profile.json (moved into backend folder)
 PROFILE_PATH = os.path.join(BASE_DIR, "profile.json")
+CHATBOT_DATA_PATH = os.path.join(BASE_DIR, "chatbot_ans.json")
 
 # Configure upload folder for resumes
 RESUME_UPLOAD_FOLDER = r"C:\Users\Seratul Mustakim\Desktop\Ai saves\campus-connect\Resumes_uploaded"
@@ -62,6 +54,32 @@ def _safe_write_json(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def _load_chatbot_faqs():
+    data = _safe_load_json(CHATBOT_DATA_PATH, default={})
+    faqs = []
+
+    for item in data.get("faqs", []):
+        answer = item.get("answer")
+        if not answer:
+            continue
+
+        faqs.append({
+            "questions": [q.lower() for q in item.get("questions", []) if isinstance(q, str)],
+            "keywords": [k.lower() for k in item.get("keywords", []) if isinstance(k, str)],
+            "answer": answer,
+        })
+
+    fallback = data.get("fallback_response", {}).get(
+        "answer",
+        "Sorry, I couldn't understand that. Please try rephrasing your question or visit the help section.",
+    )
+
+    return faqs, fallback
+
+
+CHATBOT_FAQS, CHATBOT_FALLBACK = _load_chatbot_faqs()
 
 # ---------- STUDENT ----------
 @app.route("/api/jobs")
@@ -164,12 +182,17 @@ def chat():
 
     user_msg = data["message"].lower()
 
-    for q, a in QA_PAIRS.items():
-        if q in user_msg:
-            return jsonify({"reply": a})
+    for item in CHATBOT_FAQS:
+        for q in item.get("questions", []):
+            if q in user_msg:
+                return jsonify({"reply": item["answer"]})
+
+        for kw in item.get("keywords", []):
+            if kw and kw in user_msg:
+                return jsonify({"reply": item["answer"]})
 
     return jsonify({
-        "reply": "Sorry 😅 I don't understand that yet. Please ask something else."
+        "reply": CHATBOT_FALLBACK
     })
 
 # ---------- PRACTICE & SCORE ROUTES ----------

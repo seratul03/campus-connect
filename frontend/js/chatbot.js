@@ -3,15 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("user-input");
   const messages = document.getElementById("chat-messages");
 
-  /* Predefined Q&A */
-  const answers = {
-    hello: "Hi! 👋 How can I help you today?",
-    internship: "You can explore internships from the Internships section.",
-    jobs: "Jobs are listed under the Jobs page.",
-    ats: "Your ATS score helps you understand resume compatibility.",
-    bye: "Goodbye! Feel free to come back anytime 😊",
-  };
-
   sendBtn.addEventListener("click", sendMessage);
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendMessage();
@@ -24,13 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
     addMessage(text, "user");
     input.value = "";
 
-    const reply =
-      answers[text.toLowerCase()] ||
-      "I'm still learning. Try asking about jobs, internships, or ATS.";
-
-    setTimeout(() => {
-      addMessage(reply, "bot");
-    }, 400);
+    fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        addMessage(
+          data.reply || "I'm still learning. Please try again.",
+          "bot"
+        );
+      })
+      .catch(() => {
+        addMessage(
+          "Sorry, I ran into a problem reaching the assistant. Please try again in a moment.",
+          "bot"
+        );
+      });
   }
 
   function addMessage(text, type) {

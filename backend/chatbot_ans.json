@@ -1,0 +1,378 @@
+{
+  "meta": {
+    "bot_name": "AI Internship Assistant",
+    "version": "1.0",
+    "type": "static_faq",
+    "language": "en",
+    "description": "Complete static FAQ dataset with 50 questions for AI Internship Portal chatbot"
+  },
+  "faqs": [
+    {
+      "id": 1,
+      "intent": "platform_about",
+      "keywords": ["platform", "about", "website"],
+      "questions": [
+        "What is this platform about?",
+        "What does this website do?"
+      ],
+      "answer": "This platform is an AI-powered internship portal that helps students discover, apply for, and track internships using smart recommendations."
+    },
+    {
+      "id": 2,
+      "intent": "platform_users",
+      "keywords": ["who", "eligible", "students"],
+      "questions": ["Who can use this website?", "Who is this platform for?"],
+      "answer": "Any student or recent graduate looking for internships can use this platform."
+    },
+    {
+      "id": 3,
+      "intent": "platform_free",
+      "keywords": ["free", "cost", "paid"],
+      "questions": ["Is this platform free?", "Do I need to pay?"],
+      "answer": "Yes, this platform is completely free for students."
+    },
+    {
+      "id": 4,
+      "intent": "account_required",
+      "keywords": ["account", "register", "login"],
+      "questions": [
+        "Do I need an account to apply?",
+        "Is registration required?"
+      ],
+      "answer": "Yes, you must create an account to apply for internships and track your applications."
+    },
+    {
+      "id": 5,
+      "intent": "internship_domains",
+      "keywords": ["internships", "domains", "roles"],
+      "questions": [
+        "What kind of internships are available?",
+        "Which domains are covered?"
+      ],
+      "answer": "Internships are available in AI, Machine Learning, Web Development, Data Science, Software Engineering, and more."
+    },
+    {
+      "id": 6,
+      "intent": "ai_only",
+      "keywords": ["ai", "only", "students"],
+      "questions": ["Is this platform only for AI students?"],
+      "answer": "No, students from various technical and non-technical backgrounds can use this platform."
+    },
+    {
+      "id": 7,
+      "intent": "beginners",
+      "keywords": ["beginner", "fresher", "experience"],
+      "questions": ["Can beginners apply?", "Do I need experience?"],
+      "answer": "Yes, many internships are beginner-friendly and skill-based."
+    },
+    {
+      "id": 8,
+      "intent": "official_portal",
+      "keywords": ["official", "legit", "real"],
+      "questions": ["Is this an official internship portal?"],
+      "answer": "Yes, this is a structured internship platform designed for student opportunities."
+    },
+    {
+      "id": 9,
+      "intent": "updates",
+      "keywords": ["updated", "new", "recent"],
+      "questions": ["How often is the platform updated?"],
+      "answer": "The platform is regularly updated with new internships and features."
+    },
+    {
+      "id": 10,
+      "intent": "mobile_support",
+      "keywords": ["mobile", "phone", "responsive"],
+      "questions": ["Is this website mobile-friendly?"],
+      "answer": "Yes, the platform is optimized for both desktop and mobile devices."
+    },
+
+    {
+      "id": 11,
+      "intent": "create_account",
+      "keywords": ["create", "signup", "register"],
+      "questions": ["How do I create an account?"],
+      "answer": "You can create an account by signing up using your email and completing your profile."
+    },
+    {
+      "id": 12,
+      "intent": "profile_details",
+      "keywords": ["profile", "details", "information"],
+      "questions": ["What details are required in my profile?"],
+      "answer": "Your profile includes personal details, education, skills, and academic information."
+    },
+    {
+      "id": 13,
+      "intent": "edit_profile",
+      "keywords": ["edit", "update", "profile"],
+      "questions": ["Can I edit my profile later?"],
+      "answer": "Yes, you can update your profile anytime from the dashboard."
+    },
+    {
+      "id": 14,
+      "intent": "profile_incomplete",
+      "keywords": ["incomplete", "profile"],
+      "questions": ["Why is my profile incomplete?"],
+      "answer": "Some required fields might be missing. Completing your profile improves recommendations."
+    },
+    {
+      "id": 15,
+      "intent": "data_security",
+      "keywords": ["data", "safe", "privacy"],
+      "questions": ["Is my data safe?"],
+      "answer": "Yes, your data is securely stored and protected."
+    },
+    {
+      "id": 16,
+      "intent": "post_graduation",
+      "keywords": ["after graduation"],
+      "questions": ["Can I use this after graduation?"],
+      "answer": "Yes, recent graduates can continue using the platform."
+    },
+    {
+      "id": 17,
+      "intent": "wrong_details",
+      "keywords": ["wrong", "incorrect"],
+      "questions": ["What if I entered wrong details?"],
+      "answer": "You can correct your details by editing your profile."
+    },
+    {
+      "id": 18,
+      "intent": "delete_account",
+      "keywords": ["delete", "remove", "account"],
+      "questions": ["Can I delete my account?"],
+      "answer": "Yes, you can request account deletion through support."
+    },
+
+    {
+      "id": 19,
+      "intent": "apply_process",
+      "keywords": ["apply", "how"],
+      "questions": ["How do I apply for an internship?"],
+      "answer": "Select an internship and click the apply button after logging in."
+    },
+    {
+      "id": 20,
+      "intent": "multiple_apply",
+      "keywords": ["multiple", "many"],
+      "questions": ["Can I apply for multiple internships?"],
+      "answer": "Yes, you can apply for multiple internships."
+    },
+    {
+      "id": 21,
+      "intent": "apply_confirmation",
+      "keywords": ["submitted", "success"],
+      "questions": ["How do I know my application is submitted?"],
+      "answer": "You will see a confirmation and status update in your dashboard."
+    },
+    {
+      "id": 22,
+      "intent": "after_apply",
+      "keywords": ["after", "next"],
+      "questions": ["What happens after applying?"],
+      "answer": "Your profile is shared with recruiters for review."
+    },
+    {
+      "id": 23,
+      "intent": "recruiter_view",
+      "keywords": ["recruiter", "see"],
+      "questions": ["How do recruiters see my profile?"],
+      "answer": "Recruiters can view your profile after you apply."
+    },
+    {
+      "id": 24,
+      "intent": "paid_unpaid",
+      "keywords": ["paid", "stipend"],
+      "questions": ["Are internships paid?"],
+      "answer": "Both paid and unpaid internships are available."
+    },
+    {
+      "id": 25,
+      "intent": "duration",
+      "keywords": ["duration", "length"],
+      "questions": ["How long do internships last?"],
+      "answer": "Internship durations vary from a few weeks to several months."
+    },
+    {
+      "id": 26,
+      "intent": "withdraw",
+      "keywords": ["withdraw", "cancel"],
+      "questions": ["Can I withdraw my application?"],
+      "answer": "Yes, you can withdraw before the recruiter reviews it."
+    },
+    {
+      "id": 27,
+      "intent": "cannot_apply",
+      "keywords": ["cannot", "apply"],
+      "questions": ["Why can’t I apply?"],
+      "answer": "You may not meet eligibility or your profile may be incomplete."
+    },
+    {
+      "id": 28,
+      "intent": "remote_onsite",
+      "keywords": ["remote", "onsite"],
+      "questions": ["Are internships remote?"],
+      "answer": "Both remote and on-site internships are available."
+    },
+    {
+      "id": 29,
+      "intent": "certificate",
+      "keywords": ["certificate"],
+      "questions": ["Will I get a certificate?"],
+      "answer": "Some internships provide certificates upon completion."
+    },
+    {
+      "id": 30,
+      "intent": "guarantee",
+      "keywords": ["guarantee", "placement"],
+      "questions": ["Is placement guaranteed?"],
+      "answer": "No, selection depends on recruiter decisions."
+    },
+
+    {
+      "id": 31,
+      "intent": "ai_working",
+      "keywords": ["ai", "recommend"],
+      "questions": ["How does AI recommend internships?"],
+      "answer": "AI analyzes your skills, profile, and activity to suggest suitable roles."
+    },
+    {
+      "id": 32,
+      "intent": "recommend_reason",
+      "keywords": ["why", "recommend"],
+      "questions": ["Why am I seeing these jobs?"],
+      "answer": "They match your profile and preferences."
+    },
+    {
+      "id": 33,
+      "intent": "skill_analysis",
+      "keywords": ["skills", "analyze"],
+      "questions": ["Does the system analyze my skills?"],
+      "answer": "Yes, skills play a major role in recommendations."
+    },
+    {
+      "id": 34,
+      "intent": "accuracy",
+      "keywords": ["accurate"],
+      "questions": ["Are AI suggestions accurate?"],
+      "answer": "They are highly relevant but not guaranteed."
+    },
+    {
+      "id": 35,
+      "intent": "chatbot_type",
+      "keywords": ["chatbot", "ai"],
+      "questions": ["Is this chatbot AI-powered?"],
+      "answer": "This chatbot uses predefined answers to assist users quickly."
+    },
+    {
+      "id": 36,
+      "intent": "auto_apply",
+      "keywords": ["apply automatically"],
+      "questions": ["Can chatbot apply for me?"],
+      "answer": "No, applications must be submitted by users."
+    },
+    {
+      "id": 37,
+      "intent": "selection_help",
+      "keywords": ["selection", "chance"],
+      "questions": ["Will AI increase my chances?"],
+      "answer": "A complete profile improves visibility but selection is recruiter-driven."
+    },
+    {
+      "id": 38,
+      "intent": "activity_tracking",
+      "keywords": ["track", "activity"],
+      "questions": ["Does the system track activity?"],
+      "answer": "Activity is used only to improve recommendations."
+    },
+
+    {
+      "id": 39,
+      "intent": "status_check",
+      "keywords": ["status"],
+      "questions": ["How do I check application status?"],
+      "answer": "Check the My Applications section in your dashboard."
+    },
+    {
+      "id": 40,
+      "intent": "under_review",
+      "keywords": ["under review"],
+      "questions": ["What does under review mean?"],
+      "answer": "Your application is being evaluated by the recruiter."
+    },
+    {
+      "id": 41,
+      "intent": "shortlisted",
+      "keywords": ["shortlisted"],
+      "questions": ["What does shortlisted mean?"],
+      "answer": "You are selected for the next stage."
+    },
+    {
+      "id": 42,
+      "intent": "notification",
+      "keywords": ["notify"],
+      "questions": ["Will I get notified?"],
+      "answer": "Yes, notifications are shown on your dashboard."
+    },
+    {
+      "id": 43,
+      "intent": "messages",
+      "keywords": ["messages", "recruiter"],
+      "questions": ["Where can I see recruiter messages?"],
+      "answer": "Messages appear in the notifications section."
+    },
+    {
+      "id": 44,
+      "intent": "no_response",
+      "keywords": ["no response"],
+      "questions": ["What if recruiter doesn’t respond?"],
+      "answer": "You can continue applying to other internships."
+    },
+
+    {
+      "id": 45,
+      "intent": "error",
+      "keywords": ["error", "issue"],
+      "questions": ["I am facing an error"],
+      "answer": "Please refresh or contact support if the issue persists."
+    },
+    {
+      "id": 46,
+      "intent": "site_not_loading",
+      "keywords": ["not loading"],
+      "questions": ["Website is not loading"],
+      "answer": "Check your internet connection or try again later."
+    },
+    {
+      "id": 47,
+      "intent": "forgot_login",
+      "keywords": ["forgot", "password"],
+      "questions": ["I forgot my login credentials"],
+      "answer": "Use the forgot password option to reset access."
+    },
+    {
+      "id": 48,
+      "intent": "no_recommendations",
+      "keywords": ["no recommendations"],
+      "questions": ["Why am I not getting recommendations?"],
+      "answer": "Complete your profile to improve recommendations."
+    },
+    {
+      "id": 49,
+      "intent": "support_contact",
+      "keywords": ["contact", "support"],
+      "questions": ["Who should I contact for support?"],
+      "answer": "Use the support section to reach the team."
+    },
+    {
+      "id": 50,
+      "intent": "help_section",
+      "keywords": ["help"],
+      "questions": ["Is there a help section?"],
+      "answer": "Yes, the help section is available for guidance."
+    }
+  ],
+  "fallback_response": {
+    "answer": "Sorry, I couldn't understand that. Please try rephrasing your question or visit the help section."
+  }
+}
